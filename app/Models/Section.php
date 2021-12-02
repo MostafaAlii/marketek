@@ -8,6 +8,7 @@ class Section extends Model implements ContractsTranslatable
 {
     use HasFactory, Translatable;
     protected $table = 'sections';
+    protected $fillable = ['name'];
     public $translatedAttributes = ['name'];
     public $timestamps = true;
 }

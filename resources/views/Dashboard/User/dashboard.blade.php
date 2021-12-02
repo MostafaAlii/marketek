@@ -10,8 +10,8 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="left-content">
 						<div>
-						  <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back! User</h2>
-						  <p class="mg-b-0">User Dashboard</p>
+						  <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">{{Auth::user()->name}}</h2>
+						  <p class="mg-b-0">Employee Dashboard</p>
 						</div>
 					</div>
 					<div class="main-dashboard-header-right">
