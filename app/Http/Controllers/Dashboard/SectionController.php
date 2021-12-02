@@ -3,6 +3,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\SectionExport;
 class SectionController extends Controller
 {
     /**
@@ -16,19 +18,12 @@ class SectionController extends Controller
     }
 
     
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         Section::create([
             'name'  =>  $request->input('name'),
         ]);
         return redirect()->route('Sections.index');
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id) {
         $section = Section::orderBy('id', 'DESC')->find($id);
         if (!$section)
@@ -36,20 +31,7 @@ class SectionController extends Controller
         return view('Dashboard.Sections.btn.edit', compact('section'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        /*$section = Section::findOrFail($request->id);
-        $section->update([
-            'name'  =>  $request->input('name'),
-        ]);
-        return redirect()->route('Sections.index');*/
+    public function update(Request $request, $id) {
         try {
             $section = Section::find($id);
             if (!$section)
@@ -63,6 +45,7 @@ class SectionController extends Controller
             return redirect()->route('Sections.index')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
+
     public function delete($id) {
         try {
             //get specific Section and its translations
@@ -78,5 +61,9 @@ class SectionController extends Controller
         } catch (\Exception $ex) {
             return redirect()->route('Sections.index')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
+    }
+
+    public function fileExport() {
+        return Excel::download(new SectionExport, 'sections-collection.xlsx');
     }
 }

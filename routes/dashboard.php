@@ -29,6 +29,7 @@ Route::group([
         /***********************************Start Sections ******************************** */
         Route::resource('Sections', SectionController::class)->except(['show']);
         Route::post('Sections/update/{id}',[App\Http\Controllers\Dashboard\SectionController::class, 'update']) -> name('Sections.update');
+        Route::get('Sections/file-export', [App\Http\Controllers\Dashboard\SectionController::class, 'fileExport'])->name('Sections.file-export');
         Route::get('Sections/delete/{id}',[App\Http\Controllers\Dashboard\SectionController::class, 'delete']) -> name('Sections.delete');
         /***********************************End Sections ******************************** */
         

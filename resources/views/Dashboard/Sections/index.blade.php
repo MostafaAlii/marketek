@@ -32,6 +32,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-header pb-0">
+                            <a class="btn btn-primary" href="{{ route('Sections.file-export') }}">{{ trans('dashboard/general.excel_export') }}</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
