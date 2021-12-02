@@ -14,8 +14,8 @@
 							<img alt="user-img" class="avatar avatar-xl brround" src="{{URL::asset('assets/Dashboard/img/faces/6.jpg')}}"><span class="avatar-status profile-status bg-green"></span>
 						</div>
 						<div class="user-info">
-							<h4 class="font-weight-semibold mt-3 mb-0">{{Auth::user()->name}}</h4>
-							<span class="mb-0 text-muted">{{Auth::user()->email}}</span>
+							<h4 class="font-weight-semibold mt-3 mb-0">{{--Auth::user()->name--}}</h4>
+							<span class="mb-0 text-muted">{{--Auth::user()->email--}}</span>
 						</div>
 					</div>
 				</div>
@@ -49,12 +49,7 @@
 							<i class="angle fe fe-chevron-down"></i>
 						</a>
 						<ul class="slide-menu">
-							<li><a class="slide-item" href="{{ url('/' . $page='chart-morris') }}">Morris Charts</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='chart-flot') }}">Flot Charts</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='chart-chartjs') }}">ChartJS</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='chart-echart') }}">Echart</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='chart-sparkline') }}">Sparkline</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='chart-peity') }}">Chart-peity</a></li>
+							<li><a class="slide-item" href="{{ route('Sections.index') }}">{{trans('dashboard/sidebar.show_all_section')}}</a></li>
 						</ul>
 					</li>
 					<!-- End Sections -->

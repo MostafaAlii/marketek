@@ -45,8 +45,8 @@
 													<label for="loginTypeSelect">{{trans('dashboard/login.select_login_type')}}</label>
 													<select class="form-control" id="loginTypeSelect">
 														<option selected disabled>{{trans('dashboard/login.choose_from_position_list')}}</option>
-														<option value="user">{{trans('dashboard/login.login_as_a_patient')}}</option>
-														<option value="admin">{{trans('dashboard/login.login_as_a_doctor')}}</option>
+														<option value="user">{{trans('dashboard/login.login_as_a_employee')}}</option>
+														<option value="admin">{{trans('dashboard/login.login_as_a_admin')}}</option>
 													</select>
 												</div>
 												<hr>

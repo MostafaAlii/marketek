@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
+//use App\Http\Controllers\Dashboard\SectionController;
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -24,6 +25,12 @@ Route::group([
         Route::get('/dashboard/admin', function () {
             return view('Dashboard.Admin.dashboard');
         })->middleware(['auth:admin'])->name('dashboard.admin');
+
+        /***********************************Start Sections ******************************** */
+        Route::resource('Sections', SectionController::class)->except(['show']);
+        Route::post('Sections/update/{id}',[App\Http\Controllers\Dashboard\SectionController::class, 'update']) -> name('Sections.update');
+        Route::get('Sections/delete/{id}',[App\Http\Controllers\Dashboard\SectionController::class, 'delete']) -> name('Sections.delete');
+        /***********************************End Sections ******************************** */
         
         require __DIR__.'/auth.php';
 });
