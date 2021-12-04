@@ -1,7 +1,6 @@
 <?php
 namespace App\Repository\Groups;
 use App\Interfaces\Groups\GroupRepositoryInterface;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Group;
 class GroupRepository implements GroupRepositoryInterface {
     public function index() {

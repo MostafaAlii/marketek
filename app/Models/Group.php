@@ -10,9 +10,5 @@ class Group extends Model implements ContractsTranslatable
     protected $table = 'groups';
     protected $fillable = ['name', 'created_by', 'updated_by'];
     public $translatedAttributes = ['name'];
-    public $timestamps = true;
-
-    public  function getStatus(){
-        echo ($this->status == 0) ?  '<button class="btn btn-outline-danger">'.trans('dashboard/general.not_active').'</button>' : '<button class="btn btn-outline-success">'.trans('dashboard/general.active').'</button>';
-     } 
+    public $timestamps = true; 
 }

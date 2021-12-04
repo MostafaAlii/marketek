@@ -9,13 +9,20 @@
             </button>
         </div>
         
-            <form action="{{ route('Sections.store') }}" method="post" autocomplete="off">
+            <form action="{{ route('Categories.store') }}" method="post" autocomplete="off">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label>{{ trans('dashboard/sections.enter_section_name') }}</label>
-                        <input type="text" name="name" class="form-control" />
+                    <!-- Start Category Name Field -->
+                    <div class="form-field form-group">
+                        <label for="name" class="label">{{ trans('dashboard/sections.enter_section_name') }}</label>
+                        <input id="name" class="input-text form-control" value="{{ old('name') }}" type="text" name="name">
+                        @error("name")
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
+                    <div class="form-field form-group col-lg-8"></div>
+                    <!-- End Category Name Field -->
+
                     {{--<div class="form-group">
                         <label>{{ trans('dashboard/sections.select_type') }}</label>
                         <select class="form-control" id="exampleFormControlSelect1">
