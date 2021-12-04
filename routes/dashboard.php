@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\GroupController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\SubCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -32,12 +33,18 @@ Route::group([
 
         /******************************** Start Other Authentication Route ****************** */
         Route::middleware(['auth:admin'])->group( function () {
+
             /***********************************Start Groups ******************************** */
             Route::resource('Groups', GroupController::class)->except(['show']);
             /***********************************End Groups ******************************** */
-            /***********************************Start Sections ******************************** */
+
+            /***********************************Start Category ******************************** */
             Route::resource('Categories', CategoryController::class)->except(['show']);
-            /***********************************End Sections ******************************** */
+            /***********************************End Category ******************************** */
+
+            /***********************************Start SubCategory ******************************** */
+            Route::resource('SubCategories', SubCategoryController::class)->except(['show']);
+            /***********************************End SubCategory ******************************** */
         });
         /******************************** End Other Authentication Route ****************** */
         require __DIR__.'/auth.php';
