@@ -5,20 +5,21 @@
 <link href="{{URL::asset('assets/Dashboard/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/Dashboard/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/Dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+<link href="{{URL::asset('assets/Dashboard//plugins/notify/css/notifIt.css')}}" rel="stylesheet">
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">{{ trans('dashboard/sidebar.show_all_section') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"></span>
+            <h4 class="content-title mb-0 my-auto">{{ trans('dashboard/sidebar.show_all_groups') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"></span>
         </div>
         
     </div>
     <div class="d-flex my-xl-auto right-content">
         <div class="pr-1 mb-3 mb-xl-0">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-                {{ trans('dashboard/sections.add_new_section') }}
+                {{ trans('dashboard/groups.add_new_group') }}
            </button>
         </div>
     </div>
@@ -26,39 +27,50 @@
 <!-- breadcrumb -->
 @endsection
 @section('content')
-				
+        @include('Dashboard.MessageAlert.message_alert')
             <!-- row opened -->
             <div class="row row-sm">
                 <div class="col-xl-12">
-                    <div class="card">
+                    <div class="card mg-b-20">
                         <div class="card-header pb-0">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-title mg-b-0">{{ trans('dashboard/sidebar.show_all_groups') }}</h4>
+                                <i class="mdi mdi-dots-horizontal text-gray"></i>
+                            </div>
+                            <p class="tx-12 tx-gray-500 mb-2"></p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table text-md-nowrap" id="example1">
+                                <table id="example" class="table key-buttons text-md-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="wd-15p border-bottom-0">#</th>
-                                            <th class="wd-15p border-bottom-0">{{ trans('dashboard/sections.section_name') }}</th>
-                                            <th class="wd-15p border-bottom-0">{{ trans('dashboard/sections.section_created_at') }}</th>
-                                            <th class="wd-20p border-bottom-0">{{ trans('dashboard/sections.section_actions') }}</th>
+                                            <th class="border-bottom-0">#</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/groups.groups_name') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/groups.groups_created_by') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/groups.groups_updated_by') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/groups.groups_created_at') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/groups.groups_actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($sections as $section)
-                                        <tr>
-                                            <td>{{ $section->id}}</td>
-                                            <td>{{ $section->name }}</td>
-                                            <td>{{ $section->created_at->diffForHumans() }}</td>
-                                            <td>
-                                                <a class="btn-sm btn btn-info" href="{{-- route('Sections.edit', $section->id) --}}">
-                                                    <i class="las la-pen"></i>
-                                                </a>
-                                                <a class="btn-sm btn btn-danger" href="{{-- route('Sections.delete', $section->id) --}}">
-                                                    <i class="las la-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        @foreach($groups as $group)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $group->name }}</td>
+                                                <td>{{ $group->created_by }}</td>
+                                                <td>{{ $group->updated_by }}</td>
+                                                <td>{{ $group->created_at->diffForHumans() }}</td>
+                                                <td>
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale" data-toggle="modal" href="#edit{{$group->id}}">
+                                                        <i class="las la-pen"></i>
+                                                    </a>
+                                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale" data-toggle="modal" href="#delete{{$group->id}}">
+                                                        <i class="las la-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            @include('Dashboard.Groups.btn.edit')
+                                            @include('Dashboard.Groups.btn.delete')
                                         @endforeach()
                                     </tbody>
                                 </table>
@@ -70,7 +82,7 @@
             </div>
             <!-- /row -->
 
-        @include('Dashboard.Sections.btn.add')
+        @include('Dashboard.Groups.btn.add')
         
     </div>
     <!-- Container closed -->
@@ -97,4 +109,6 @@
 <script src="{{URL::asset('assets/Dashboard/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/Dashboard/js/table-data.js')}}"></script>
+<script src="{{URL::asset('assets/Dashboard//plugins/notify/js/notifIt.js')}}"></script>
+<script src="{{URL::asset('assets/Dashboard//plugins/notify/js/notifIt-custom.js')}}"></script>
 @endsection

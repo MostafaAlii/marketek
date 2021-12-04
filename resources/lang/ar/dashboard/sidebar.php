@@ -5,4 +5,6 @@ return [
     'main_sidebar_general'              =>              'عـــــام',
     'main_sidebar_section'              =>              'أﻻقســام ألعامــة',
     'show_all_section'                  =>              'عرض كل الاقســام',
+    'main_sidebar_groups'               =>              'الفئات والمجموعات',
+    'show_all_groups'                   =>              'عرض كل الفئات',
 ];

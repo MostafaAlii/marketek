@@ -26,8 +26,8 @@ class RouteServiceProvider extends ServiceProvider
      * @var string|null
      */
     // protected $namespace = 'App\\Http\\Controllers';
-    protected $dashboard_namespace  = 'App\Http\Controllers\Dashboard';
-    protected $dashboard_api_namespace  = 'App\Http\Controllers\Dashboard\Api\V1';
+    //protected $dashboard_namespace  = 'App\Http\Controllers\Dashboard';
+    //protected $dashboard_api_namespace  = 'App\Http\Controllers\Dashboard\Api\V1';
     protected $site_namespace       = 'App\Http\Controllers\Site';
 
     /**
@@ -50,16 +50,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
             
             Route::middleware('web')
-                ->namespace($this->dashboard_namespace)
+                ->namespace($this->namespace)
                 ->group(base_path('routes/dashboard.php'));
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->dashboard_api_namespace)
-                ->group(base_path('routes/adminApiDashboard.php'));
-            
-            Route::middleware('web')
-                ->namespace($this->site_namespace)
-                ->group(base_path('routes/site.php'));
         });
     }
 
