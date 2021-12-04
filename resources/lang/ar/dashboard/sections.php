@@ -13,6 +13,9 @@ return [
     'category_status'                   =>  'حالة القسم',
     // Category Validation ::
     'category_name_required'            =>  'اسم القسم مطلوب',
-    'category_slug_required'            =>  'الكلمات المفتاحية مطلوبة',
-    'category_slug_unique'              =>  'الكلمات المفتاحية الذى ادخلتها موجودة بالفعل رجاء ادخال كلمات اخرى',
+    // Sub Category ::
+    'add_new_sub_section'   =>      'أضافة قسم فرعى جديد',
+    'show_all_subCategory'  =>      'عرض اﻻقسام الفرعية',
+    'subCategory'           =>      'اﻻقسام الفرعية',
+    'related_category'      =>      'القسم الرئيسى التابع',
 ];

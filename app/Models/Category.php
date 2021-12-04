@@ -15,8 +15,15 @@ class Category extends Model
     public $translatedAttributes = ['name'];
     public $timestamps = true;
 
+    public function scopeParent($query) {
+        return $query->whereNull('parent_id');
+    }
 
-    public  function getStatus() {
-        echo ($this->status == 0) ?  '<button class="btn btn-outline-danger">'.trans('dashboard/general.not_active').'</button>' : '<button class="btn btn-outline-success">'.trans('dashboard/general.active').'</button>';
+    public function scopeChild($query) {
+        return $query->whereNotNull('parent_id');
+    }
+
+    public function _parent(){
+        return $this->belongsTo(self::class, 'parent_id');
     }
 }
