@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\GroupController;
-use App\Http\Controllers\Dashboard\SectionController;
+use App\Http\Controllers\Dashboard\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -14,7 +14,6 @@ use App\Http\Controllers\Dashboard\SectionController;
 |
 */
 Route::get('/Dashboard', [DashboardController::class, 'index']);
-
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
@@ -37,7 +36,7 @@ Route::group([
             Route::resource('Groups', GroupController::class)->except(['show']);
             /***********************************End Groups ******************************** */
             /***********************************Start Sections ******************************** */
-            Route::resource('Sections', SectionController::class)->except(['show']);
+            Route::resource('Categories', CategoryController::class)->except(['show']);
             /***********************************End Sections ******************************** */
         });
         /******************************** End Other Authentication Route ****************** */

@@ -3,7 +3,7 @@
         <button aria-label="Close" class="close" data-dismiss="alert" type="button">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>{{ trans('dashboard/messages.wrong') }}</strong>
+        <strong>{{-- trans('dashboard/messages.wrong') --}}</strong>
         <br>
         <ul>
             @foreach ($errors->all() as $error)
@@ -19,6 +19,18 @@
             notif({
                 msg: "{{ trans('dashboard/messages.add_successfully') }}",
                 type: "success",
+                position: "right"
+            });
+        }
+    </script>
+@endif
+
+@if (session()->has('wrong'))
+    <script>
+        window.onload = function() {
+            notif({
+                msg: "{{ trans('dashboard/messages.wrong') }}",
+                type: "worning",
                 position: "right"
             });
         }
