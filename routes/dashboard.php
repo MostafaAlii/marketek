@@ -30,7 +30,7 @@ Route::group([
             return view('Dashboard.Admin.dashboard');
         })->middleware(['auth:admin'])->name('dashboard.admin');
         /*********************************** End Admin Dashboard ******************************** */
-
+        
         /******************************** Start Other Authentication Route ****************** */
         Route::middleware(['auth:admin'])->group( function () {
 
