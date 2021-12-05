@@ -12,7 +12,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('group_id')->unsigned()->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            //$table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
             $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });

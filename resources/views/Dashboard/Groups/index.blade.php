@@ -33,15 +33,11 @@
                 <div class="col-xl-12">
                     <div class="card mg-b-20">
                         <div class="card-header pb-0">
-<<<<<<< HEAD:resources/views/Dashboard/Sections/index.blade.php
-                            <a class="btn btn-primary" href="{{ route('Sections.file-export') }}">{{ trans('dashboard/general.excel_export') }}</a>
-=======
                             <div class="d-flex justify-content-between">
                                 <h4 class="card-title mg-b-0">{{ trans('dashboard/sidebar.show_all_groups') }}</h4>
                                 <i class="mdi mdi-dots-horizontal text-gray"></i>
                             </div>
                             <p class="tx-12 tx-gray-500 mb-2"></p>
->>>>>>> 8273472cd26dc1dcea35b25540200588ef209088:resources/views/Dashboard/Groups/index.blade.php
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

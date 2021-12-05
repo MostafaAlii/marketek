@@ -30,16 +30,7 @@ Route::group([
             return view('Dashboard.Admin.dashboard');
         })->middleware(['auth:admin'])->name('dashboard.admin');
         /*********************************** End Admin Dashboard ******************************** */
-
-<<<<<<< HEAD
-        /***********************************Start Sections ******************************** */
-        Route::resource('Sections', SectionController::class)->except(['show']);
-        Route::post('Sections/update/{id}',[App\Http\Controllers\Dashboard\SectionController::class, 'update']) -> name('Sections.update');
-        Route::get('Sections/file-export', [App\Http\Controllers\Dashboard\SectionController::class, 'fileExport'])->name('Sections.file-export');
-        Route::get('Sections/delete/{id}',[App\Http\Controllers\Dashboard\SectionController::class, 'delete']) -> name('Sections.delete');
-        /***********************************End Sections ******************************** */
         
-=======
         /******************************** Start Other Authentication Route ****************** */
         Route::middleware(['auth:admin'])->group( function () {
 
@@ -56,6 +47,5 @@ Route::group([
             /***********************************End SubCategory ******************************** */
         });
         /******************************** End Other Authentication Route ****************** */
->>>>>>> 8273472cd26dc1dcea35b25540200588ef209088
         require __DIR__.'/auth.php';
 });
