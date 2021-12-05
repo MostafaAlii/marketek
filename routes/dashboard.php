@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\GroupController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\SubCategoryController;
+use App\Http\Controllers\Dashboard\SupplierController;
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -44,6 +45,10 @@ Route::group([
 
             /***********************************Start SubCategory ******************************** */
             Route::resource('SubCategories', SubCategoryController::class)->except(['show']);
+            /***********************************End SubCategory ******************************** */
+
+            /***********************************Start SubCategory ******************************** */
+            Route::resource('Suppliers', SupplierController::class)->except(['show']);
             /***********************************End SubCategory ******************************** */
         });
         /******************************** End Other Authentication Route ****************** */

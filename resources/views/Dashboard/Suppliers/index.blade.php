@@ -28,6 +28,8 @@
 </div>
 <!-- breadcrumb -->
 @endsection
+
+
 @section('content')
         @include('Dashboard.MessageAlert.message_alert')
             <!-- row opened -->
@@ -56,12 +58,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($subCategories as $subCategory)
+                                        {{--@foreach($subCategories as $subCategory)--}}
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $subCategory->name }}</td>
-                                                <td>{{ $subCategory->_parent->name }}</td>
-                                                <td>{{ $subCategory->created_by }}</td>
+                                                <td>{{-- $subCategory->name --}}</td>
+                                                <td>{{ $subCategory->_parent->name --}}</td>
+                                                <td>{{ $subCategory->created_by --}}</td>
                                                 <td>{{ $subCategory->updated_by }}</td>
                                                 <td>{{ $subCategory->created_at->diffForHumans() }}</td>
                                                 <td>
@@ -75,7 +77,7 @@
                                             </tr>
                                             @include('Dashboard.SubCategories.btn.edit')
                                             @include('Dashboard.SubCategories.btn.delete')
-                                        @endforeach()
+                                        {{--@endforeach()--}}
                                     </tbody>
                                 </table>
                             </div>
