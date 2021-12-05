@@ -4,11 +4,11 @@ use Astrotomic\Translatable\Translatable;
 use Astrotomic\Translatable\Contracts\Translatable as ContractsTranslatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-class Section extends Model implements ContractsTranslatable
+class Group extends Model implements ContractsTranslatable
 {
     use HasFactory, Translatable;
-    protected $table = 'sections';
-    protected $fillable = ['name'];
+    protected $table = 'groups';
+    protected $fillable = ['name', 'created_by', 'updated_by'];
     public $translatedAttributes = ['name'];
-    public $timestamps = true;
+    public $timestamps = true; 
 }

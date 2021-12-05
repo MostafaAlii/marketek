@@ -1,4 +1,6 @@
 <?php
+define('PAGINATION_COUNT', 10);
+
 if(!function_exists('admin_guard')){
     function admin_guard() {
         return auth('admin');
