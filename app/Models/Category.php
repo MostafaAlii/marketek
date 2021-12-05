@@ -26,4 +26,8 @@ class Category extends Model
     public function _parent(){
         return $this->belongsTo(self::class, 'parent_id');
     }
+
+    public function Groups() {
+        return $this->belongsTo('groups', 'group_id');
+    }
 }

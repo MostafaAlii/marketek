@@ -9,7 +9,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('parent_id')->unsigned()->nullable();
-            $table->integer('group_id')->unsigned()->nullable();
+            $table->bigInteger('group_id')->unsigned()->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             //$table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');

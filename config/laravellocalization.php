@@ -8,12 +8,11 @@ return [
     'supportedLocales' => [
         'ar'          => ['name' => 'Arabic',                 'script' => 'Arab', 'native' => 'العربية', 'regional' => 'ar_AE'],
         'en'          => ['name' => 'English',                'script' => 'Latn', 'native' => 'English', 'regional' => 'en_GB'],
-        'fr'          => ['name' => 'French',                 'script' => 'Latn', 'native' => 'français', 'regional' => 'fr_FR'],
-        'it'          => ['name' => 'Italian',                'script' => 'Latn', 'native' => 'italiano', 'regional' => 'it_IT'],
-        'ru'          => ['name' => 'Russian',                'script' => 'Cyrl', 'native' => 'русский', 'regional' => 'ru_RU'],
-        'tr'          => ['name' => 'Turkish',                'script' => 'Latn', 'native' => 'Türkçe', 'regional' => 'tr_TR'],
-
-        'es'          => ['name' => 'Spanish',                'script' => 'Latn', 'native' => 'español', 'regional' => 'es_ES'],
+        //'fr'          => ['name' => 'French',                 'script' => 'Latn', 'native' => 'français', 'regional' => 'fr_FR'],
+        //'it'          => ['name' => 'Italian',                'script' => 'Latn', 'native' => 'italiano', 'regional' => 'it_IT'],
+        //'ru'          => ['name' => 'Russian',                'script' => 'Cyrl', 'native' => 'русский', 'regional' => 'ru_RU'],
+        //'tr'          => ['name' => 'Turkish',                'script' => 'Latn', 'native' => 'Türkçe', 'regional' => 'tr_TR'],
+        //'es'          => ['name' => 'Spanish',                'script' => 'Latn', 'native' => 'español', 'regional' => 'es_ES'],
         //'ace'         => ['name' => 'Achinese',               'script' => 'Latn', 'native' => 'Aceh', 'regional' => ''],
         //'af'          => ['name' => 'Afrikaans',              'script' => 'Latn', 'native' => 'Afrikaans', 'regional' => 'af_ZA'],
         //'agq'         => ['name' => 'Aghem',                  'script' => 'Latn', 'native' => 'Aghem', 'regional' => ''],
