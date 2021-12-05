@@ -13,7 +13,10 @@
 							<a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
 						</div>
 						<div class="main-header-center mr-3 d-sm-none d-md-none d-lg-block">
-							<input class="form-control" placeholder="Search for anything..." type="search"> <button class="btn"><i class="fas fa-search d-none d-md-block"></i></button>
+							<input class="form-control" placeholder="Search for anything..." type="search">
+							<button class="btn">
+								<i class="fas fa-search d-none d-md-block"></i>
+							</button>
 						</div>
 					</div>
 					<div class="main-header-right">
@@ -21,17 +24,6 @@
 							<li class="">
 								<div class="dropdown  nav-itemd-none d-md-flex">
 									<a href="#" class="d-flex  nav-item nav-link pl-0 country-flag1" data-toggle="dropdown" aria-expanded="false">
-										{{--@if(App::getLocale() == 'ar')
-											<span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/Dashboard/img/flags/egypt_flag.jpg')}}" alt="img"></span>
-											<div class="my-auto">
-												<strong class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleNative() }}</strong>
-											</div>
-										@else
-										<span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/Dashboard/img/flags/us_flag.jpg')}}" alt="img"></span>
-										<div class="my-auto">
-											<strong class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleNative() }}</strong>
-										</div>
-										@endif--}}
 										@if(App::getLocale() == 'ar')
 											<span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/Dashboard/img/flags/egypt_flag.jpg')}}" alt="img"></span>
 											<div class="my-auto">
@@ -252,15 +244,12 @@
 										<div class="d-flex wd-100p">
 											<div class="main-img-user"><img alt="" src="{{URL::asset('assets/Dashboard/img/faces/6.jpg')}}" class=""></div>
 											<div class="mr-3 my-auto">
-												<h6>Petey Cruiser</h6><span>Premium Member</span>
+												<h6>{{Auth::user()->name}}</h6><span>{{Auth::user()->email}}</span>
 											</div>
 										</div>
 									</div>
-									<a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>Profile</a>
-									<a class="dropdown-item" href=""><i class="bx bx-cog"></i> Edit Profile</a>
-									<a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
-									<a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
-									<a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
+									<a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>{{ trans('dashboard/profile.profile') }}</a>
+									<a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i>{{ trans('dashboard/profile.profile_settings') }}</a>
 									@if (auth('web')->check()) 
 										<form method="POST" action="{{ route('logout.user') }}">
 									@else
@@ -269,7 +258,7 @@
 										@csrf
 										<a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();">
 											<i class="bx bx-log-out"></i>
-											Sign Out
+											{{ trans('dashboard/general.sign_out') }}
 										</a>
 									</form>
 								</div>
