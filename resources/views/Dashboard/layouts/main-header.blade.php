@@ -37,29 +37,8 @@
 											<div class="my-auto">
 												<strong class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleNative() }}</strong>
 											</div>
-										@elseif (App::getLocale() == 'ar')
+										@elseif (App::getLocale() == 'en')
 											<span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/Dashboard/img/flags/us_flag.jpg')}}" alt="img"></span>
-											<div class="my-auto">
-												<strong class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleNative() }}</strong>
-											</div>
-										@elseif (App::getLocale() == 'fr')
-											<span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/Dashboard/img/flags/french_flag.jpg')}}" alt="img"></span>
-											<div class="my-auto">
-												<strong class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleNative() }}</strong>
-											</div>
-										@elseif (App::getLocale() == 'it')
-											<span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/Dashboard/img/flags/italy_flag.jpg')}}" alt="img"></span>
-											<div class="my-auto">
-												<strong class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleNative() }}</strong>
-											</div>
-										@elseif (App::getLocale() == 'ru')
-											<span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/Dashboard/img/flags/russia_flag.jpg')}}" alt="img"></span>
-											<div class="my-auto">
-												<strong class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleNative() }}</strong>
-											</div>
-					
-										@elseif (App::getLocale() == 'es')
-											<span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/Dashboard/img/flags/spain_flag.jpg')}}" alt="img"></span>
 											<div class="my-auto">
 												<strong class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleNative() }}</strong>
 											</div>
@@ -72,8 +51,6 @@
 													<i class="flag-icon flag-icon-us"></i>
 												@elseif($properties['native'] == "العربية")
 													<i class="flag-icon flag-icon-eg"></i>
-												@elseif($properties['native'] == "French")
-													<i class="flag-icon flag-icon-fr"></i>
 												@endif
 													{{$properties['native']}}
 											</a>

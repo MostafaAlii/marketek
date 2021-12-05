@@ -2,17 +2,19 @@
 namespace App\Repository\Categories;
 use App\Interfaces\Categories\CategoryRepositoryInterface;
 use App\Models\Category;
+use App\Models\Group;
 use Illuminate\Support\Facades\DB;
 class CategoryRepository implements CategoryRepositoryInterface {
     public function index() {
-        //$categories = Category::all();
+        $groups = Group::all();
         $categories = Category::parent()->orderBy('id','DESC')->paginate(PAGINATION_COUNT);
-        return view('Dashboard.Categories.index', compact('categories'));
+        return view('Dashboard.Categories.index', compact('categories', 'groups'));
     }
 
     public function store($request) {
         try {
             $category = Category::create($request->except('_token'));
+            //$category->grade_id = $request->grade_id;
             $category->created_by    =  auth()->user()->name;
             //save translations
             $category->name = $request->name;

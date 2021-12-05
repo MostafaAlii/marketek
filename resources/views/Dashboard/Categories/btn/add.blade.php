@@ -12,6 +12,28 @@
             <form action="{{ route('Categories.store') }}" method="post" autocomplete="off">
                 @csrf
                 <div class="modal-body">
+                    <!-- Start Category Group Select -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="projectinput2">اختر الفئة التابعة للقسم</label>
+                                <select name="group_id" class="select2 form-control">
+                                    <optgroup label="من فضلك أختر الفئة ">
+                                        @if($groups && $groups -> count() > 0)
+                                            @foreach($groups as $group)
+                                                <option
+                                                    value="{{$group->id }}">{{$group->name}}</option>
+                                            @endforeach
+                                        @endif
+                                    </optgroup>
+                                </select>
+                                @error('group_id')
+                                <span class="text-danger"> {{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Category Group Select -->
                     <!-- Start Category Name Field -->
                     <div class="form-field form-group">
                         <label for="name" class="label">{{ trans('dashboard/sections.enter_section_name') }}</label>
@@ -22,17 +44,6 @@
                     </div>
                     <div class="form-field form-group col-lg-8"></div>
                     <!-- End Category Name Field -->
-
-                    {{--<div class="form-group">
-                        <label>{{ trans('dashboard/sections.select_type') }}</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </select>
-                    </div>--}}
                 </div>
 
                 <div class="modal-footer">
