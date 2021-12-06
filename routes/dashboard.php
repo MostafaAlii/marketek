@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\GroupController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\SubCategoryController;
 use App\Http\Controllers\Dashboard\SupplierController;
 /*
@@ -47,9 +48,13 @@ Route::group([
             Route::resource('SubCategories', SubCategoryController::class)->except(['show']);
             /***********************************End SubCategory ******************************** */
 
-            /***********************************Start SubCategory ******************************** */
+            /***********************************Start Suppliers ******************************** */
             Route::resource('Suppliers', SupplierController::class)->except(['show']);
-            /***********************************End SubCategory ******************************** */
+            /***********************************End Suppliers ******************************** */
+
+            /***********************************Start Suppliers ******************************** */
+            Route::resource('Countries', CountryController::class)->except(['show']);
+            /***********************************End Suppliers ******************************** */
         });
         /******************************** End Other Authentication Route ****************** */
         require __DIR__.'/auth.php';

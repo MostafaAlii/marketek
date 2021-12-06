@@ -1,5 +1,6 @@
 <?php
 namespace App\Interfaces\Suppliers;
-interface SuppliersRepositoryInterface {
+interface SuppliersInterface {
     public function index();
+    public function store($request);
 }

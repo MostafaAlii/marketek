@@ -6,30 +6,26 @@
 <link href="{{URL::asset('assets/Dashboard/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/Dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/Dashboard//plugins/notify/css/notifIt.css')}}" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css" rel="stylesheet">
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">{{ trans('dashboard/supplier.supplier_title_in_sidebar') }}</h4>
-            <span class="text-muted mt-1 tx-13 mr-2 mb-0"></span>
+            <h4 class="content-title mb-0 my-auto">{{ trans('dashboard/country.show_all_country') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"></span>
         </div>
         
     </div>
     <div class="d-flex my-xl-auto right-content">
         <div class="pr-1 mb-3 mb-xl-0">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-                {{ trans('dashboard/supplier.add_new_supplier') }}
+                {{ trans('dashboard/country.add_new_country') }}
            </button>
         </div>
     </div>
 </div>
 <!-- breadcrumb -->
 @endsection
-
-
 @section('content')
         @include('Dashboard.MessageAlert.message_alert')
             <!-- row opened -->
@@ -38,7 +34,7 @@
                     <div class="card mg-b-20">
                         <div class="card-header pb-0">
                             <div class="d-flex justify-content-between">
-                                <h4 class="card-title mg-b-0">{{ trans('dashboard/supplier.show_all_supplier_in_sidebar_index') }}</h4>
+                                <h4 class="card-title mg-b-0">{{ trans('dashboard/country.show_all_country') }}</h4>
                                 <i class="mdi mdi-dots-horizontal text-gray"></i>
                             </div>
                             <p class="tx-12 tx-gray-500 mb-2"></p>
@@ -49,34 +45,32 @@
                                     <thead>
                                         <tr>
                                             <th class="border-bottom-0">#</th>
-                                            <th class="border-bottom-0">{{ trans('dashboard/supplier.supplier_email') }}</th>
-                                            <th class="border-bottom-0">{{ trans('dashboard/supplier.first_name') }}</th>
-                                            <th class="border-bottom-0">{{ trans('dashboard/supplier.last_name') }}</th>
-                                            <th class="border-bottom-0">{{ trans('dashboard/supplier.phone_number') }}</th>
-                                            <th class="border-bottom-0">{{ trans('dashboard/sections.section_created_at') }}</th>
-                                            <th class="border-bottom-0">{{ trans('dashboard/sections.section_actions') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/country.country_name') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/groups.groups_created_by') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/groups.groups_updated_by') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/groups.groups_created_at') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/groups.groups_actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($suppliers as $supplier)
+                                        @foreach($countries as $country)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $supplier->email }}</td>
-                                                <td>{{ $supplier->first_name }}</td>
-                                                <td>{{ $supplier->last_name }}</td>
-                                                <td>{{ $supplier->phone }}</td>
-                                                <td>{{ $supplier->created_at->diffForHumans() }}</td>
+                                                <td>{{ $country->name }}</td>
+                                                <td>{{ $country->created_by }}</td>
+                                                <td>{{ $country->updated_by }}</td>
+                                                <td>{{ $country->created_at->diffForHumans() }}</td>
                                                 <td>
-                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale" data-toggle="modal" href="#edit{{$supplier->id}}">
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale" data-toggle="modal" href="#edit{{$country->id}}">
                                                         <i class="las la-pen"></i>
                                                     </a>
-                                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale" data-toggle="modal" href="#delete{{$supplier->id}}">
+                                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale" data-toggle="modal" href="#delete{{$country->id}}">
                                                         <i class="las la-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-                                            {{--@include('Dashboard.SubCategories.btn.edit')
-                                            @include('Dashboard.SubCategories.btn.delete')--}}
+                                            @include('Dashboard.Countries.btn.edit')
+                                            @include('Dashboard.Countries.btn.delete')
                                         @endforeach()
                                     </tbody>
                                 </table>
@@ -88,7 +82,7 @@
             </div>
             <!-- /row -->
 
-        @include('Dashboard.Suppliers.btn.add')
+        @include('Dashboard.Countries.btn.add')
         
     </div>
     <!-- Container closed -->
@@ -117,5 +111,4 @@
 <script src="{{URL::asset('assets/Dashboard/js/table-data.js')}}"></script>
 <script src="{{URL::asset('assets/Dashboard//plugins/notify/js/notifIt.js')}}"></script>
 <script src="{{URL::asset('assets/Dashboard//plugins/notify/js/notifIt-custom.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 @endsection
