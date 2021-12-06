@@ -6,9 +6,10 @@ use App\Interfaces\Categories\CategoryRepositoryInterface;
 use App\Repository\Categories\CategoryRepository;
 use App\Interfaces\SubCategories\SubCategoryRepositoryInterface;
 use App\Repository\SubCategories\SubCategoryRepository;
-use App\Interfaces\Suppliers\SuppliersRepositoryInterface;
+use App\Interfaces\Suppliers\SuppliersInterface;
 use App\Repository\Suppliers\SuppliersRepository;
-//use App\Repository\Suppliers\SuppliersRepository;
+use App\Interfaces\Countries\CountryRepositoryInterface;
+use App\Repository\Countries\CountriesRepository;
 use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(GroupRepositoryInterface::class, GroupRepository::class);
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->bind(SubCategoryRepositoryInterface::class, SubCategoryRepository::class);
-        $this->app->bind(SuppliersRepositoryInterface::class, SuppliersRepository::class);
+        $this->app->bind(SuppliersInterface::class, SuppliersRepository::class);
+        $this->app->bind(CountryRepositoryInterface::class, CountriesRepository::class);
     }
 
     /**
