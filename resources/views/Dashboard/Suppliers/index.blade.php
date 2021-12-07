@@ -50,8 +50,7 @@
                                         <tr>
                                             <th class="border-bottom-0">#</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/supplier.supplier_email') }}</th>
-                                            <th class="border-bottom-0">{{ trans('dashboard/supplier.first_name') }}</th>
-                                            <th class="border-bottom-0">{{ trans('dashboard/supplier.last_name') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/supplier.name') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/supplier.phone_number') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/sections.section_created_at') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/sections.section_actions') }}</th>
@@ -62,8 +61,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $supplier->email }}</td>
-                                                <td>{{ $supplier->first_name }}</td>
-                                                <td>{{ $supplier->last_name }}</td>
+                                                <td>{{ $supplier->first_name . ' ' . $supplier->last_name }}</td>
                                                 <td>{{ $supplier->phone }}</td>
                                                 <td>{{ $supplier->created_at->diffForHumans() }}</td>
                                                 <td>

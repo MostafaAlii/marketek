@@ -12,8 +12,11 @@ class SuppliersRepository implements SuppliersInterface {
     public function store($request)
     {
         $supplier = new Supplier();
+        $supplier->first_name = $request->first_name;
+        $supplier->last_name = $request->last_name;
         $supplier->email = $request->email;
         $supplier->password = Hash::make($request->password);
+        $supplier->phone = $request->phone;
         $supplier->save();
         session()->flash('add');
         return redirect()->route('Suppliers.index');

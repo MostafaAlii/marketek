@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Interfaces\Suppliers\SuppliersInterface;
+use App\Http\Requests\Dashboard\SuppliersRequest;
 use Illuminate\Http\Request;
 class SupplierController extends Controller
 {
@@ -14,11 +15,11 @@ class SupplierController extends Controller
         return $this->Suppliers->index();
     }
 
-    public function store(Request $request) {
+    public function store(SuppliersRequest $request) {
         return $this->Suppliers->store($request);
     }
 
-    public function update(Request $request, $id)
+    public function update(SuppliersRequest $request, $id)
     {
         //
     }
