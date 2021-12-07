@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="edit{{$subCategory->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit{{$supplier->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -9,45 +9,50 @@
             </button>
         </div>
         
-            <form action="{{ route('SubCategories.update', 'test') }}" method="post" autocomplete="off">
+            <form action="{{ route('Suppliers.update', 'test') }}" method="post" autocomplete="off">
                 {{ method_field('patch') }}
                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <input type="hidden" name="id" class="form-control" value="{{ $subCategory->id }}" />
-                    <!-- Start Parent Category Select -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="projectinput2"> أختر القسم </label>
-                                <select name="parent_id" class="select2 form-control">
-                                    <optgroup label="من فضلك أختر القسم ">
-                                        @if($categories && $categories -> count() > 0)
-                                            @foreach($categories as $mainCategory)
-                                                <option
-                                                    value="{{$mainCategory->id }}" @if($mainCategory->id == $mainCategory ->parent_id)  selected @endif>
-                                                    {{$mainCategory->name}}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </optgroup>
-                                </select>
-                                @error('parent_id')
-                                <span class="text-danger"> {{$message}}</span>
-                                @enderror
+                    <!-- Start Supplier Name -->
+                    <div class="container">
+                        <div class="row justify-content-md-start">
+                            <div class="col-8 col-md-6">
+                                <div class="form-field form-group">
+                                    <label for="first_name" class="label">{{ trans('dashboard/supplier.first_name') }}</label>
+                                    <input id="first_name" class="input-text form-control" value="{{ $supplier->first_name }}" type="text" name="first_name">
+                                    @error("first_name")
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!-- End Supplier First Name -->
+                            <div class="col-8 col-md-6">
+                                <div class="form-field form-group">
+                                    <label for="last_name" class="label">{{ trans('dashboard/supplier.last_name') }}</label>
+                                    <input id="last_name" class="input-text form-control" value="{{ $supplier->last_name }}" type="text" name="last_name">
+                                    @error("last_name")
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!-- End Supplier First Name -->
+                        </div>
+                    </div>
+                    <!-- Start Supplier Email Field -->
+                    <div class="container">
+                        <div class="row justify-content-md-start">
+                            <div class="col-8 col-md-6">
+                                <div class="form-field form-group">
+                                    <label for="email" class="label">{{ trans('dashboard/supplier.enter_supplier_email') }}</label>
+                                    <input id="email" class="input-text form-control" value="{{ $supplier->email }}" type="email" name="email">
+                                    @error("email")
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- End Parent Category Select -->
-                    <!-- Start Category Name Field -->
-                    <div class="form-field form-group">
-                        <label for="name" class="label">{{ trans('dashboard/sections.edit_section_name') }}</label>
-                        <input id="name" class="input-text form-control" value="{{ $subCategory->name }}" type="text" name="name">
-                        @error("name")
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="form-field form-group col-lg-8"></div>
-                    <!-- End Category Name Field -->
+                    <!-- End Supplier Email Field -->
                 </div>
 
                 <div class="modal-footer">
