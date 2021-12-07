@@ -10,6 +10,8 @@ use App\Interfaces\Suppliers\SuppliersInterface;
 use App\Repository\Suppliers\SuppliersRepository;
 use App\Interfaces\Countries\CountryRepositoryInterface;
 use App\Repository\Countries\CountriesRepository;
+use App\Interfaces\Currencies\CurrencRepositoryInterface;
+use App\Repository\Currencies\CurrencyRepository;
 use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(SubCategoryRepositoryInterface::class, SubCategoryRepository::class);
         $this->app->bind(SuppliersInterface::class, SuppliersRepository::class);
         $this->app->bind(CountryRepositoryInterface::class, CountriesRepository::class);
+        $this->app->bind(CurrencRepositoryInterface::class, CurrencyRepository::class);
     }
 
     /**

@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Interfaces\Suppliers\SuppliersInterface;
 use App\Http\Requests\Dashboard\SuppliersRequest;
+use App\Http\Requests\Dashboard\SuppliersUpdateRequest;
 use Illuminate\Http\Request;
 class SupplierController extends Controller
 {
@@ -19,13 +20,11 @@ class SupplierController extends Controller
         return $this->Suppliers->store($request);
     }
 
-    public function update(SuppliersRequest $request, $id)
-    {
-        //
+    public function update(SuppliersUpdateRequest $request) {
+        return $this->Suppliers->update($request);
     }
 
-    public function destroy($id)
-    {
-        //
+    public function destroy(Request $request) {
+        return $this->Suppliers->destroy($request);
     }
 }

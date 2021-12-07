@@ -7,7 +7,6 @@ class CountriesRepository implements CountryRepositoryInterface {
         $countries = Country::all();
         return view('Dashboard.Countries.index', compact('countries'));
     }
-
     public function store($request) {
         Country::create([
             'name'  => $request->input('name'),

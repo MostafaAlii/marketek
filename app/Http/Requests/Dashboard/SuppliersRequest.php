@@ -16,7 +16,7 @@ class SuppliersRequest extends FormRequest
             'email' => 'required|email|unique:suppliers,email,',
             'password'  => 'required|confirmed|min:6',
             'password_confirmation' =>  'required',
-            'phone'     =>  'required|numeric|min:10|max:11',
+            'phone'     =>  'required|numeric',
         ];
     }
 

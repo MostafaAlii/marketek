@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\GroupController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CountryController;
+use App\Http\Controllers\Dashboard\CurrencyController;
 use App\Http\Controllers\Dashboard\SubCategoryController;
 use App\Http\Controllers\Dashboard\SupplierController;
 /*
@@ -52,9 +53,13 @@ Route::group([
             Route::resource('Suppliers', SupplierController::class)->except(['show']);
             /***********************************End Suppliers ******************************** */
 
-            /***********************************Start Suppliers ******************************** */
+            /***********************************Start Countries ******************************** */
             Route::resource('Countries', CountryController::class)->except(['show']);
-            /***********************************End Suppliers ******************************** */
+            /***********************************End Countries ******************************** */
+
+            /***********************************Start Currency ******************************** */
+            Route::resource('Currencies', CurrencyController::class)->except(['show']);
+            /***********************************End Currency ******************************** */
         });
         /******************************** End Other Authentication Route ****************** */
         require __DIR__.'/auth.php';
