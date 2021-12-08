@@ -132,6 +132,21 @@
 						</ul>
 					</li>
 					<!-- End Countries -->
+					<!-- Start Provinces -->
+					<li class="slide">
+						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
+							<span xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+								<i class="fas fa-flag"></i>
+							</span>
+							<span class="side-menu__label">{{ trans('dashboard/province.province_title_in_sidebar') }}</span>
+							<i class="angle fe fe-chevron-down"></i>
+						</a>
+						<ul class="slide-menu">
+							<li><a class="slide-item" href="{{ route('Provinces.index') }}">
+								{{ trans('dashboard/country.show_all_country') }}</a></li>
+						</ul>
+					</li>
+					<!-- End Provinces -->
 					<!-- Start Currency -->
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">

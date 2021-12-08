@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AdminTokenController;
+use App\Http\Controllers\Auth\Api\UserTokenController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,3 +15,5 @@ use App\Http\Controllers\Auth\AdminTokenController;
 /*Route::middleware('auth:sanctum')->get('/user', function() {
     
 });*/
+
+Route::post('/auth/token', [UserTokenController::class, 'store']);
