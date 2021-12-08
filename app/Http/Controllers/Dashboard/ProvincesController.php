@@ -14,7 +14,7 @@ class ProvincesController extends Controller
     }
 
     public function store(Request $request) {
-        //
+        return $this->Provinces->store($request);
     }
 
     public function update(Request $request) {

@@ -8,6 +8,7 @@ return [
     'choose_parent_country'                  =>              'اختار الدولة التابعة',
     'please_choose_countr_name'              =>              'من فضلك اختار اسم الدولة',
     'province_title_in_sidebar'              =>              'المحافظات',
+    'province_country_related'               =>              'الدولة التابعة',
 
     'edit_province_modal_title'              =>              'تعديل المحافظة',
     'edit_province_name'                     =>              'عدل اسم المحافظة',

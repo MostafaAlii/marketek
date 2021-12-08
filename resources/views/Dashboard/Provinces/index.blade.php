@@ -46,6 +46,7 @@
                                         <tr>
                                             <th class="border-bottom-0">#</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/province.province_name') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/province.province_country_related') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/groups.groups_created_by') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/groups.groups_updated_by') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/groups.groups_created_at') }}</th>
@@ -57,6 +58,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $province->name }}</td>
+                                                <td>{{ $province->country_id }}</td>
                                                 <td>{{ $province->created_by }}</td>
                                                 <td>{{ $province->updated_by }}</td>
                                                 <td>{{ $province->created_at->diffForHumans() }}</td>
