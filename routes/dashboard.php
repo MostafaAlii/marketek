@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\CurrencyController;
 use App\Http\Controllers\Dashboard\SubCategoryController;
 use App\Http\Controllers\Dashboard\SupplierController;
+use App\Http\Controllers\Dashboard\ProvincesController;
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -55,6 +56,10 @@ Route::group([
 
             /***********************************Start Countries ******************************** */
             Route::resource('Countries', CountryController::class)->except(['show']);
+            /***********************************End Countries ******************************** */
+
+            /***********************************Start Countries ******************************** */
+            Route::resource('Provinces', ProvincesController::class)->except(['show']);
             /***********************************End Countries ******************************** */
 
             /***********************************Start Currency ******************************** */

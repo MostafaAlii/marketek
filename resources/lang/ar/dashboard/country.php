@@ -9,5 +9,4 @@ return [
 
     'edit_country_modal_title'              =>              'تعديل الدولة',
     'edit_country_name'                     =>              'عدل اسم الدولة',
-
 ];
