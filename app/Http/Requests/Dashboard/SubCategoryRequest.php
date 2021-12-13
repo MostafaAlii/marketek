@@ -17,7 +17,7 @@ class SubCategoryRequest extends FormRequest
     {
         return [
             'parent_id' => 'required|exists:categories,id',
-            'name.required'  =>  trans('dashboard/sections.category_name_required'),
+            //'name.required'  =>  trans('dashboard/sections.category_name_required'),
         ];
     }
 }

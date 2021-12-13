@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">{{ trans('dashboard/supplier.add_new_supplier') }}</h5>
@@ -25,6 +25,7 @@
                                 </div>
                             </div>
                             <!-- End Supplier First Name -->
+                            <!-- Start Supplier Last Name -->
                             <div class="col-8 col-md-6">
                                 <div class="form-field form-group">
                                     <label for="last_name" class="label">{{ trans('dashboard/supplier.last_name') }}</label>
@@ -34,7 +35,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <!-- End Supplier First Name -->
+                            <!-- End Supplier Last Name -->
                         </div>
                     </div>
                     <!-- Start Supplier Email Field -->

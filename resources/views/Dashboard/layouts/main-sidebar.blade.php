@@ -34,9 +34,11 @@
 						</a>
 					</li>
 					<!-- End Home Dahboard -->
+
 					<!-- Start General -->
 					<li class="side-item side-item-category">{{ trans('dashboard/sidebar.main_sidebar_general') }}</li>
 					<!-- End General -->
+
 					<!-- Start Group -->
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
@@ -60,6 +62,7 @@
 						</ul>
 					</li>
 					<!-- End Group -->
+
 					<!-- Start Main Categories -->
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
@@ -83,6 +86,7 @@
 						</ul>
 					</li>
 					<!-- End Main Categories -->
+
 					<!-- Start Sub Categories -->
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
@@ -106,17 +110,7 @@
 						</ul>
 					</li>
 					<!-- End Sub Categories -->
-					<!-- Start Supplier -->
-					<li class="slide">
-						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12c0 4.08 3.06 7.44 7 7.93V4.07C7.05 4.56 4 7.92 4 12z" opacity=".3"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 9.93V19h2.87c-.87.48-1.84.8-2.87.93zM18.24 17H13v-1h5.92c-.2.35-.43.69-.68 1zm1.5-3H13v-1h6.93c-.04.34-.11.67-.19 1z"/></svg>
-							<span class="side-menu__label">{{ trans('dashboard/supplier.supplier_title_in_sidebar') }}</span>
-							<i class="angle fe fe-chevron-down"></i>
-						</a>
-						<ul class="slide-menu">
-							<li><a class="slide-item" href="{{ route('Suppliers.index') }}">{{ trans('dashboard/supplier.show_all_supplier_in_sidebar') }}</a></li>
-						</ul>
-					</li>
-					<!-- End Supplier -->
+
 					<!-- Start Countries -->
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
@@ -132,6 +126,7 @@
 						</ul>
 					</li>
 					<!-- End Countries -->
+
 					<!-- Start Provinces -->
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
@@ -147,6 +142,23 @@
 						</ul>
 					</li>
 					<!-- End Provinces -->
+
+					<!-- Start Cities -->
+					<li class="slide">
+						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
+							<span xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+								<i class="fas fa-flag"></i>
+							</span>
+							<span class="side-menu__label">{{ trans('dashboard/city.city_title_in_sidebar') }}</span>
+							<i class="angle fe fe-chevron-down"></i>
+						</a>
+						<ul class="slide-menu">
+							<li><a class="slide-item" href="{{ route('Cities.index') }}">
+								{{ trans('dashboard/city.show_all_city') }}</a></li>
+						</ul>
+					</li>
+					<!-- End Cities -->
+
 					<!-- Start Areas -->
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
@@ -178,6 +190,20 @@
 						</ul>
 					</li>
 					<!-- End Currency -->
+
+					<!-- Start Supplier -->
+					<li class="slide">
+						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 12c0 4.08 3.06 7.44 7 7.93V4.07C7.05 4.56 4 7.92 4 12z" opacity=".3"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 9.93V19h2.87c-.87.48-1.84.8-2.87.93zM18.24 17H13v-1h5.92c-.2.35-.43.69-.68 1zm1.5-3H13v-1h6.93c-.04.34-.11.67-.19 1z"/></svg>
+							<span class="side-menu__label">{{ trans('dashboard/supplier.supplier_title_in_sidebar') }}</span>
+							<i class="angle fe fe-chevron-down"></i>
+						</a>
+						<ul class="slide-menu">
+							<li><a class="slide-item" href="{{ route('Suppliers.index') }}">{{ trans('dashboard/supplier.show_all_supplier_in_sidebar') }}</a></li>
+						</ul>
+					</li>
+					<!-- End Supplier -->
+
+					<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 					<li class="slide">
 						<a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}"><svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6.26 9L12 13.47 17.74 9 12 4.53z" opacity=".3"/><path d="M19.37 12.8l-7.38 5.74-7.37-5.73L3 14.07l9 7 9-7zM12 2L3 9l1.63 1.27L12 16l7.36-5.73L21 9l-9-7zm0 11.47L6.26 9 12 4.53 17.74 9 12 13.47z"/></svg><span class="side-menu__label">Elements</span><i class="angle fe fe-chevron-down"></i></a>
 						<ul class="slide-menu">
