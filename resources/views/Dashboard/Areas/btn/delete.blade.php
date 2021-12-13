@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="delete{{$currency->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete{{$area->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -8,12 +8,12 @@
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-            <form action="{{ route('Currencies.destroy', 'test') }}" method="post" autocomplete="off">
+            <form action="{{ route('Areas.destroy', 'test') }}" method="post" autocomplete="off">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="hidden" name="id" class="form-control" value="{{ $currency->id }}" />
+                        <input type="hidden" name="id" class="form-control" value="{{ $area->id }}" />
                         <h5>{{ trans('dashboard/general.warning') }}</h5>
                     </div>
                 </div>

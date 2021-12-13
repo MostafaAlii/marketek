@@ -11,4 +11,8 @@ class Group extends Model implements ContractsTranslatable
     protected $fillable = ['name', 'created_by', 'updated_by'];
     public $translatedAttributes = ['name'];
     public $timestamps = true; 
+
+    public function scopeGetLang() {
+        return $this->getLanguageFromCountryBasedLocale();
+    }
 }

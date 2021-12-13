@@ -1,9 +1,6 @@
 <?php
-
 namespace App\Http;
-
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
 class Kernel extends HttpKernel
 {
     /**
@@ -54,6 +51,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'changeLanguage'    =>  \App\Http\Middleware\Api\ChangeLanguage::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
