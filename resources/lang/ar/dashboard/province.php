@@ -11,4 +11,6 @@ return [
 
     'edit_province_modal_title'              =>              'تعديل المحافظة',
     'edit_province_name'                     =>              'عدل اسم المحافظة',
+
+    'related_country'                        =>               'الدولة التابعة',
 ];

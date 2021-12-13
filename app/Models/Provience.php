@@ -12,6 +12,7 @@ class Provience extends Model
     public $timestamps = true; 
 
     public function country(){
-        return $this->belongsTo(Company::class, 'id', 'country_id');
+        //return $this->belongsTo(Country::class, 'id', 'country_id');
+        return $this->belongsTo('App\Models\Country', 'country_id');
     }
 }

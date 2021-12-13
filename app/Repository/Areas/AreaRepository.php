@@ -1,19 +1,19 @@
 <?php
 namespace App\Repository\Areas;
 use App\Models\Area;
-use App\Models\Provience;
+use App\Models\City;
 use App\Interfaces\Areas\AreaRepositoryInterface;
 class AreaRepository implements AreaRepositoryInterface {
     public function index(){
         $areas      =   Area::all();
-        $proviences = Provience::all();
-        return view('Dashboard.Areas.index', compact('proviences','areas'));
+        $cities = City::all();
+        return view('Dashboard.Areas.index', compact('cities','areas'));
     }
 
     public function store($request) {
         Area::create([
             'name'  => $request->input('name'),
-            'provience_id'    =>  $request->provience_id,
+            'city_id'    =>  $request->city_id,
             'created_by'    =>  auth()->user()->name,
         ]);
         session()->flash('add');

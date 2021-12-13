@@ -6,20 +6,22 @@
 <link href="{{URL::asset('assets/Dashboard/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/Dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/Dashboard//plugins/notify/css/notifIt.css')}}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">{{ trans('dashboard/province.show_all_province') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"></span>
+            <h4 class="content-title mb-0 my-auto">{{ trans('dashboard/city.show_all_city') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"></span>
         </div>
         
     </div>
     <div class="d-flex my-xl-auto right-content">
         <div class="pr-1 mb-3 mb-xl-0">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-                {{ trans('dashboard/province.add_new_province') }}
+                {{ trans('dashboard/city.add_new_city') }}
            </button>
         </div>
     </div>
@@ -34,7 +36,7 @@
                     <div class="card mg-b-20">
                         <div class="card-header pb-0">
                             <div class="d-flex justify-content-between">
-                                <h4 class="card-title mg-b-0">{{ trans('dashboard/province.show_all_province') }}</h4>
+                                <h4 class="card-title mg-b-0">{{ trans('dashboard/city.show_all_city') }}</h4>
                                 <i class="mdi mdi-dots-horizontal text-gray"></i>
                             </div>
                             <p class="tx-12 tx-gray-500 mb-2"></p>
@@ -45,8 +47,8 @@
                                     <thead>
                                         <tr>
                                             <th class="border-bottom-0">#</th>
-                                            <th class="border-bottom-0">{{ trans('dashboard/province.province_name') }}</th>
-                                            <th class="border-bottom-0">{{ trans('dashboard/province.related_country') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/city.city_name') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/city.related_province') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/groups.groups_created_by') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/groups.groups_updated_by') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/groups.groups_created_at') }}</th>
@@ -54,25 +56,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($provinces as $province)
+                                        @foreach($cities as $city)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $province->name }}</td>
-                                                <td>{{ $province->country->name }}</td>
-                                                <td>{{ $province->created_by }}</td>
-                                                <td>{{ $province->updated_by }}</td>
-                                                <td>{{ $province->created_at->diffForHumans() }}</td>
+                                                <td>{{ $city->name }}</td>
+                                                <td>{{ $city->provience->name }}</td>
+                                                <td>{{ $city->created_by }}</td>
+                                                <td>{{ $city->updated_by }}</td>
+                                                <td>{{ $city->created_at->diffForHumans() }}</td>
                                                 <td>
-                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale" data-toggle="modal" href="#edit{{$province->id}}">
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale" data-toggle="modal" href="#edit{{$city->id}}">
                                                         <i class="las la-pen"></i>
                                                     </a>
-                                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale" data-toggle="modal" href="#delete{{$province->id}}">
+                                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale" data-toggle="modal" href="#delete{{$city->id}}">
                                                         <i class="las la-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-                                            @include('Dashboard.Provinces.btn.edit')
-                                            @include('Dashboard.Provinces.btn.delete')
+                                            @include('Dashboard.Cities.btn.edit')
+                                            @include('Dashboard.Cities.btn.delete')
                                         @endforeach()
                                     </tbody>
                                 </table>
@@ -84,7 +86,7 @@
             </div>
             <!-- /row -->
 
-        @include('Dashboard.Provinces.btn.add')
+        @include('Dashboard.Cities.btn.add')
         
     </div>
     <!-- Container closed -->
@@ -113,4 +115,13 @@
 <script src="{{URL::asset('assets/Dashboard/js/table-data.js')}}"></script>
 <script src="{{URL::asset('assets/Dashboard//plugins/notify/js/notifIt.js')}}"></script>
 <script src="{{URL::asset('assets/Dashboard//plugins/notify/js/notifIt-custom.js')}}"></script>
+<script>
+$(document).ready(function() {
+    $('.select2').select2({
+        theme: "bootstrap4",
+        width: 100%,
+        maximumSelectionLength: 1,
+    });
+});
+</script>
 @endsection
