@@ -16,4 +16,4 @@ use App\Http\Controllers\Auth\Api\UserTokenController;
     
 });*/
 
-Route::post('/auth/token', [UserTokenController::class, 'store']);
+//Route::post('/auth/token', [UserTokenController::class, 'store']);

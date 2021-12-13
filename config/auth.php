@@ -45,9 +45,9 @@ return [
             'provider' => 'admins',
         ],
 
-        'api' => [
-            'driver'    => 'token',
-            'provider'  => 'users',
+        'supplier' => [
+            'driver'    => 'sanctum',
+            'provider'  => 'suppliers',
         ],
     ],
 
@@ -78,10 +78,10 @@ return [
             'model' => App\Models\Admin::class,
         ],
 
-         /*'suppliers' => [
+         'suppliers' => [
              'driver' => 'eloquent',
-             'table' => App\Models\Admin::class,
-         ],*/
+             'table' => App\Models\Supplier::class,
+         ],
     ],
 
     /*

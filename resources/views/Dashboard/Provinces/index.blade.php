@@ -69,8 +69,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            {{--@include('Dashboard.Provinces.btn.edit')--}}
-                                            {{--@include('Dashboard.Provinces.btn.delete')--}}
+                                            @include('Dashboard.Provinces.btn.edit')
+                                            @include('Dashboard.Provinces.btn.delete')
                                         @endforeach()
                                     </tbody>
                                 </table>

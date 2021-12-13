@@ -14,6 +14,11 @@ use App\Interfaces\Currencies\CurrencRepositoryInterface;
 use App\Repository\Currencies\CurrencyRepository;
 use App\Interfaces\Provinces\ProvinceRepositoryInterface;
 use App\Repository\Provinces\ProvinceRepository;
+use App\Interfaces\Areas\AreaRepositoryInterface;
+use App\Repository\Areas\AreaRepository;
+// Api
+use App\Interfaces\Api\GroupsApiRepositoryInterface;
+use App\Repository\Api\GroupsApiRepository;
 use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -25,6 +30,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(CountryRepositoryInterface::class, CountriesRepository::class);
         $this->app->bind(CurrencRepositoryInterface::class, CurrencyRepository::class);
         $this->app->bind(ProvinceRepositoryInterface::class, ProvinceRepository::class);
+        $this->app->bind(AreaRepositoryInterface::class, AreaRepository::class);
+        // Api Binding ::
+        $this->app->bind(GroupsApiRepositoryInterface::class, GroupsApiRepository::class);
     }
 
     /**

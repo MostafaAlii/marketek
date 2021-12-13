@@ -14,14 +14,14 @@ class ProvincesController extends Controller
     }
 
     public function store(Request $request) {
-        //
+        return $this->Provinces->store($request);
     }
 
     public function update(Request $request) {
-        //
+        return $this->Provinces->update($request);
     }
 
     public function destroy(Request $request) {
-        //
+        return $this->Provinces->destroy($request);
     }
 }
