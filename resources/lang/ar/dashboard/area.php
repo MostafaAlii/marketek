@@ -9,4 +9,5 @@ return [
     'edit_area_details'                 =>              'تعديل بيانات المنطقة',
     'edit_area_name'                    =>              'عدل اسم المنطقة',
     'delete_area_details'               =>              'حذف بيانات المنطقة',
+    'related_city'                      =>              'المدينة التابعة',
 ];

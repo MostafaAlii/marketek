@@ -31,3 +31,14 @@
 <!-- custom js -->
 <script src="{{URL::asset('assets/Dashboard/js/custom.js')}}"></script><!-- Left-menu js-->
 <script src="{{URL::asset('assets/Dashboard/plugins/side-menu/sidemenu.js')}}"></script>
+
+
+
+
+
+
+
+
+
+
+

@@ -14,18 +14,18 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="projectinput2">{{ trans('dashboard/area.related_province') }}</label>
-                        <select name="provience_id" class="select2 form-control">
+                        <select name="city_id" class="select2 form-control">
                             <optgroup label="{{ trans('dashboard/area.related_province') }}">
-                                @if($proviences && $proviences -> count() > 0)
-                                    @foreach($proviences as $provience)
-                                        <option value="{{$provience->id }}">
-                                            {{$provience->name}}
+                                @if($cities && $cities -> count() > 0)
+                                    @foreach($cities as $city)
+                                        <option value="{{$city->id }}">
+                                            {{$city->name}}
                                         </option>
                                     @endforeach
                                 @endif
                             </optgroup>
                         </select>
-                        @error('provience_id')
+                        @error('city_id')
                         <span class="text-danger"> {{$message}}</span>
                         @enderror
                     </div>

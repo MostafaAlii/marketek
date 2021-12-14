@@ -5,7 +5,7 @@
 <link href="{{URL::asset('assets/Dashboard/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/Dashboard/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/Dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
-<link href="{{URL::asset('assets/Dashboard//plugins/notify/css/notifIt.css')}}" rel="stylesheet">
+<link href="{{URL::asset('assets/Dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css" rel="stylesheet">
 @endsection
 @section('page-header')
@@ -20,9 +20,9 @@
     </div>
     <div class="d-flex my-xl-auto right-content">
         <div class="pr-1 mb-3 mb-xl-0">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+            <a type="button" class="btn btn-primary" href="{{ route('Suppliers.create') }}">
                 {{ trans('dashboard/supplier.add_new_supplier') }}
-           </button>
+           </a>
         </div>
     </div>
 </div>
@@ -113,7 +113,7 @@
 <script src="{{URL::asset('assets/Dashboard/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/Dashboard/js/table-data.js')}}"></script>
-<script src="{{URL::asset('assets/Dashboard//plugins/notify/js/notifIt.js')}}"></script>
-<script src="{{URL::asset('assets/Dashboard//plugins/notify/js/notifIt-custom.js')}}"></script>
+<script src="{{URL::asset('assets/Dashboard/plugins/notify/js/notifIt.js')}}"></script>
+<script src="{{URL::asset('assets/Dashboard/plugins/notify/js/notifIt-custom.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 @endsection

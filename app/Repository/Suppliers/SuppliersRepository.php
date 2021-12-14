@@ -2,11 +2,33 @@
 namespace App\Repository\Suppliers;
 use App\Interfaces\Suppliers\SuppliersInterface;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Group;
+use App\Models\Category;
+use App\Models\Country;
+use App\Models\Provience;
+use App\Models\City;
+use App\Models\Area;
+use App\Models\Currency;
 use App\Models\Supplier;
 class SuppliersRepository implements SuppliersInterface {
     public function index() {
         $suppliers = Supplier::all();
         return view('Dashboard.Suppliers.index', compact('suppliers'));
+    }
+
+    public function create() {
+        $groups = Group::all();
+        $categories = Category::where('parent_id', null)->get();
+        $subCategories = Category::where('parent_id', 1)->get();
+        $countries = Country::all();
+        $proviences = Provience::all();
+        $cities = City::all();
+        $areas = Area::all();
+        $currencies = Currency::all();
+        return view('Dashboard.Suppliers.add', compact([
+            'groups', 'categories', 'subCategories', 'countries',
+            'proviences', 'cities', 'areas', 'currencies'
+        ]));
     }
 
     public function store($request) {
