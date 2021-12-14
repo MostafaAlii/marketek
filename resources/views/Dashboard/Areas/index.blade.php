@@ -46,6 +46,7 @@
                                         <tr>
                                             <th class="border-bottom-0">#</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/area.area_name') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/area.related_city') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/groups.groups_created_by') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/groups.groups_updated_by') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/groups.groups_created_at') }}</th>
@@ -57,6 +58,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $area->name }}</td>
+                                                <td>{{ $area->city->name }}</td>
                                                 <td>{{ $area->created_by }}</td>
                                                 <td>{{ $area->updated_by }}</td>
                                                 <td>{{ $area->created_at->diffForHumans() }}</td>

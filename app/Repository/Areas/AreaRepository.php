@@ -24,6 +24,7 @@ class AreaRepository implements AreaRepositoryInterface {
         $area = Area::findOrFail($request->id);
         $area->update([
             'name'  => $request->input('name'),
+            'city_id'    =>  $request->city_id,
             'updated_by'    =>  auth()->user()->name,
         ]);
         session()->flash('edit');

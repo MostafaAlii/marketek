@@ -12,6 +12,6 @@ class Area extends Model
     public $timestamps = true; 
 
     public function city(){
-        return $this->belongsTo(City::class, 'id', 'city_id');
+        return $this->belongsTo('App\Models\City', 'city_id');
     }
 }

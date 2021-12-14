@@ -13,6 +13,32 @@
                 {{ method_field('patch') }}
                 {{ csrf_field() }}
                 <div class="modal-body">
+                    <!-- Start City Select -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label  for="projectinput2">
+                                    {{ trans('dashboard/city.related_province') }}
+                                </label>
+                                <select class="select2 form-control" name="city_id">
+                                    <option value="{{$area->city->id }}">
+                                        {{$area->city->name}}
+                                    </option>
+                                    @if($cities && $cities -> count() > 0)
+                                        @foreach($cities as $city)
+                                            <option value="{{$city->id }}">
+                                                {{$city->name}}
+                                            </option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                @error('city_id')
+                                    <span class="text-danger"> {{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End City Select -->
                     <div class="form-group">
                         <label>{{ trans('dashboard/area.edit_area_name') }}</label>
                         <input type="hidden" name="id" class="form-control" value="{{ $area->id }}" />

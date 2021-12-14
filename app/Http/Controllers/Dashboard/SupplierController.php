@@ -16,6 +16,10 @@ class SupplierController extends Controller
         return $this->Suppliers->index();
     }
 
+    public function create() {
+        return $this->Suppliers->create();
+    }
+
     public function store(SuppliersRequest $request) {
         return $this->Suppliers->store($request);
     }
