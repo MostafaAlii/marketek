@@ -1,24 +1,17 @@
 <?php
-
 namespace App\Models;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-class Supplier extends Authenticatable
+use Illuminate\Database\Eloquent\Model;
+class Supplier extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Translatable;
     protected $table = 'suppliers';
     protected $guarded = [];
-    public $timestamps = true;
+    public $translatedAttributes = ['first_name', 'last_name', 'company_name'];
+    public $timestamps = true; 
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function avatar() {
+        return $this->morphOne(Avatar::class, 'avatarable');
+    }
 }

@@ -9,6 +9,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             AdminTableSeeder::class,
             //CategoryTableSeeder::class,
+            SupplierTableSeeder::class,
         ]);
     }
 }
