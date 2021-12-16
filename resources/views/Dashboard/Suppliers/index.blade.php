@@ -51,6 +51,7 @@
                                             <th class="border-bottom-0">#</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/supplier.supplier_email') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/supplier.name') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/supplier.avatar_photo') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/supplier.phone_number') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/sections.section_created_at') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/sections.section_actions') }}</th>
@@ -62,6 +63,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $supplier->email }}</td>
                                                 <td>{{ $supplier->first_name . ' ' . $supplier->last_name }}</td>
+                                                <td> <img class="rounded-circle" alt="" style="width: 100px; height: 75px;" src="{{$supplier->image }}"></td>
                                                 <td>{{ $supplier->phone }}</td>
                                                 <td>{{ $supplier->created_at->diffForHumans() }}</td>
                                                 <td>

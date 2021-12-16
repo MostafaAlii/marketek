@@ -17,6 +17,7 @@ return [
     'supplier_company_name'                     =>              'اسم الشركة / المنشأه',
     'type_supplier_company_name'                =>              'اكتب اسم الشركة / المنشأه',
     'supplier_description'                      =>              'الــوصــف',
+    'avatar_photo'                              =>              'الصورة',
 
     'select_country'                            =>              'اختار الدولة',
     'select_provience'                          =>              'اختر المحافظة',
@@ -30,7 +31,7 @@ return [
     'supplier_address'                          =>               'العنــوان',
     'supplier_address_placeholder'              =>               'اكتـب العنـوان هنـــا',
     'supplier_map_address'                      =>               'عنــوان الخريــطة',
-
+    'discount'                                  =>               'نسبة الخصم',
     'please_select_with_list'                   =>              'من فضلك اختار من القائمة',
 
     // Validation ::

@@ -8,10 +8,10 @@ class Supplier extends Model
     use HasFactory, Translatable;
     protected $table = 'suppliers';
     protected $guarded = [];
-    public $translatedAttributes = ['first_name', 'last_name', 'company_name'];
+    public $translatedAttributes = ['first_name', 'last_name', 'company_name', 'description', 'address_primary', 'address_secondry'];
     public $timestamps = true; 
 
-    public function avatar() {
-        return $this->morphOne(Avatar::class, 'avatarable');
+    public function image() {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

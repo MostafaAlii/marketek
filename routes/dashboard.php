@@ -52,10 +52,6 @@ Route::group([
             Route::resource('SubCategories', SubCategoryController::class)->except(['show']);
             /***********************************End SubCategory ******************************** */
 
-            /***********************************Start Suppliers ******************************** */
-            Route::resource('Suppliers', SupplierController::class)->except(['show']);
-            /***********************************End Suppliers ******************************** */
-
             /***********************************Start Countries ******************************** */
             Route::resource('Countries', CountryController::class)->except(['show']);
             /***********************************End Countries ******************************** */
@@ -75,6 +71,10 @@ Route::group([
             /***********************************Start Currency ******************************** */
             Route::resource('Currencies', CurrencyController::class)->except(['show']);
             /***********************************End Currency ******************************** */
+
+            /***********************************Start Suppliers ******************************** */
+            Route::resource('Suppliers', SupplierController::class)->except(['show']);
+            /***********************************End Suppliers ******************************** */
         });
         /******************************** End Other Authentication Route ****************** */
         require __DIR__.'/auth.php';

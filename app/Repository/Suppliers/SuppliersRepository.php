@@ -10,9 +10,14 @@ use App\Models\City;
 use App\Models\Area;
 use App\Models\Currency;
 use App\Models\Supplier;
+use App\Http\Traits\Dashboard\Upload;
+use Illuminate\Support\Facades\DB;
 class SuppliersRepository implements SuppliersInterface {
+    use Upload;
     public function index() {
         $suppliers = Supplier::all();
+        //$suppliers = Supplier::find(79);
+        //dd($suppliers->image);
         return view('Dashboard.Suppliers.index', compact('suppliers'));
     }
 
@@ -32,15 +37,39 @@ class SuppliersRepository implements SuppliersInterface {
     }
 
     public function store($request) {
-        $supplier = new Supplier();
-        $supplier->first_name = $request->first_name;
-        $supplier->last_name = $request->last_name;
-        $supplier->email = $request->email;
-        $supplier->password = Hash::make($request->password);
-        $supplier->phone = $request->phone;
+        /*
         $supplier->save();
-        session()->flash('add');
-        return redirect()->route('Suppliers.index');
+        */
+        DB::beginTransaction();
+        try {
+            $supplier = new Supplier();
+            $supplier->first_name = $request->first_name;
+            $supplier->last_name = $request->last_name;
+            $supplier->email = $request->email;
+            $supplier->password = Hash::make($request->password);
+            $supplier->phone = $request->phone;
+            $supplier->company_name = $request->company_name;
+            $supplier->status = 1;
+            $supplier->discount = $request->discount;
+            $supplier->group_id = 1;
+            $supplier->country_id = $request->country_id;
+            $supplier->provience_id = $request->provience_id;
+            $supplier->city_id = $request->city_id;
+            $supplier->area_id = $request->area_id;
+            //$supplier->categories = $request->categories;
+            $supplier->address_primary = $request->address_primary;
+            $supplier->description = $request->description;
+            $supplier->save();
+            // Avatar Upload
+            $this->verifyAndStoreImage($request, 'photo', 'suppliers', 'upload_image', $supplier->id, 'App\Models\Supplier');
+            DB::commit();
+            session()->flash('add');
+            return redirect()->route('Suppliers.index');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            session()->flash('wrong');
+            return redirect()->route('Suppliers.index')->withErrors(['error'=> $ex->getMessage()]);
+        }
     }
 
     public function update($request) {

@@ -37,6 +37,18 @@
     </script>
 @endif
 
+@if (session()->has('wrong'))
+    <script>
+        window.onload = function() {
+            notif({
+                msg: "{{ trans('dashboard/messages.wrong') }}",
+                type: "worning",
+                position: "right"
+            });
+        }
+    </script>
+@endif
+
 @if (session()->has('edit'))
     <script>
         window.onload = function() {
