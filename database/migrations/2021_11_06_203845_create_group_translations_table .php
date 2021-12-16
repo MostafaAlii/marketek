@@ -32,6 +32,6 @@ class CreateGroupTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('section_translations');
+        Schema::dropIfExists('group_translations');
     }
 }

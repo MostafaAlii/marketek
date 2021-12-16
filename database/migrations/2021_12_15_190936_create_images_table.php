@@ -2,21 +2,21 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-class CreateAvatarsTable extends Migration
+class CreateImagesTable extends Migration
 {
     public function up()
     {
-        Schema::create('avatars', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('filename');
-            $table->integer('avatarable_id');
-            $table->string('avatarable_type');
+            $table->integer('imageable_id');
+            $table->string('imageable_type');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('avatars');
+        Schema::dropIfExists('images');
     }
 }

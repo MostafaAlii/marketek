@@ -7,7 +7,7 @@ class CreateCurrencyTranslations extends Migration
     public function up()
     {
         Schema::create('currency_translations', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('locale')->index();
 
             $table->unsignedBigInteger('currency_id');

@@ -10,10 +10,11 @@ class CreateCurrenciesTable extends Migration
     {
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
-            $table->string('currency_symbol')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();
+            //$table->integer('supplier_id')->unsigned()->nullable();
+            //$table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
         });
     }
 
