@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Traits\Dashboard;
 use App\Models\Image;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+
 trait Upload {
     public function verifyAndStoreImage(Request $request, $inputname, $foldername, $disk, $imageable_id, $imageable_type) {
         if($request->hasFile($inputname)) {
@@ -11,8 +14,9 @@ trait Upload {
             }
 
             $photo = $request->file($inputname);
-            $name = \Str::slug($request->input('name'));
+            $name = Str::slug($request->input('name'));
             $filename = $name. '.' . $request->getClientOriginalExtension();
+            //$extention=Input::file('filenam')->getClientOriginalExtension();
 
             // Store Image
             $Image = new Image();

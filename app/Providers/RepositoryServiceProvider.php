@@ -21,6 +21,16 @@ use App\Repository\Cities\CityRepository;
 // Api
 use App\Interfaces\Api\GroupsApiRepositoryInterface;
 use App\Repository\Api\GroupsApiRepository;
+use App\Interfaces\Api\CategoryApiRepositoryInterface;
+use App\Repository\Api\CategoriesApiRepository;
+use App\Interfaces\Api\CountriesApiRepositoryInterface;
+use App\Repository\Api\CountriesApiRepository;
+use App\Interfaces\Api\ProvincesApiRepositoryInterface;
+use App\Repository\Api\ProvincesApiRepository;
+use App\Interfaces\Api\CitiesRepositoryInterface;
+use App\Repository\Api\CitiesRepository;
+use App\Interfaces\Api\AreaApiRepositoryInterface;
+use App\Repository\Api\AreaApiRepository;
 use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -36,6 +46,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(CityRepositoryInterface::class, CityRepository::class);
         // Api Binding ::
         $this->app->bind(GroupsApiRepositoryInterface::class, GroupsApiRepository::class);
+        $this->app->bind(CategoryApiRepositoryInterface::class, CategoriesApiRepository::class);
+        $this->app->bind(CountriesApiRepositoryInterface::class, CountriesApiRepository::class);
+        $this->app->bind(ProvincesApiRepositoryInterface::class, ProvincesApiRepository::class);
+        $this->app->bind(CitiesRepositoryInterface::class, CitiesRepository::class);
+        $this->app->bind(AreaApiRepositoryInterface::class, AreaApiRepository::class);
     }
 
     /**

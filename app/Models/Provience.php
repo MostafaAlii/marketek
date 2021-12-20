@@ -15,4 +15,8 @@ class Provience extends Model
         //return $this->belongsTo(Country::class, 'id', 'country_id');
         return $this->belongsTo('App\Models\Country', 'country_id');
     }
+
+    public function getProvincesWithCountry($country_id) {
+        return $this->cities()->where('id.country_id', $country_id)->get();
+    }
 }

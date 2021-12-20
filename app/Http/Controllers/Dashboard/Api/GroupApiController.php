@@ -9,12 +9,10 @@ class GroupApiController extends Controller
     public function __construct(GroupsApiRepositoryInterface $Groups) {
         $this->Groups = $Groups;
     }
-    public function index()
-    {
+    public function index() {
         return $this->Groups->index();
     }
-    public function getGroupById($id)
-    {
+    public function getGroupById($id) {
         return $this->Groups->getGroupById($id);
     }
 

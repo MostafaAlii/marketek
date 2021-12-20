@@ -61,7 +61,7 @@ class SuppliersRepository implements SuppliersInterface {
             $supplier->description = $request->description;
             $supplier->save();
             // Avatar Upload
-            $this->verifyAndStoreImage($request, 'photo', 'suppliers', 'upload_image', $supplier->id, 'App\Models\Supplier');
+            //$this->verifyAndStoreImage($request, 'photo', 'suppliers', 'upload_image', $supplier->id, 'App\Models\Supplier');
             DB::commit();
             session()->flash('add');
             return redirect()->route('Suppliers.index');

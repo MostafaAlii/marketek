@@ -14,7 +14,7 @@ class CreateSupplierTranslationsTable extends Migration
     public function up()
     {
         Schema::create('supplier_translations', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->integer('supplier_id')->unsigned();
             $table->string('locale');
             $table->string('first_name');
@@ -24,7 +24,7 @@ class CreateSupplierTranslationsTable extends Migration
             $table->longtext('address_secondry')->nullable();
             $table->longtext('description')->nullable();
             $table->unique(['supplier_id', 'locale']);
-            $table->foreign('supplier_id')->references('id')->on('city')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
         });
     }
 

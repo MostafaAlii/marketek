@@ -10,4 +10,9 @@ class Country extends Model
     protected $fillable = ['name', 'country_logo', 'created_by', 'updated_by'];
     public $translatedAttributes = ['name'];
     public $timestamps = true;
+
+    public function provience()
+    {
+        return $this->hasMany(Provience::class);
+    }
 }

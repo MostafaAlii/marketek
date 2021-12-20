@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +19,21 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:sanctum'], function(){
 Route::group(['prefix' => 'v1', 'middleware' => ['guest:sanctum', 'changeLanguage']], function(){
     //Route::resource('Get/Groups', GroupApiController::class)->except(['edit', 'update', 'destroy']);
     Route::get('Get/Groups', 'GroupApiController@index');
-    Route::get('Get/Group/By', 'GroupApiController@getGroupById');
+    Route::get('Get/Group/By/{id}', 'GroupApiController@getGroupById');
+    // Main Categories && SubCategory Api
+    Route::get('Get/Category', 'CategoryApiController@getMainCategory');
+    Route::get('Get/Category/By/{id}', 'CategoryApiController@getCategoryById');
+    Route::get('Get/SubCategory', 'CategoryApiController@getSubCategory');
+    // Country Api
+    Route::get('Get/Countries', 'CountriesApiController@getAllCountries');
+    Route::get('Get/Countries/By/{id}', 'CountriesApiController@getCountryById');
+    // Provinces Api
+    Route::get('Get/Provinces', 'ProvincesApiController@getAllProvinces');
+    Route::get('Get/Provinces/By/{id}', 'ProvincesApiController@getProvinceByID');
+    // Cities Api
+    Route::get('Get/Cities', 'CitiesApiController@getAllCities');
+    Route::get('Get/City/By/{id}', 'CitiesApiController@getCityById');
+    // Area Api
+    Route::get('Get/Areas', 'AreaApiController@getAllArea');
+    Route::get('Get/Area/By/{id}', 'AreaApiController@getAreaById');
 });

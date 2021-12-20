@@ -10,11 +10,18 @@ class CurrencyRepository implements CurrencRepositoryInterface {
 
     public function store($request) {
         try {
-            Currency::create([
+            /*Currency::create([
                 'name'  => $request->input('name'),
                 'currency_symbol'  => $request->input('currency_symbol'),
                 'created_by'    =>  auth()->user()->name,
-            ]);
+            ]);*/
+            $currency = Currency::create($request->except('_token'));
+            //$category->grade_id = $request->grade_id;
+            $currency->created_by    =  auth()->user()->name;
+            $currency->currency_symbol = $request->currency_symbol;
+            //save translations
+            $currency->name = $request->name;
+            $currency->save();
             session()->flash('add');
             return redirect()->route('Currencies.index');
         } catch (\Exception $ex) {
