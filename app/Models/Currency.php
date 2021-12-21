@@ -8,6 +8,6 @@ class Currency extends Model
     use HasFactory, Translatable;
     protected $table = 'currencies';
     protected $fillable = ['name', 'currency_symbol', 'created_by', 'updated_by'];
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['name', 'currency_symbol'];
     public $timestamps = true; 
 }

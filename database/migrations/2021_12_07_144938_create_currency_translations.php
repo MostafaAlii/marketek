@@ -14,6 +14,7 @@ class CreateCurrencyTranslations extends Migration
             $table->unique(['currency_id', 'locale']);
 
             $table->string('name');
+            $table->string('currency_symbol')->nullable();
             $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
         });
     }

@@ -62,7 +62,7 @@
                                         <div class="form-field form-group">
                                             <label for="company_name" class="label">{{ trans('dashboard/supplier.supplier_company_name') }}</label>
                                             <input id="company_name" class="input-text form-control" value="{{ old('company_name') }}" type="text" name="company_name" placeholder="{{ trans('dashboard/supplier.type_supplier_company_name') }}">
-                                            @error("first_name")
+                                            @error("company_name")
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -160,7 +160,7 @@
                                     <div class="col-12 col-md-12">
                                         <div class="form-group">
                                             <label for="projectinput2">{{ trans('dashboard/supplier.supplier_description') }}</label>
-                                            <textarea id="description_textarea"></textarea>
+                                            <textarea name="description" id="description_textarea"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -258,6 +258,29 @@
                                 </div>
                                 <!-- End First Row Select Box -->
                                 <hr>
+                                <!-- Start Supplier Groups Field -->
+                                <div class="row justify-content-md-start">
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput2">{{ trans('dashboard/supplier.select_groups') }}</label>
+                                            <select name="group_id" class="select2 form-control">
+                                                <optgroup label="{{ trans('dashboard/supplier.select_groups') }}">
+                                                    @if($groups && $groups -> count() > 0)
+                                                        @foreach($groups as $group)
+                                                            <option value="{{$group->id }}">
+                                                                {{$group->name}}
+                                                            </option>
+                                                        @endforeach
+                                                    @endif
+                                                </optgroup>
+                                            </select>
+                                            @error('group_id')
+                                            <span class="text-danger"> {{$message}}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Supplier Groups Field -->
                                 <!-- Start Second Row Select Box -->
                                 <div class="row justify-content-md-start">
                                     <!-- Start Category Select -->

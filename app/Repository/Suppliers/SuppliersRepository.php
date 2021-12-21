@@ -43,21 +43,26 @@ class SuppliersRepository implements SuppliersInterface {
         DB::beginTransaction();
         try {
             $supplier = new Supplier();
-            $supplier->first_name = $request->first_name;
-            $supplier->last_name = $request->last_name;
-            $supplier->email = $request->email;
-            $supplier->password = Hash::make($request->password);
             $supplier->phone = $request->phone;
-            $supplier->company_name = $request->company_name;
-            $supplier->status = 1;
+            $supplier->email = $request->email;
             $supplier->discount = $request->discount;
-            $supplier->group_id = 1;
+            $supplier->password = Hash::make($request->password);
+            $supplier->status = 1;
+            $supplier->created_by    =  auth()->user()->name;
+            $supplier->group_id = $request->group_id;
             $supplier->country_id = $request->country_id;
             $supplier->provience_id = $request->provience_id;
             $supplier->city_id = $request->city_id;
             $supplier->area_id = $request->area_id;
-            //$supplier->categories = $request->categories;
+            $supplier->category_id = $request->category_id;
+            $supplier->subCategory_id = $request->subCategory_id;
+            $supplier->currency_id = $request->currency_id;
+            $supplier->save();
+            $supplier->first_name = $request->first_name;
+            $supplier->last_name = $request->last_name;
+            $supplier->company_name = $request->company_name;
             $supplier->address_primary = $request->address_primary;
+            $supplier->address_secondry = $request->address_secondry;
             $supplier->description = $request->description;
             $supplier->save();
             // Avatar Upload
