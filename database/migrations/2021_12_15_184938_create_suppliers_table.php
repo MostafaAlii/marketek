@@ -30,6 +30,7 @@ class CreateSuppliersTable extends Migration
             // Group Relations
             $table->foreignId('group_id')->references('id')->on('groups')->onDelete('cascade');
             // Categories Relations
+            $table->integer('subCategory_id')->unsigned()->nullable();
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             // Country Relationship
@@ -44,9 +45,9 @@ class CreateSuppliersTable extends Migration
             // Area Relationship
             $table->integer('area_id')->unsigned()->nullable();
             $table->foreign('area_id')->references('id')->on('area')->onDelete('cascade');
-            // Area Relationship
+            // Currency Relationship
             //$table->integer('currency_id')->unsigned()->nullable();
-            //$table->foreignId('currency_id')->references('id')->on('currencies')->onDelete('cascade');
+            $table->foreignId('currency_id')->references('id')->on('currencies')->onDelete('cascade');
         });
     }
 

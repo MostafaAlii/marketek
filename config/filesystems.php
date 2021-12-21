@@ -42,7 +42,7 @@ return [
             'visibility' => 'public',
         ],
 
-        'uploade_image' => [
+        'upload_image' => [
             'driver' => 'local',
             'root' => public_path('Dashboard/image'),
             'url' => env('APP_URL').'/storage',

@@ -9,6 +9,6 @@ class CurrencyTranslation extends Model
 {
     use HasFactory;
     protected $table = 'currency_translations';
-    protected $fillable = ['name'];
+    protected $fillable = ['name','currency_symbol'];
     public $timestamps = false;
 }
