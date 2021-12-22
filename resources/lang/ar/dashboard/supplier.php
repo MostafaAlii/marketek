@@ -18,6 +18,9 @@ return [
     'type_supplier_company_name'                =>              'اكتب اسم الشركة / المنشأه',
     'supplier_description'                      =>              'الــوصــف',
     'avatar_photo'                              =>              'الصورة',
+    'supplier_status'                           =>              'حالة المورد',
+    'supplier_active'                           =>              'مفعل',
+    'supplier_disActive'                        =>              'غير مفعل',
 
     'select_country'                            =>              'اختار الدولة',
     'select_provience'                          =>              'اختر المحافظة',

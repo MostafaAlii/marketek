@@ -353,6 +353,18 @@
                                 </div>
                                 <!-- End Supplier Currency Field -->
                                 <hr>
+                                <!-- Start Supplier Status -->
+                                <div class="row justify-content-md-start">
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput2">{{ trans('dashboard/supplier.supplier_status') }}</label>
+                                            <input type="hidden" {{ old('status') == '0' ? "checked " : "" }}  name="status" value="0" class="form-check-input"/>
+                                            <input type="checkbox" {{ old('status') == '1' ? "checked " : "" }} name="status" value="1" class="form-check-input"/>
+                                            <span class="fw-bold ps-2 fs-6">مفعل/غير مفعل</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Supplier Status -->
                                 <!-- Start Supplier Address -->
                                 <div class="row justify-content-md-start">
                                     <div class="col-12 col-md-12">
