@@ -51,7 +51,9 @@
                                             <th class="border-bottom-0">#</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/supplier.supplier_email') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/supplier.name') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/supplier.avatar_photo') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/supplier.phone_number') }}</th>
+                                            <th class="border-bottom-0">{{ trans('dashboard/supplier.supplier_status') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/sections.section_created_at') }}</th>
                                             <th class="border-bottom-0">{{ trans('dashboard/sections.section_actions') }}</th>
                                         </tr>
@@ -62,7 +64,19 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $supplier->email }}</td>
                                                 <td>{{ $supplier->first_name . ' ' . $supplier->last_name }}</td>
+                                                <td>
+                                                    @if($supplier->image)
+                                                    <img style="width:65px; height:65px;border-radius: 5px;" class="rounded-circle" src="{{ Url::asset('Dashboard/image/suppliers/' . $supplier->image->filename) }}" alt="" />
+                                                    @else
+                                                    <img style="width:65px; height:65px;border-radius: 5px;" class="rounded-circle" src="{{ Url::asset('Dashboard/image/deafult_supplier.png') }}" />
+                                                    @endif
+                                                </td>
                                                 <td>{{ $supplier->phone }}</td>
+                                                <td>
+                                                    <span class="font-weight-bold badge badge-pill badge-{{ $supplier->status == 1 ? 'success' : 'danger'  }}">
+                                                        {{ $supplier->status == 1 ? trans('dashboard/supplier.supplier_active') : trans('dashboard/supplier.supplier_disActive') }}
+                                                    </span>
+                                                </td>
                                                 <td>{{ $supplier->created_at->diffForHumans() }}</td>
                                                 <td>
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale" data-toggle="modal" href="#edit{{$supplier->id}}">
@@ -86,7 +100,7 @@
             </div>
             <!-- /row -->
 
-        @include('Dashboard.Suppliers.btn.add')
+        {{--  @include('Dashboard.Suppliers.btn.add')--}}
         
     </div>
     <!-- Container closed -->

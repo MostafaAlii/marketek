@@ -37,9 +37,6 @@ class SuppliersRepository implements SuppliersInterface {
     }
 
     public function store($request) {
-        /*
-        $supplier->save();
-        */
         DB::beginTransaction();
         try {
             $supplier = new Supplier();
@@ -47,7 +44,7 @@ class SuppliersRepository implements SuppliersInterface {
             $supplier->email = $request->email;
             $supplier->discount = $request->discount;
             $supplier->password = Hash::make($request->password);
-            $supplier->status = 1;
+            $supplier->status = $request->status;
             $supplier->created_by    =  auth()->user()->name;
             $supplier->group_id = $request->group_id;
             $supplier->country_id = $request->country_id;
@@ -101,8 +98,17 @@ class SuppliersRepository implements SuppliersInterface {
     }
 
     public function destroy($request){
-        Supplier::findOrFail($request->id)->delete();
-        session()->flash('delete');
-        return redirect()->route('Suppliers.index');
+        if($request->page_id == 1) {
+            if($request->filename){
+                $this->delete_attachment('upload_image', 'suppliers/'. $request->filename, $request->id, $request->filename);
+            }
+            Supplier::destroy($request->id);
+            session()->flash('delete');
+            return redirect()->route('Suppliers.index');
+        }
+
+        else{
+
+        }
     }
 }
