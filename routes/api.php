@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Api\UserTokenController;
+use App\Http\Controllers\Dashboard\Api\Auth\SupplierTokenController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
