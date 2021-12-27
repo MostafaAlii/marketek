@@ -1,6 +1,8 @@
 <?php
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\Api\GroupApiController;
+use App\Http\Controllers\Dashboard\Api\Auth\SupplierTokenController;
+
 /*
 |--------------------------------------------------------------------------
 | Dahboard API Routes
@@ -16,9 +18,16 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:sanctum'], function(){
     
 });
 
+
+
+
+Route::post('Auth/Token', [SupplierTokenController::class, 'store']);
+
+
+
+
 // Non Authenticated Api For Read Only
 Route::group(['prefix' => 'v1', 'middleware' => ['guest:sanctum', 'changeLanguage']], function(){
-    //Route::resource('Get/Groups', GroupApiController::class)->except(['edit', 'update', 'destroy']);
-    Route::get('Get/Groups', 'GroupApiController@index');
-    Route::get('Get/Group/By', 'GroupApiController@getGroupById');
+    Route::post('Get/Groups', [GroupApiController::class, 'index']);
+    Route::post('Get/Group/By', [GroupApiController::class, 'getGroupById']);
 });

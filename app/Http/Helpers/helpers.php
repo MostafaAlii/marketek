@@ -7,6 +7,12 @@ if(!function_exists('admin_guard')){
     }
 }
 
+if(!function_exists('supplier_guard')){
+    function supplier_guard() {
+        return auth('supplier');
+    }
+}
+
 if(!function_exists('user_guard')){
     function user_guard() {
         return auth('web');
