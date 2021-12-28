@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 class CategoryRepository implements CategoryRepositoryInterface {
     public function index() {
         $groups = Group::all();
-        $categories = Category::parent()->orderBy('id','DESC')->paginate(PAGINATION_COUNT);
+        $categories = Category::parent()->orderBy('id','ASC')->get();
         return view('Dashboard.Categories.index', compact('categories', 'groups'));
     }
 
@@ -36,7 +36,7 @@ class CategoryRepository implements CategoryRepositoryInterface {
         session()->flash('edit');
         return redirect()->route('Categories.index');
     }
-    
+
     public function destroy($request) {
         Category::findOrFail($request->id)->delete();
         session()->flash('delete');

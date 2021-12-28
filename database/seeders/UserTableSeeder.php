@@ -13,11 +13,14 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->truncate();
+        DB::table('users')->delete();
         $user = User::create([
             'first_name'          =>  'Mostafa',
             'last_name'          =>  'Ali',
             'email'         =>  'user_supplier@app.com',
+            //'group_id'          =>      1,
+            //'currency_id '      =>      1,
+            'status'            =>      1,
             'password'      =>  bcrypt('123123'),
             'remember_token' => Str::random(10),
         ]);

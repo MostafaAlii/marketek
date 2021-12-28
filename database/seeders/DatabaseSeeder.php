@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
             CityTableSeeder::class,
             AreaTableSeeder::class,
             //CurrencyTableSeeder::class,
-            SupplierTableSeeder::class,
-            ImageTableSeeder::class,
+            //SupplierTableSeeder::class,
+            //ImageTableSeeder::class,
         ]);
     }
 }

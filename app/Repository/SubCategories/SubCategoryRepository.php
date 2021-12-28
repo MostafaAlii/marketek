@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 class SubCategoryRepository implements SubCategoryRepositoryInterface {
     public function index() {
         $categories = Category::parent()->get();
-        $subCategories = Category::child()->orderBy('id','DESC')->get();
+        $subCategories = Category::child()->orderBy('id','ASC')->get();
         return view('Dashboard.SubCategories.index', compact('subCategories', 'categories'));
     }
 
@@ -35,7 +35,7 @@ class SubCategoryRepository implements SubCategoryRepositoryInterface {
         session()->flash('edit');
         return redirect()->route('SubCategories.index');
     }
-    
+
     public function destroy($request) {
         Category::findOrFail($request->id)->delete();
         session()->flash('delete');
