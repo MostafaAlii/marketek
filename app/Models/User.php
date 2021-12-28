@@ -21,6 +21,9 @@ class User extends Authenticatable
         return $this->morphOne(Image::class, 'imageable');
     }
 
+    public function currency(){
+        return $this->belongsTo(Currency::class, 'currency_id ');
+    }
     protected $hidden = [
         'password',
         'remember_token',

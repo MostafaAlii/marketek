@@ -16,9 +16,18 @@ class SuppliersRepository implements SuppliersInterface {
     use Upload;
     public function index() {
         $suppliers = User::all();
-        //$suppliers = Supplier::find(79);
-        //dd($suppliers->image);
-        return view('Dashboard.Suppliers.index', compact('suppliers'));
+        $groups = Group::all();
+        $categories = Category::where('parent_id', null)->get();
+        $subCategories = Category::where('parent_id', 1)->get();
+        $countries = Country::all();
+        $proviences = Provience::all();
+        $cities = City::all();
+        $areas = Area::all();
+        $currencies = Currency::all();
+        return view('Dashboard.Suppliers.index', compact([
+            'suppliers','groups', 'categories', 'subCategories', 'countries',
+            'proviences', 'cities', 'areas', 'currencies'
+        ]));
     }
 
     public function create() {
@@ -75,27 +84,10 @@ class SuppliersRepository implements SuppliersInterface {
     }
 
     public function update($request) {
-        $first_name=$request->first_name;
-        $last_name=$request->last_name;
-        $password=$request->password;
-        $phone=$request->phone;
-        $supplier = User::find($request->id);
-        $supplier->first_name = $first_name;
-        $supplier->last_name = $last_name;
-        if(request('password')){
-            $supplier->password =  bcrypt($password);
-        }else{
-           unset($password);
+
+            session()->flash('wrong');
+            return redirect()->route('Suppliers.index')->withErrors(['error'=> $ex->getMessage()]);
         }
-        if(request('phone')){
-            $supplier->phone = $phone;
-        }else{
-           unset($phone);
-        }
-        $supplier->update();
-        session()->flash('edit');
-        return redirect()->route('Suppliers.index');
-    }
 
     public function destroy($request){
         if($request->page_id == 1) {

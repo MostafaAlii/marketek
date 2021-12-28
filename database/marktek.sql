@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2021 at 04:11 PM
+-- Generation Time: Dec 28, 2021 at 05:49 PM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.26
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Mostafa Alii', 'admin@app.com', NULL, '$2y$10$ohQ9Yc18pre86e6mKuYgeuwqfKIkH8r3VQcVyLkaC0V6sYTpqvyYi', 'ukJJb5fTDL', '2021-12-16 23:31:07', '2021-12-16 23:31:07');
+(1, 'Mostafa Alii', 'admin@app.com', NULL, '$2y$10$QSVPvrKVlrP6E7nk2oC6AuYOwnQ.k1PFAWL6NreRlLiZLHFNMHv56', '2qnBj1VRKO', '2021-12-28 12:53:04', '2021-12-28 12:53:04');
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,9 @@ CREATE TABLE `area` (
 --
 
 INSERT INTO `area` (`id`, `created_by`, `updated_by`, `city_id`, `created_at`, `updated_at`) VALUES
-(1, 'Mostafa Alii', NULL, 3, '2021-12-16 23:35:51', '2021-12-16 23:35:51');
+(1, 'MostafaAli', 'MostafaAli', 1, '2021-12-28 12:53:04', '2021-12-28 12:53:04'),
+(2, 'MostafaAli', 'MostafaAli', 3, '2021-12-28 12:53:04', '2021-12-28 12:53:04'),
+(3, 'MostafaAli', 'MostafaAli', 3, '2021-12-28 12:53:04', '2021-12-28 12:53:04');
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,9 @@ CREATE TABLE `area_translations` (
 --
 
 INSERT INTO `area_translations` (`id`, `area_id`, `locale`, `name`) VALUES
-(1, 1, 'ar', 'سقارة');
+(1, 1, 'ar', 'North Zoramouth'),
+(2, 2, 'ar', 'West Kelsi'),
+(3, 3, 'ar', 'Greenville');
 
 -- --------------------------------------------------------
 
@@ -108,8 +112,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `parent_id`, `group_id`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, NULL, 1, 'Mostafa Alii', NULL, '2021-12-16 23:32:15', '2021-12-16 23:32:15'),
-(2, 1, NULL, 'Mostafa Alii', NULL, '2021-12-16 23:32:51', '2021-12-16 23:32:51');
+(1, NULL, 3, 'Mostafa Alii', NULL, '2021-12-28 13:00:53', '2021-12-28 13:00:53'),
+(2, 1, NULL, 'Mostafa Alii', NULL, '2021-12-28 13:01:05', '2021-12-28 13:01:05'),
+(3, NULL, 1, 'Mostafa Alii', NULL, '2021-12-28 13:23:49', '2021-12-28 13:23:49'),
+(4, 3, NULL, 'Mostafa Alii', NULL, '2021-12-28 13:24:11', '2021-12-28 13:24:11');
 
 -- --------------------------------------------------------
 
@@ -131,8 +137,10 @@ CREATE TABLE `category_translations` (
 --
 
 INSERT INTO `category_translations` (`id`, `category_id`, `locale`, `name`, `created_at`, `updated_at`) VALUES
-(1, 1, 'ar', 'قسم رئيسى', NULL, NULL),
-(2, 2, 'ar', 'قسم فرعى تابع لقسم رئيسى', NULL, NULL);
+(1, 1, 'ar', 'mmm', NULL, NULL),
+(2, 2, 'ar', 'mmm2', NULL, NULL),
+(3, 3, 'ar', 'nnn', NULL, NULL),
+(4, 4, 'ar', 'nnnnnn', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -154,9 +162,9 @@ CREATE TABLE `city` (
 --
 
 INSERT INTO `city` (`id`, `created_by`, `updated_by`, `provience_id`, `created_at`, `updated_at`) VALUES
-(1, 'Mostafa Alii', NULL, 1, '2021-12-16 23:34:11', '2021-12-16 23:34:11'),
-(2, 'Mostafa Alii', NULL, 1, '2021-12-16 23:34:30', '2021-12-16 23:34:30'),
-(3, 'Mostafa Alii', NULL, 2, '2021-12-16 23:34:46', '2021-12-16 23:34:46');
+(1, 'MostafaAli', 'MostafaAli', 3, '2021-12-28 12:53:04', '2021-12-28 12:53:04'),
+(2, 'MostafaAli', 'MostafaAli', 3, '2021-12-28 12:53:04', '2021-12-28 12:53:04'),
+(3, 'MostafaAli', 'MostafaAli', 3, '2021-12-28 12:53:04', '2021-12-28 12:53:04');
 
 -- --------------------------------------------------------
 
@@ -176,9 +184,9 @@ CREATE TABLE `city_translations` (
 --
 
 INSERT INTO `city_translations` (`id`, `city_id`, `locale`, `name`) VALUES
-(1, 1, 'ar', 'وسط البلد'),
-(2, 2, 'ar', 'ميدان طلعت حرب'),
-(3, 3, 'ar', 'المريوطية');
+(1, 1, 'ar', 'Port Weston'),
+(2, 2, 'ar', 'Adamsmouth'),
+(3, 3, 'ar', 'Lake Terrance');
 
 -- --------------------------------------------------------
 
@@ -200,7 +208,9 @@ CREATE TABLE `countries` (
 --
 
 INSERT INTO `countries` (`id`, `country_logo`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Mostafa Alii', NULL, '2021-12-16 23:33:10', '2021-12-16 23:33:10');
+(1, NULL, 'MostafaAli', 'MostafaAli', '2021-12-28 12:53:04', '2021-12-28 12:53:04'),
+(2, NULL, 'MostafaAli', 'MostafaAli', '2021-12-28 12:53:04', '2021-12-28 12:53:04'),
+(3, NULL, 'MostafaAli', 'MostafaAli', '2021-12-28 12:53:04', '2021-12-28 12:53:04');
 
 -- --------------------------------------------------------
 
@@ -220,7 +230,9 @@ CREATE TABLE `country_translations` (
 --
 
 INSERT INTO `country_translations` (`id`, `country_id`, `locale`, `name`) VALUES
-(1, 1, 'ar', 'مصر');
+(1, 1, 'ar', 'Cambodia'),
+(2, 2, 'ar', 'South Africa'),
+(3, 3, 'ar', 'South Georgia and the South Sandwich Islands');
 
 -- --------------------------------------------------------
 
@@ -236,6 +248,13 @@ CREATE TABLE `currencies` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `currencies`
+--
+
+INSERT INTO `currencies` (`id`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Mostafa Alii', NULL, '2021-12-28 12:56:17', '2021-12-28 12:56:17');
+
 -- --------------------------------------------------------
 
 --
@@ -246,8 +265,16 @@ CREATE TABLE `currency_translations` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `currency_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `currency_symbol` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `currency_translations`
+--
+
+INSERT INTO `currency_translations` (`id`, `locale`, `currency_id`, `name`, `currency_symbol`) VALUES
+(1, 'ar', 1, 'جنية مصرى', NULL);
 
 -- --------------------------------------------------------
 
@@ -284,9 +311,9 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Mostafa Alii', NULL, '2021-12-16 23:31:40', '2021-12-16 23:31:40'),
-(2, 'Mostafa Alii', NULL, '2021-12-16 23:31:49', '2021-12-16 23:31:49'),
-(3, 'Mostafa Alii', NULL, '2021-12-16 23:31:56', '2021-12-16 23:31:56');
+(1, 'MostafaAli', 'MostafaAli', '2021-12-28 12:53:04', '2021-12-28 12:53:04'),
+(2, 'MostafaAli', 'MostafaAli', '2021-12-28 12:53:04', '2021-12-28 12:53:04'),
+(3, 'MostafaAli', 'MostafaAli', '2021-12-28 12:53:04', '2021-12-28 12:53:04');
 
 -- --------------------------------------------------------
 
@@ -306,9 +333,9 @@ CREATE TABLE `group_translations` (
 --
 
 INSERT INTO `group_translations` (`id`, `locale`, `group_id`, `name`) VALUES
-(1, 'ar', 1, 'أ'),
-(2, 'ar', 2, 'ب'),
-(3, 'ar', 3, 'ج');
+(1, 'ar', 1, 'ج'),
+(2, 'ar', 2, 'ج'),
+(3, 'ar', 3, 'ا');
 
 -- --------------------------------------------------------
 
@@ -324,6 +351,13 @@ CREATE TABLE `images` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`id`, `filename`, `imageable_id`, `imageable_type`, `created_at`, `updated_at`) VALUES
+(2, 'mstf22aal22.png', 5, 'App\\Models\\Users', '2021-12-28 13:07:33', '2021-12-28 13:07:33');
 
 -- --------------------------------------------------------
 
@@ -344,7 +378,7 @@ CREATE TABLE `languages` (
 --
 
 INSERT INTO `languages` (`id`, `name`, `language`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'ar', '2021-12-16 23:30:07', '2021-12-16 23:30:07');
+(1, NULL, 'ar', '2021-12-28 12:52:38', '2021-12-28 12:52:38');
 
 -- --------------------------------------------------------
 
@@ -363,30 +397,31 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2018_08_29_200844_create_languages_table', 1),
-(4, '2018_08_29_205156_create_translations_table', 1),
-(5, '2019_08_19_000000_create_failed_jobs_table', 1),
-(6, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(7, '2021_11_02_012004_create_admins_table', 1),
-(8, '2021_11_06_203602_create_groups_table ', 1),
-(9, '2021_11_06_203845_create_group_translations_table ', 1),
-(10, '2021_12_04_180723_create_categories_table', 1),
-(11, '2021_12_04_181211_create_category_translations_table', 1),
-(12, '2021_12_06_195039_create_countries_table', 1),
-(13, '2021_12_06_195209_create_country_translations_table', 1),
-(14, '2021_12_07_144642_create_currencies_table', 1),
-(15, '2021_12_07_144938_create_currency_translations', 1),
-(16, '2021_12_08_151639_create_proviences_table', 1),
-(17, '2021_12_08_152722_create_provience_translations_table', 1),
-(18, '2021_12_13_131354_create_city_table', 1),
-(19, '2021_12_13_131355_create_city_translations_table', 1),
-(20, '2021_12_14_234223_create_area_table', 1),
-(21, '2021_12_14_234249_create_area_translations_table', 1),
-(22, '2021_12_15_184938_create_suppliers_table', 1),
-(23, '2021_12_15_185113_create_supplier_translations_table', 1),
-(24, '2021_12_15_190936_create_images_table', 1);
+(1, '2014_10_12_100000_create_password_resets_table', 1),
+(2, '2018_08_29_200844_create_languages_table', 1),
+(3, '2018_08_29_205156_create_translations_table', 1),
+(4, '2019_08_19_000000_create_failed_jobs_table', 1),
+(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(6, '2021_11_02_012004_create_admins_table', 1),
+(7, '2021_11_06_203602_create_groups_table ', 1),
+(8, '2021_11_06_203845_create_group_translations_table ', 1),
+(9, '2021_12_04_180723_create_categories_table', 1),
+(10, '2021_12_04_181211_create_category_translations_table', 1),
+(11, '2021_12_06_195039_create_countries_table', 1),
+(12, '2021_12_06_195209_create_country_translations_table', 1),
+(13, '2021_12_07_144642_create_currencies_table', 1),
+(14, '2021_12_07_144938_create_currency_translations', 1),
+(15, '2021_12_08_151639_create_proviences_table', 1),
+(16, '2021_12_08_152722_create_provience_translations_table', 1),
+(17, '2021_12_13_131354_create_city_table', 1),
+(18, '2021_12_13_131355_create_city_translations_table', 1),
+(19, '2021_12_14_234223_create_area_table', 1),
+(20, '2021_12_14_234249_create_area_translations_table', 1),
+(21, '2021_12_15_184938_create_suppliers_table', 1),
+(22, '2021_12_15_185113_create_supplier_translations_table', 1),
+(23, '2021_12_15_190936_create_images_table', 1),
+(24, '2021_12_28_135907_create_users_table', 1),
+(25, '2021_12_28_140041_create_user_translations_table', 1);
 
 -- --------------------------------------------------------
 
@@ -438,9 +473,9 @@ CREATE TABLE `proviences` (
 --
 
 INSERT INTO `proviences` (`id`, `created_by`, `updated_by`, `country_id`, `created_at`, `updated_at`) VALUES
-(1, 'Mostafa Alii', NULL, 1, '2021-12-16 23:33:29', '2021-12-16 23:33:29'),
-(2, 'Mostafa Alii', NULL, 1, '2021-12-16 23:33:41', '2021-12-16 23:33:41'),
-(3, 'Mostafa Alii', NULL, 1, '2021-12-16 23:33:53', '2021-12-16 23:33:53');
+(1, 'MostafaAli', 'MostafaAli', 2, '2021-12-28 12:53:04', '2021-12-28 12:53:04'),
+(2, 'MostafaAli', 'MostafaAli', 2, '2021-12-28 12:53:04', '2021-12-28 12:53:04'),
+(3, 'MostafaAli', 'MostafaAli', 2, '2021-12-28 12:53:04', '2021-12-28 12:53:04');
 
 -- --------------------------------------------------------
 
@@ -460,9 +495,9 @@ CREATE TABLE `provience_translations` (
 --
 
 INSERT INTO `provience_translations` (`id`, `provience_id`, `locale`, `name`) VALUES
-(1, 1, 'ar', 'القاهرة'),
-(2, 2, 'ar', 'الجيزة'),
-(3, 3, 'ar', 'الاسكندرية');
+(1, 1, 'ar', 'New Cassandrechester'),
+(2, 2, 'ar', 'Westview'),
+(3, 3, 'ar', 'North Artborough');
 
 -- --------------------------------------------------------
 
@@ -485,6 +520,7 @@ CREATE TABLE `suppliers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `group_id` bigint(20) UNSIGNED NOT NULL,
+  `subCategory_id` int(10) UNSIGNED DEFAULT NULL,
   `category_id` int(10) UNSIGNED DEFAULT NULL,
   `country_id` int(10) UNSIGNED DEFAULT NULL,
   `provience_id` int(10) UNSIGNED DEFAULT NULL,
@@ -499,7 +535,7 @@ CREATE TABLE `suppliers` (
 --
 
 CREATE TABLE `supplier_translations` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `supplier_id` int(10) UNSIGNED NOT NULL,
   `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -533,18 +569,60 @@ CREATE TABLE `translations` (
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discount` decimal(8,2) DEFAULT NULL,
+  `code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_by` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `group_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `subCategory_id` int(10) UNSIGNED DEFAULT NULL,
+  `category_id` int(10) UNSIGNED DEFAULT NULL,
+  `country_id` int(10) UNSIGNED DEFAULT NULL,
+  `provience_id` int(10) UNSIGNED DEFAULT NULL,
+  `city_id` int(10) UNSIGNED DEFAULT NULL,
+  `area_id` int(10) UNSIGNED DEFAULT NULL,
+  `currency_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `phone`, `email`, `discount`, `code`, `password`, `email_verified_at`, `status`, `created_by`, `updated_by`, `remember_token`, `created_at`, `updated_at`, `group_id`, `subCategory_id`, `category_id`, `country_id`, `provience_id`, `city_id`, `area_id`, `currency_id`) VALUES
+(5, '1231231231', 'mostafa0alii@gmail.com', '10.00', NULL, '$2y$10$5GKG1C5qIYbVSZ6gpdARAu/Ia2S7ilbOIOGZU03M3/h.8nM4bsxdS', NULL, 1, 'Mostafa Alii', NULL, NULL, '2021-12-28 13:07:33', '2021-12-28 13:07:33', 1, 2, 2, 2, 1, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_translations`
+--
+
+CREATE TABLE `user_translations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address_primary` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address_secondry` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_translations`
+--
+
+INSERT INTO `user_translations` (`id`, `user_id`, `locale`, `first_name`, `last_name`, `company_name`, `address_primary`, `address_secondry`, `description`) VALUES
+(5, 5, 'ar', 'مصطفى22', 'على22', 'zzzzzz', '<p>xxxxxxx</p>', NULL, '<p>zzzzzzz</p>');
 
 --
 -- Indexes for dumped tables
@@ -727,7 +805,23 @@ ALTER TABLE `translations`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_code_unique` (`code`),
+  ADD KEY `users_group_id_foreign` (`group_id`),
+  ADD KEY `users_category_id_foreign` (`category_id`),
+  ADD KEY `users_country_id_foreign` (`country_id`),
+  ADD KEY `users_provience_id_foreign` (`provience_id`),
+  ADD KEY `users_city_id_foreign` (`city_id`),
+  ADD KEY `users_area_id_foreign` (`area_id`),
+  ADD KEY `users_currency_id_foreign` (`currency_id`);
+
+--
+-- Indexes for table `user_translations`
+--
+ALTER TABLE `user_translations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_translations_user_id_locale_unique` (`user_id`,`locale`),
+  ADD UNIQUE KEY `user_translations_company_name_unique` (`company_name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -743,25 +837,25 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `area`
 --
 ALTER TABLE `area`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `area_translations`
 --
 ALTER TABLE `area_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `category_translations`
 --
 ALTER TABLE `category_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -779,25 +873,25 @@ ALTER TABLE `city_translations`
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `country_translations`
 --
 ALTER TABLE `country_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `currencies`
 --
 ALTER TABLE `currencies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `currency_translations`
 --
 ALTER TABLE `currency_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -821,7 +915,7 @@ ALTER TABLE `group_translations`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `languages`
@@ -833,7 +927,7 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -857,13 +951,13 @@ ALTER TABLE `provience_translations`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `supplier_translations`
 --
 ALTER TABLE `supplier_translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `translations`
@@ -875,7 +969,13 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `user_translations`
+--
+ALTER TABLE `user_translations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -962,13 +1062,31 @@ ALTER TABLE `suppliers`
 -- Constraints for table `supplier_translations`
 --
 ALTER TABLE `supplier_translations`
-  ADD CONSTRAINT `supplier_translations_supplier_id_foreign` FOREIGN KEY (`supplier_id`) REFERENCES `city` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `supplier_translations_supplier_id_foreign` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `translations`
 --
 ALTER TABLE `translations`
   ADD CONSTRAINT `translations_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_area_id_foreign` FOREIGN KEY (`area_id`) REFERENCES `area` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_city_id_foreign` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_country_id_foreign` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_currency_id_foreign` FOREIGN KEY (`currency_id`) REFERENCES `currencies` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_provience_id_foreign` FOREIGN KEY (`provience_id`) REFERENCES `proviences` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_translations`
+--
+ALTER TABLE `user_translations`
+  ADD CONSTRAINT `user_translations_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

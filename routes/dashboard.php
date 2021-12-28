@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\SupplierController;
 use App\Http\Controllers\Dashboard\ProvincesController;
 use App\Http\Controllers\Dashboard\AreaController;
 use App\Http\Controllers\Dashboard\CityController;
+use App\Http\Controllers\Dashboard\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -36,7 +37,7 @@ Route::group([
             return view('Dashboard.Admin.dashboard');
         })->middleware(['auth:admin'])->name('dashboard.admin');
         /*********************************** End Admin Dashboard ******************************** */
-        
+
         /******************************** Start Other Authentication Route ****************** */
         Route::middleware(['auth:admin'])->group( function () {
 
@@ -75,6 +76,10 @@ Route::group([
             /***********************************Start Suppliers ******************************** */
             Route::resource('Suppliers', SupplierController::class)->except(['show']);
             /***********************************End Suppliers ******************************** */
+
+            /********************************* Start Products *****************************************/
+            Route::resource('Products', ProductController::class)->except(['show']);
+            /********************************* End Products *****************************************/
         });
         /******************************** End Other Authentication Route ****************** */
         require __DIR__.'/auth.php';
