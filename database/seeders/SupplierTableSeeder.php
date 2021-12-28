@@ -10,7 +10,7 @@ class SupplierTableSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
         DB::table('suppliers')->truncate();
-        Supplier::factory()->count(200)->create();
+        Supplier::factory()->count(2000)->create();
         Schema::enableForeignKeyConstraints();
     }
 }

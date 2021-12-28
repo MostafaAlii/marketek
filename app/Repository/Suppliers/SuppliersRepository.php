@@ -9,13 +9,13 @@ use App\Models\Provience;
 use App\Models\City;
 use App\Models\Area;
 use App\Models\Currency;
-use App\Models\Supplier;
+use App\Models\User;
 use App\Http\Traits\Dashboard\Upload;
 use Illuminate\Support\Facades\DB;
 class SuppliersRepository implements SuppliersInterface {
     use Upload;
     public function index() {
-        $suppliers = Supplier::all();
+        $suppliers = User::all();
         //$suppliers = Supplier::find(79);
         //dd($suppliers->image);
         return view('Dashboard.Suppliers.index', compact('suppliers'));
@@ -39,7 +39,7 @@ class SuppliersRepository implements SuppliersInterface {
     public function store($request) {
         DB::beginTransaction();
         try {
-            $supplier = new Supplier();
+            $supplier = new User();
             $supplier->phone = $request->phone;
             $supplier->email = $request->email;
             $supplier->discount = $request->discount;
@@ -63,7 +63,7 @@ class SuppliersRepository implements SuppliersInterface {
             $supplier->description = $request->description;
             $supplier->save();
             // Avatar Upload
-            $this->verifyAndStoreImage($request, 'photo', 'suppliers', 'upload_image', $supplier->id, 'App\Models\Supplier');
+            $this->verifyAndStoreImage($request, 'photo', 'suppliers', 'upload_image', $supplier->id, 'App\Models\Users');
             DB::commit();
             session()->flash('add');
             return redirect()->route('Suppliers.index');
@@ -79,7 +79,7 @@ class SuppliersRepository implements SuppliersInterface {
         $last_name=$request->last_name;
         $password=$request->password;
         $phone=$request->phone;
-        $supplier = Supplier::find($request->id);
+        $supplier = User::find($request->id);
         $supplier->first_name = $first_name;
         $supplier->last_name = $last_name;
         if(request('password')){
@@ -102,7 +102,7 @@ class SuppliersRepository implements SuppliersInterface {
             if($request->filename){
                 $this->delete_attachment('upload_image', 'suppliers/'. $request->filename, $request->id, $request->filename);
             }
-            Supplier::destroy($request->id);
+            User::destroy($request->id);
             session()->flash('delete');
             return redirect()->route('Suppliers.index');
         }

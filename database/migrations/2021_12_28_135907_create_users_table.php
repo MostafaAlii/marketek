@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuppliersTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSuppliersTable extends Migration
      */
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id'); // Require
             $table->string('phone')->nullable();
             $table->string('email')->unique()->nullable();
@@ -28,7 +28,7 @@ class CreateSuppliersTable extends Migration
             $table->timestamps();
 
             // Group Relations
-            $table->foreignId('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->foreignId('group_id')->nullable()->references('id')->on('groups')->onDelete('cascade');
             // Categories Relations
             $table->integer('subCategory_id')->unsigned()->nullable();
             $table->integer('category_id')->unsigned()->nullable();
@@ -46,8 +46,8 @@ class CreateSuppliersTable extends Migration
             $table->integer('area_id')->unsigned()->nullable();
             $table->foreign('area_id')->references('id')->on('area')->onDelete('cascade');
             // Currency Relationship
-            //$table->integer('currency_id')->unsigned()->nullable();
-            //$table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
+            //$table->integer('currency_id')->unsigned();
+            $table->foreignId('currency_id')->nullable()->references('id')->on('currencies')->onDelete('cascade');
         });
     }
 
@@ -58,8 +58,6 @@ class CreateSuppliersTable extends Migration
      */
     public function down()
     {
-        Schema::table('suppliers', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('users');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSupplierTranslationsTable extends Migration
+class CreateUserTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateSupplierTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('supplier_translations', function (Blueprint $table) {
+        Schema::create('user_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('supplier_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('locale');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('company_name')->unique();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('company_name')->nullable()->unique();
             $table->longtext('address_primary')->nullable();
             $table->longtext('address_secondry')->nullable();
             $table->longtext('description')->nullable();
-            $table->unique(['supplier_id', 'locale']);
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->unique(['user_id', 'locale']);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -35,6 +35,6 @@ class CreateSupplierTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supplier_translations');
+        Schema::dropIfExists('user_translations');
     }
 }
