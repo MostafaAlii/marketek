@@ -9,10 +9,9 @@ class Provience extends Model
     protected $table = 'proviences';
     protected $fillable = ['name', 'country_id', 'created_by', 'updated_by'];
     public $translatedAttributes = ['name'];
-    public $timestamps = true; 
+    public $timestamps = true;
 
     public function country(){
-        //return $this->belongsTo(Country::class, 'id', 'country_id');
         return $this->belongsTo('App\Models\Country', 'country_id');
     }
 }

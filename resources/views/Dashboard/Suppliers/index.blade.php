@@ -7,6 +7,7 @@
 <link href="{{URL::asset('assets/Dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/Dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css" rel="stylesheet">
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
@@ -16,7 +17,7 @@
             <h4 class="content-title mb-0 my-auto">{{ trans('dashboard/supplier.supplier_title_in_sidebar') }}</h4>
             <span class="text-muted mt-1 tx-13 mr-2 mb-0"></span>
         </div>
-        
+
     </div>
     <div class="d-flex my-xl-auto right-content">
         <div class="pr-1 mb-3 mb-xl-0">
@@ -101,7 +102,7 @@
             <!-- /row -->
 
         {{--  @include('Dashboard.Suppliers.btn.add')--}}
-        
+
     </div>
     <!-- Container closed -->
 </div>
@@ -129,5 +130,19 @@
 <script src="{{URL::asset('assets/Dashboard/js/table-data.js')}}"></script>
 <script src="{{URL::asset('assets/Dashboard/plugins/notify/js/notifIt.js')}}"></script>
 <script src="{{URL::asset('assets/Dashboard/plugins/notify/js/notifIt-custom.js')}}"></script>
+<script src="{{URL::asset('assets/Dashboard/plugins/select2/js/select2.full.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+<script>
+    tinymce.init({
+        selector: '#mytextarea',
+        directionality : 'rtl',
+        language: 'ar'
+    });
+    tinymce.init({
+        selector: '#description_textarea',
+        directionality : 'rtl',
+        language: 'ar'
+    });
+</script>
+
 @endsection
