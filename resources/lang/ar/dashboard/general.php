@@ -4,6 +4,7 @@ return [
     'update'    =>      'تعديل',
     'delete'    =>      'حذف',
     'cancel'    =>      'الغاء',
+    'back'      =>      'تراجع',
 
 
     'active'    =>      'فعال',

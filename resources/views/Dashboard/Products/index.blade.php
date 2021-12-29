@@ -18,9 +18,9 @@
         </div>
         <div class="d-flex my-xl-auto right-content">
             <div class="pr-1 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
+                <a type="button" class="btn btn-primary" href="{{ route('product_general_information_create') }}">
                     {{ trans('dashboard/product.add_new_product') }}
-                </button>
+                </a>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
     </div>
     <!-- /row -->
 
-    @include('Dashboard.Products.btn.add')
+    @include('Dashboard.Products.add')
 
     </div>
     <!-- Container closed -->

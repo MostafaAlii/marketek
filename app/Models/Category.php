@@ -8,7 +8,7 @@ class Category extends Model
     use HasFactory, Translatable;
     protected $table = "categories";
 
-    protected $fillable = ['parent_id', 'group_id', 'created_by', 'updated_by'];
+    protected $fillable = ['parent_id', 'group_id', 'status', 'created_by', 'updated_by'];
     protected $with = ['translations'];
     protected $hidden = ['translations'];
     public $translatedAttributes = ['name'];
@@ -20,6 +20,10 @@ class Category extends Model
 
     public function scopeChild($query) {
         return $query->whereNotNull('parent_id');
+    }
+
+    public function scopeActiveStatus($query) {
+        return $query->where('status', 1);
     }
 
     public function _parent(){

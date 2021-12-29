@@ -10,10 +10,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens, Translatable;
     protected $table = 'users';
-    protected $fillable = [
-        'phone', 'email', 'discount', 'code', 'status', 'created_by', 'updated_by', 'created_at', 'updated_at',
-        'group_id', 'subCategory_id', 'category_id', 'country_id', 'provience_id', 'city_id', 'area_id', 'currency_id',
-    ];
+    protected $guarded = [];
     public $translatedAttributes = ['first_name', 'last_name', 'company_name', 'description', 'address_primary', 'address_secondry'];
     public $timestamps = true;
 
@@ -21,6 +18,9 @@ class User extends Authenticatable
         return $this->morphOne(Image::class, 'imageable');
     }
 
+    public function scopeActiveStatus($query) {
+        return $query->where('status', 1);
+    }
     public function currency(){
         return $this->belongsTo(Currency::class, 'currency_id ');
     }
