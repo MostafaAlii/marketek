@@ -10,7 +10,12 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens, Translatable;
     protected $table = 'users';
-    protected $guarded = [];
+    protected $fillable = [
+        'phone', 'email', 'discount', 'code', 'status', 'created_by', 'updated_by',
+        'group_id', 'subCategory_id', 'category_id', 'country_id', 'provience_id',
+        'city_id', 'area_id', 'currency_id',
+    ];
+    protected $with = ['translations'];
     public $translatedAttributes = ['first_name', 'last_name', 'company_name', 'description', 'address_primary', 'address_secondry'];
     public $timestamps = true;
 
