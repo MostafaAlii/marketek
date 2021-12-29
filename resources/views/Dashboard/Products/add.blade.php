@@ -127,7 +127,7 @@
                             <hr>
                             <!-- Start Status Select -->
                             <div class="row justify-content-md-start">
-                                <div class="col-12 col-md-12">
+                                <div class="col-12">
                                     <div class="form-group mt-1">
                                         <input type="checkbox" value="1"
                                                 name="is_active"
