@@ -18,6 +18,7 @@ class CategoryRepository implements CategoryRepositoryInterface {
             $category->created_by    =  auth()->user()->name;
             //save translations
             $category->name = $request->name;
+            $category->status = 1;
             $category->save();
             session()->flash('add');
             return redirect()->route('Categories.index');

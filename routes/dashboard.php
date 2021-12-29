@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\ProvincesController;
 use App\Http\Controllers\Dashboard\AreaController;
 use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -78,7 +79,9 @@ Route::group([
             /***********************************End Suppliers ******************************** */
 
             /********************************* Start Products *****************************************/
-            Route::resource('Products', ProductController::class)->except(['show']);
+            Route::get('Products', [ProductController::class, 'index'])->name('products');
+            Route::get('Products/General/Information/Create', [ProductController::class, 'create'])->name('product_general_information_create');
+            Route::post('Products/General/Information/Create', [ProductController::class, 'store'])->name('product_general_information_store');
             /********************************* End Products *****************************************/
         });
         /******************************** End Other Authentication Route ****************** */
