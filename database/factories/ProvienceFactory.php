@@ -3,6 +3,7 @@ namespace Database\Factories;
 use App\Models\Country;
 use App\Models\Provience;
 use Illuminate\Database\Eloquent\Factories\Factory;
+
 class ProvienceFactory extends Factory
 {
     protected $model = Provience::class;

@@ -11,7 +11,7 @@ use App\Http\Controllers\Dashboard\ProvincesController;
 use App\Http\Controllers\Dashboard\AreaController;
 use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\ProductController;
-
+use App\Http\Controllers\Dashboard\ServicesController;
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -77,6 +77,10 @@ Route::group([
             /***********************************Start Suppliers ******************************** */
             Route::resource('Suppliers', SupplierController::class)->except(['show']);
             /***********************************End Suppliers ******************************** */
+
+            /***********************************Start Services ******************************** */
+            Route::resource('Services', ServicesController::class)->except(['show']);
+            /***********************************End Services ******************************** */
 
             /********************************* Start Products *****************************************/
             Route::get('Products', [ProductController::class, 'index'])->name('products');

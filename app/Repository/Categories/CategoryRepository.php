@@ -3,7 +3,7 @@ namespace App\Repository\Categories;
 use App\Interfaces\Categories\CategoryRepositoryInterface;
 use App\Models\Category;
 use App\Models\Group;
-use Illuminate\Support\Facades\DB;
+
 class CategoryRepository implements CategoryRepositoryInterface {
     public function index() {
         $groups = Group::all();

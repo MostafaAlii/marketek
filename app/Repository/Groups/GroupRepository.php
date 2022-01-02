@@ -2,6 +2,7 @@
 namespace App\Repository\Groups;
 use App\Interfaces\Groups\GroupRepositoryInterface;
 use App\Models\Group;
+
 class GroupRepository implements GroupRepositoryInterface {
     public function index() {
         $groups = Group::all();

@@ -1,8 +1,9 @@
 <?php
 namespace Database\Factories;
-use App\Models\Provience;
 use App\Models\City;
+use App\Models\Provience;
 use Illuminate\Database\Eloquent\Factories\Factory;
+
 class CityFactory extends Factory
 {
     protected $model = City::class;

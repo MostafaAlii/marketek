@@ -12,7 +12,7 @@
             <h4 class="content-title mb-0 my-auto">{{ trans('dashboard/product.add_new_product') }}</h4>
             <span class="text-muted mt-1 tx-13 mr-2 mb-0"></span>
         </div>
-        
+
     </div>
 </div>
 <!-- breadcrumb -->
@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="form-section">
-                            <i class="las la-home"></i> / 
+                            <i class="las la-home"></i> /
                             {{ trans('dashboard/product.product_general_information')}}
                         </h5>
                         <br>
@@ -86,19 +86,12 @@
                                 <div class="col-6 col-md-4">
                                     <div class="form-group">
                                         <label for="projectinput1">{{trans('dashboard/product.product_category_select')}}</label>
-                                        <select name="categories[]" class="select2 form-control" multiple>
+                                        <select name="categories" class="select2 form-control">
                                             <optgroup label="{{trans('dashboard/product.product_category_select')}}">
-                                                @if($categories && $categories -> count() > 0)
-                                                    @foreach($categories as $category)
-                                                        <option
-                                                            value="{{$category->id }}">{{$category->name}}</option>
-                                                    @endforeach
-                                                @endif
+
                                             </optgroup>
                                         </select>
-                                        @error('categories.0')
-                                        <span class="text-danger"> {{$message}}</span>
-                                        @enderror
+
                                     </div>
                                 </div>
                                 <!-- End Categories -->
@@ -108,17 +101,9 @@
                                         <label for="projectinput1">{{trans('dashboard/product.product_supplier_select')}}</label>
                                         <select name="user_id" class="select2 form-control">
                                             <optgroup label="{{trans('dashboard/product.product_supplier_select')}}">
-                                                @if($users && $users -> count() > 0)
-                                                    @foreach($users as $user)
-                                                        <option
-                                                            value="{{$user->id }}">{{$user->name}}</option>
-                                                    @endforeach
-                                                @endif
+
                                             </optgroup>
                                         </select>
-                                        @error('user_id')
-                                        <span class="text-danger"> {{$message}}</span>
-                                        @enderror
                                     </div>
                                 </div>
                                 <!-- End Supplier -->
@@ -140,7 +125,7 @@
                                         @error("is_active")
                                         <span class="text-danger">{{$message }}</span>
                                         @enderror
-                                    </div>    
+                                    </div>
                                 <div>
                             </div>
                             <!-- End Status Select -->

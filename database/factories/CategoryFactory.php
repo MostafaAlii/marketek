@@ -1,8 +1,9 @@
 <?php
 namespace Database\Factories;
-use App\Models\Group;
 use App\Models\Category;
+use App\Models\Group;
 use Illuminate\Database\Eloquent\Factories\Factory;
+
 class CategoryFactory extends Factory
 {
     protected $model = Category::class;

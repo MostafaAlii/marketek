@@ -1,8 +1,9 @@
 <?php
 namespace App\Repository\Cities;
+use App\Interfaces\Cities\CityRepositoryInterface;
 use App\Models\City;
 use App\Models\Provience;
-use App\Interfaces\Cities\CityRepositoryInterface;
+
 class CityRepository implements CityRepositoryInterface {
     public function index() {
         $cities = City::all();

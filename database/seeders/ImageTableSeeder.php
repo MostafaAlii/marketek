@@ -1,9 +1,10 @@
 <?php
 namespace Database\Seeders;
 use App\Models\Image;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Seeder;
+
 class ImageTableSeeder extends Seeder
 {
     public function run()

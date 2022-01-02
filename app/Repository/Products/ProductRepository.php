@@ -1,10 +1,11 @@
 <?php
 namespace App\Repository\Products;
-use App\Models\Products;
-use App\Models\Category;
-use App\Models\User;
 use App\Interfaces\Products\ProductRepositoryInterface;
+use App\Models\Category;
+use App\Models\Products;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
+
 class ProductRepository implements ProductRepositoryInterface {
     public function  index() {
         $products = Products::all();
@@ -12,22 +13,24 @@ class ProductRepository implements ProductRepositoryInterface {
     }
 
     public function create() {
-        $data = [];
+        //$data = [];
         //$data['users'] = User::activeStatus()->select('id')->get();
-        $users = User::activeStatus()->select('id')->get();
         //$data['categories'] = Category::activeStatus()->select('id')->get();
-        //$categories = Category::activeStatus()->select('id')->get();
-        $categories = Category::all();
-        return view('Dashboard.Products.add', compact('categories', 'users'));
+        $Categories = Category::all();
+        $Users = User::all();
+        return view('Dashboard.Products.add', compact('Categories', 'Users'));
     }
 
     public function store($request) {
         DB::beginTransaction();
         try {
             if (!$request->has('is_active'))
+            {
                 $request->request->add(['is_active' => 0]);
-            else
+            }
+            else {
                 $request->request->add(['is_active' => 1]);
+            }
             $product = Products::create([
                 'slug' => $request->slug,
                 'user_id' => $request->user_id,
@@ -47,6 +50,6 @@ class ProductRepository implements ProductRepositoryInterface {
             session()->flash('wrong');
             return redirect()->route('products')->withErrors(['error'=> $ex->getMessage()]);
         }
-        
+
     }
 }

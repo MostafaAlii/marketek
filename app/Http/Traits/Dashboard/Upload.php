@@ -1,9 +1,10 @@
 <?php
 namespace App\Http\Traits\Dashboard;
 use App\Models\Image;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 trait Upload {
     public function verifyAndStoreImage(Request $request, $inputname, $foldername, $disk, $imageable_id, $imageable_type) {
         if($request->hasFile($inputname)) {

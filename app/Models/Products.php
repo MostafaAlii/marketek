@@ -4,7 +4,8 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class Products extends Model {
+class Products extends Model
+{
     use HasFactory, SoftDeletes, Translatable;
     protected $table = 'products';
     protected $with = ['translations'];
@@ -30,7 +31,7 @@ class Products extends Model {
         return  $this -> is_active  == 0 ?  'غير مفعل'   : 'مفعل' ;
     }
 
-    public function categories() {
-        return $this->belongsToMany(Category::class, 'product_categories');
+    public function services() {
+        return $this->belongsToMany(Service::class, 'product_categories');
     }
 }

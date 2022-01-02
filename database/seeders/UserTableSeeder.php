@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+
 class UserTableSeeder extends Seeder
 {
     /**
