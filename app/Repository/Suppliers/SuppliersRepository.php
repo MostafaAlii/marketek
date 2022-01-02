@@ -1,17 +1,18 @@
 <?php
 namespace App\Repository\Suppliers;
-use App\Interfaces\Suppliers\SuppliersInterface;
-use Illuminate\Support\Facades\Hash;
-use App\Models\Group;
-use App\Models\Category;
-use App\Models\Country;
-use App\Models\Provience;
-use App\Models\City;
-use App\Models\Area;
-use App\Models\Currency;
-use App\Models\User;
 use App\Http\Traits\Dashboard\Upload;
+use App\Interfaces\Suppliers\SuppliersInterface;
+use App\Models\Area;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\Currency;
+use App\Models\Group;
+use App\Models\Provience;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 class SuppliersRepository implements SuppliersInterface {
     use Upload;
     public function index() {

@@ -18,6 +18,8 @@ use App\Interfaces\Areas\AreaRepositoryInterface;
 use App\Repository\Areas\AreaRepository;
 use App\Interfaces\Cities\CityRepositoryInterface;
 use App\Repository\Cities\CityRepository;
+use App\Interfaces\Services\ServicesRepositoryInterface;
+use App\Repository\Services\ServicesRepository;
 use App\Interfaces\Products\ProductRepositoryInterface;
 use App\Repository\Products\ProductRepository;
 // Api
@@ -36,6 +38,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ProvinceRepositoryInterface::class, ProvinceRepository::class);
         $this->app->bind(AreaRepositoryInterface::class, AreaRepository::class);
         $this->app->bind(CityRepositoryInterface::class, CityRepository::class);
+        $this->app->bind(ServicesRepositoryInterface::class, ServicesRepository::class);
         $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
         // Api Binding ::
         $this->app->bind(GroupsApiRepositoryInterface::class, GroupsApiRepository::class);

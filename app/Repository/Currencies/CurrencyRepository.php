@@ -2,6 +2,7 @@
 namespace App\Repository\Currencies;
 use App\Interfaces\Currencies\CurrencRepositoryInterface;
 use App\Models\Currency;
+
 class CurrencyRepository implements CurrencRepositoryInterface {
     public function index() {
         $currencies = Currency::all();

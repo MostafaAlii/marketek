@@ -1,8 +1,9 @@
 <?php
 namespace App\Repository\Api;
-use App\Interfaces\Api\GroupsApiRepositoryInterface;
 use App\Http\Traits\GeneralApiTrait;
+use App\Interfaces\Api\GroupsApiRepositoryInterface;
 use App\Models\Group;
+
 class GroupsApiRepository implements GroupsApiRepositoryInterface{
     use GeneralApiTrait;
     public function index(){

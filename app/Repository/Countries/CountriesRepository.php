@@ -2,6 +2,7 @@
 namespace App\Repository\Countries;
 use App\Interfaces\Countries\CountryRepositoryInterface;
 use App\Models\Country;
+
 class CountriesRepository implements CountryRepositoryInterface {
     public function index() {
         $countries = Country::all();

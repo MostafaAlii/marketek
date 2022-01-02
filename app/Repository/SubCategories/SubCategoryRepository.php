@@ -2,7 +2,7 @@
 namespace App\Repository\SubCategories;
 use App\Interfaces\SubCategories\SubCategoryRepositoryInterface;
 use App\Models\Category;
-use Illuminate\Support\Facades\DB;
+
 class SubCategoryRepository implements SubCategoryRepositoryInterface {
     public function index() {
         $categories = Category::parent()->get();

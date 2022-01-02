@@ -1,8 +1,9 @@
 <?php
 namespace App\Repository\Areas;
+use App\Interfaces\Areas\AreaRepositoryInterface;
 use App\Models\Area;
 use App\Models\City;
-use App\Interfaces\Areas\AreaRepositoryInterface;
+
 class AreaRepository implements AreaRepositoryInterface {
     public function index(){
         $areas      =   Area::all();
