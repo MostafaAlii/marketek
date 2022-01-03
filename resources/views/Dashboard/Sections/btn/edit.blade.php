@@ -1,23 +1,22 @@
 <!-- Modal -->
-<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit{{$Category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ trans('dashboard/service.add_new_serviceCategory_details') }}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ trans('dashboard/service.edit_section_details') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
-            <form action="{{ route('Services.store') }}" method="post" autocomplete="off">
-                @csrf
+            <form action="{{ route('Sections.update', 'test') }}" method="post" autocomplete="off">
+                {{ method_field('patch') }}
+                {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>{{ trans('dashboard/service.enter_serviceCategory_name') }}</label>
-                        <input type="text" name="name" class="form-control" placeholder="{{ trans('dashboard/service.enter_serviceCategory_name_placeholder') }}" />
-                        @error('name')
-                        <span class="text-danger"> {{$message}}</span>
-                        @enderror
+                        <label>{{ trans('dashboard/service.enter_section_name') }}</label>
+                        <input type="hidden" name="id" class="form-control" value="{{ $Category->id }}" />
+                        <input type="text" name="name" class="form-control" value="{{ $Category->name }}" />
                     </div>
                 </div>
 

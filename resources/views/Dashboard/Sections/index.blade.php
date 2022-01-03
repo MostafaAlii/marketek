@@ -68,8 +68,8 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    @include('Dashboard.Services.btn.edit')
-                                    @include('Dashboard.Services.btn.delete')
+                                    @include('Dashboard.Sections.btn.edit')
+                                    @include('Dashboard.Sections.btn.delete')
                                 @endforeach()
                                 </tbody>
                             </table>
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-        @include('Dashboard.Services.btn.add')
+        @include('Dashboard.Sections.btn.add')
     </div>
     <!-- Container closed -->
 </div>

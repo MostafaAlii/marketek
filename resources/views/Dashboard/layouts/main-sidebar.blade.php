@@ -203,7 +203,7 @@
 					</li>
 					<!-- End Supplier -->
 
-                    <!-- Start Services -->
+                    <!-- Start Sections -->
                     <li class="slide">
                         <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . $page='#') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"  viewBox="0 0 24 24" >
@@ -215,10 +215,10 @@
                             <i class="angle fe fe-chevron-down"></i>
                         </a>
                         <ul class="slide-menu">
-                            <li><a class="slide-item" href="{{ route('Services.index') }}">{{ trans('dashboard/service.show_all_services_in_sidebar') }}</a></li>
+                            <li><a class="slide-item" href="{{ route('Sections.index') }}">{{ trans('dashboard/service.show_all_services_in_sidebar') }}</a></li>
                         </ul>
                     </li>
-                    <!-- End Services -->
+                    <!-- End Sections -->
 
                     <!-- Start Products -->
                     <li class="slide">

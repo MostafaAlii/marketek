@@ -11,4 +11,7 @@ return [
     'serviceCategory_updated_by'                                =>                              'محــدث بواسطة',
     'serviceCategory_created_at'                                =>                              'مضــاف فــ',
     'serviceCategory_actions'                                   =>                              'الاجرائــات',
+    'edit_section_details'                                      =>                              'تعديل بيانات القسم',
+    'enter_section_name'                                        =>                              'اكتب بيانات القسم',
+    'delete_section_details'                                    =>                              'حذف بيانات القسم',
 ];
