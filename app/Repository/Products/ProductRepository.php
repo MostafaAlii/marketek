@@ -2,23 +2,26 @@
 namespace App\Repository\Products;
 use App\Interfaces\Products\ProductRepositoryInterface;
 use App\Models\Category;
-use App\Models\Products;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class ProductRepository implements ProductRepositoryInterface {
     public function  index() {
-        $products = Products::all();
-        return view('Dashboard.Products.index', compact('products'));
+        $data = [];
+        $data['users'] = User::activeStatus()->select('id')->get();
+        $data['categories'] = Category::activeStatus()->select('id')->get();
+        $data['products'] = Product::all();
+        return view('Dashboard.Products.index', $data);
     }
 
     public function create() {
-        //$data = [];
-        //$data['users'] = User::activeStatus()->select('id')->get();
-        //$data['categories'] = Category::activeStatus()->select('id')->get();
-        $Categories = Category::all();
-        $Users = User::all();
-        return view('Dashboard.Products.add', compact('Categories', 'Users'));
+        $data = [];
+        $data['users'] = User::activeStatus()->select('id')->get();
+        $data['categories'] = Category::all();
+        //$Categories = Category::all();
+        //$Users = User::all();
+        return view('Dashboard.Products.add', $data);
     }
 
     public function store($request) {
@@ -31,7 +34,7 @@ class ProductRepository implements ProductRepositoryInterface {
             else {
                 $request->request->add(['is_active' => 1]);
             }
-            $product = Products::create([
+            $product = Product::create([
                 'slug' => $request->slug,
                 'user_id' => $request->user_id,
                 'is_active' => $request->is_active,

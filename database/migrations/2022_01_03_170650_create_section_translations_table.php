@@ -18,7 +18,7 @@ class CreateSectionTranslationsTable extends Migration
             $table->string('locale')->index();
 
             // Foreign key to the main model
-            $table->unsignedBigInteger('section_id');
+            $table->unsignedInteger('section_id');
             $table->unique(['section_id', 'locale']);
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->string('name');
