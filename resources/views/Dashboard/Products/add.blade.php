@@ -88,7 +88,12 @@
                                         <label for="projectinput1">{{trans('dashboard/product.product_category_select')}}</label>
                                         <select name="categories" class="select2 form-control">
                                             <optgroup label="{{trans('dashboard/product.product_category_select')}}">
-
+                                                @if($categories && $categories->count() > 0)
+                                                    @foreach($categories as $category)
+                                                        <option
+                                                            value="{{$category->id }}">{{$category->name}}</option>
+                                                    @endforeach
+                                                @endif
                                             </optgroup>
                                         </select>
 
