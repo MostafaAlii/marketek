@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\Api\GroupApiController;
-use App\Http\Controllers\Dashboard\Api\Auth\SupplierTokenController;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,20 +14,10 @@ use App\Http\Controllers\Dashboard\Api\Auth\SupplierTokenController;
 |
 */
 // All Api Here Must Be Authenticated
-Route::group(['prefix' => 'v1', 'middleware' => 'auth:sanctum'], function(){
 
+Route::middleware('auth:sanctum')->get('/user', function(Request $request) {
+    return $request->user();
 });
 
-
-
-
-Route::post('Auth/Token', [SupplierTokenController::class, 'store']);
-
-
-
-
-// Non Authenticated Api For Read Only
-Route::group([ 'middleware' => ['guest:sanctum', 'changeLanguage']], function(){
-    Route::post('Get/Groups', [GroupApiController::class, 'index']);
-    Route::post('Get/Group/By', [GroupApiController::class, 'getGroupById']);
-});
+Route::post('/auth/token', [AuthController::class, 'store'])->name('supplierLogin');
+Route::post('register', [AuthController::class, 'register']);
