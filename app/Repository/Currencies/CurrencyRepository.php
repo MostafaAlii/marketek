@@ -17,9 +17,6 @@ class CurrencyRepository implements CurrencRepositoryInterface {
                 'currency_symbol'  => $request->input('currency_symbol'),
                 'created_by'    =>  auth()->user()->name,
             ]);
-            /*$currency = Currency::create($request->except('_token'));
-            $currency->name = $request->name;
-            $currency->currency_symbol = $request->currency_symbol;*/
             session()->flash('add');
             return redirect()->route('Currencies.index');
         } catch (\Exception $ex) {
