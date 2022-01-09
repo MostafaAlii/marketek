@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Traits\Dashboard\Upload;
 use App\Http\Controllers\Api\BaseController as BaseController;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 class AuthController extends BaseController {
     use Upload;
     public function store(Request $request) {
@@ -24,6 +24,10 @@ class AuthController extends BaseController {
         ];
     }
 
+    public function getUserInfo(Request $request) {
+        return $request->user();
+    }
+
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
             'phone' => 'required',
@@ -35,24 +39,27 @@ class AuthController extends BaseController {
         if($validator->fails()){
             return $this->handleError($validator->errors());       
         }
-   
-        //$input = $request->all();
-        //$input['password'] = Hash::make($input['password']);
-        //$user = User::create($input);
-        /*$user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-         ]);*/
-         $user = new User();
+        $user = new User();
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->status = 0;
         $user->save();
         $success['token'] =  $user->createToken('supplierNewAccountRegisteration')->plainTextToken;
-        $success['name'] =  $user->name;
-   
-        return $this->handleResponse($success, 'User successfully registered!');
+        $success['id'] =  $user->id;
+        return $this->handleResponse($success, 'Supplier successfully registered First Widget!');
     }
+
+    /*public function second_step_register() {
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'confirm_password' => 'required|same:password',
+        ]);
+   
+        if($validator->fails()){
+            return $this->handleError($validator->errors());       
+        }
+    }*/
 }

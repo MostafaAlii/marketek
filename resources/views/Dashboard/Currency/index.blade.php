@@ -63,11 +63,15 @@
                                                 <td>{{ $currency->updated_by }}</td>
                                                 <td>{{ $currency->created_at->diffForHumans() }}</td>
                                                 <td>
+                                                    <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale" data-toggle="modal" href="#edit{{$currency->id}}">
+                                                        <i class="las la-pen"></i>
+                                                    </a>
                                                     <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale" data-toggle="modal" href="#delete{{$currency->id}}">
                                                         <i class="las la-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
+                                            @include('Dashboard.Currency.btn.edit')
                                             @include('Dashboard.Currency.btn.delete')
                                         @endforeach()
                                     </tbody>

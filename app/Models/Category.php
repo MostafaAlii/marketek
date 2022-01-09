@@ -11,7 +11,7 @@ class Category extends Model
 
     protected $fillable = ['parent_id', 'group_id', 'status', 'created_by', 'updated_by'];
     protected $with = ['translations'];
-    protected $hidden = ['translations'];
+    //protected $hidden = ['translations'];
     public $translatedAttributes = ['name'];
     public $timestamps = true;
 
