@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Province\ProvincesApiController;
 use App\Http\Controllers\Api\City\CitiesApiController;
 use App\Http\Controllers\Api\Area\AreasApiController;
 use App\Http\Controllers\Api\Currency\CurrenciesApiController;
+use App\Http\Controllers\Api\CountryCode\CountryCodeApiController;
 /*
 |--------------------------------------------------------------------------
 | Dahboard API Routes
@@ -46,4 +47,6 @@ Route::middleware(['guest:sanctum'])->group( function () {
     Route::get('getMainCategories', [CategoryApiController::class, 'getMainCategory']);
     Route::get('Category/{id}/show', [CategoryApiController::class, 'getCategoryById']);
     Route::get('getSubCategories', [CategoryApiController::class, 'getSubCategory']);
+
+    Route::resource('CountryCode', CountryCodeApiController::class)->except(['show', 'edit', 'destroy']);
 });
