@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Country\CountriesApiController;
 use App\Http\Controllers\Api\Category\CategoryApiController;
 use App\Http\Controllers\Api\Country\CountriesApiController;
 use App\Http\Controllers\Api\Province\ProvincesApiController;
