@@ -8,6 +8,8 @@ use App\Interfaces\SubCategories\SubCategoryRepositoryInterface;
 use App\Repository\SubCategories\SubCategoryRepository;
 use App\Interfaces\Suppliers\SuppliersInterface;
 use App\Repository\Suppliers\SuppliersRepository;
+use App\Interfaces\CountryCode\CountryCodeInterface;
+use App\Repository\CountryCode\CountryCodeRepository;
 use App\Interfaces\Countries\CountryRepositoryInterface;
 use App\Repository\Countries\CountriesRepository;
 use App\Interfaces\Currencies\CurrencRepositoryInterface;
@@ -33,6 +35,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->bind(SubCategoryRepositoryInterface::class, SubCategoryRepository::class);
         $this->app->bind(SuppliersInterface::class, SuppliersRepository::class);
+        $this->app->bind(CountryCodeInterface::class, CountryCodeRepository::class);
         $this->app->bind(CountryRepositoryInterface::class, CountriesRepository::class);
         $this->app->bind(CurrencRepositoryInterface::class, CurrencyRepository::class);
         $this->app->bind(ProvinceRepositoryInterface::class, ProvinceRepository::class);

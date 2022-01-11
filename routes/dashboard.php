@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\GroupController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\CountryCodeController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\CurrencyController;
 use App\Http\Controllers\Dashboard\SubCategoryController;
@@ -54,6 +55,10 @@ Route::group([
             Route::resource('SubCategories', SubCategoryController::class)->except(['show']);
             /***********************************End SubCategory ******************************** */
 
+            /***********************************Start CountryCode ******************************** */
+            Route::resource('CountryCode', CountryCodeController::class)->except(['show']);
+            /***********************************End CountryCode ******************************** */
+            
             /***********************************Start Countries ******************************** */
             Route::resource('Countries', CountryController::class)->except(['show']);
             /***********************************End Countries ******************************** */

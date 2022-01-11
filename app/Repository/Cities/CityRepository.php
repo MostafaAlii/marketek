@@ -28,11 +28,6 @@ class CityRepository implements CityRepositoryInterface {
     }
 
     public function update($request) {
-        /*$city = City::findOrFail($request->id);
-        $city->update([
-            'name'  => $request->input('name'),
-            'updated_by'    =>  auth()->user()->name,
-        ]);*/
         $city = City::findOrFail($request->id);
         $city->update($request->all());
         $city->updated_by    =  auth()->user()->name;

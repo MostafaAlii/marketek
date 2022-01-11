@@ -42,6 +42,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'public_uploads' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'),
+
+        ],
+
         'upload_image' => [
             'driver' => 'local',
             'root' => public_path('Dashboard/image'),
