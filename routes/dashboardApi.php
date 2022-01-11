@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Province\ProvincesApiController;
 use App\Http\Controllers\Api\City\CitiesApiController;
 use App\Http\Controllers\Api\Area\AreasApiController;
 use App\Http\Controllers\Api\Currency\CurrenciesApiController;
+use App\Http\Controllers\Api\CountryCode\CountryCodeApiController;
 /*
 |--------------------------------------------------------------------------
 | Dahboard API Routes
@@ -27,6 +28,8 @@ Route::middleware(['auth:sanctum'])->group( function () {
 Route::middleware(['guest:sanctum'])->group( function () {
     Route::post('/auth/token', [AuthController::class, 'store']);
     Route::post('register', [AuthController::class, 'register']);
+    // Country Code && Country Flag ::
+    Route::get('getCountryCode', [CountryCodeApiController::class, 'getCountryCode']);
     // Countries Api ::
     Route::get('getCountries', [CountriesApiController::class, 'getCountries']);
     Route::get('Country/{id}/show', [CountriesApiController::class, 'getCountryById']);
