@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Interfaces\Suppliers\SuppliersInterface;
 use App\Http\Requests\Dashboard\SuppliersRequest;
 use App\Http\Requests\Dashboard\SuppliersUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 class SupplierController extends Controller
 {
@@ -28,7 +29,7 @@ class SupplierController extends Controller
         return $this->Suppliers->update($request);
     }
 
-    public function destroy(Request $request) {
-        return $this->Suppliers->destroy($request);
+    public function destroy(Request $request, User $supplier) {
+        return $this->Suppliers->destroy($request, $supplier);
     }
 }

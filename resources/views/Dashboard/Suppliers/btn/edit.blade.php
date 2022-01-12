@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="edit{{$supplier->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <!-- Start Modal Dialog -->
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <!-- Start Modal Content -->
         <div class="modal-content">
             <!-- Start Modal Header -->
@@ -13,15 +13,27 @@
             </div>
             <!-- End Modal Header -->
             <!-- Start Form -->
-            <form action="{{ route('Suppliers.update', 'test') }}" method="post" autocomplete="off">
+            <form action="{{ route('Suppliers.update', 'test') }}" method="post" autocomplete="off" enctype="multipart/form-data">
                 {{ method_field('patch') }}
                 {{ csrf_field() }}
                 <!-- Start Modal Body -->
                 <div class="modal-body">
+                    <!-- Start Image Preview -->
+                    <div class="form-group">
+                        <img src="{{ $supplier->image_path }} "id="output"  style="width: 65px; height:65px;" class="rounded-circle image-preview mx-auto d-block" alt="">
+                    </div>
+                    <br>
+                    <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" onchange="loadFile(event)" id="customFileLang">
+                        <label class="custom-file-label" for="customFileLang"></label>
+                    </div>
+                    <br><br>
+                    <!-- End Image Preview -->
                     <!-- Start Company Name -->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-field form-group">
+                                <input type="hidden" name="id" class="form-control" value="{{ $supplier->id }}" />
                                 <label for="company_name" class="label">{{ trans('dashboard/supplier.supplier_company_name') }}</label>
                                 <input id="company_name" class="input-text form-control" value="{{ $supplier->company_name }}" type="text" name="company_name" placeholder="{{ trans('dashboard/supplier.type_supplier_company_name') }}">
                                 @error("company_name")
@@ -241,16 +253,16 @@
                     </div>
                     <!-- End Status -->
                     <hr>
-                    <!-- Start Description -->
-                    <div class="row">
-                        <div class="col-md-12">
+                    <!-- Start Supplier Description -->
+                    <div class="row justify-content-md-start">
+                        <div class="col-12 col-md-12">
                             <div class="form-group">
-                                <label for="description_textarea">{{ trans('dashboard/supplier.supplier_description') }}</label>
+                                <label for="projectinput2">{{ trans('dashboard/supplier.supplier_description') }}</label>
                                 <textarea name="description" id="description_textarea">{{$supplier->description}}</textarea>
                             </div>
                         </div>
                     </div>
-                    <!-- End Description -->
+                    <!-- End Supplier Description -->
                     <!-- Start Address -->
                     <div class="row">
                         <div class="col-md-12">
@@ -260,6 +272,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <!-- End Address -->
                 </div>
                 <!-- End modal-body -->

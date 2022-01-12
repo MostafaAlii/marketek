@@ -15,6 +15,6 @@ class CountryCode extends Model
     protected $appends = ['image_path'];
 
     public function getImagePathAttribute() {
-        return  asset('public/uploads/countryFlags/') . $this->image;
+        return  asset('uploads/countryFlags/' . $this->image);
     }
 }

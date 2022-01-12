@@ -66,11 +66,7 @@
                                                 <td>{{ $supplier->email }}</td>
                                                 <td>{{ $supplier->first_name . ' ' . $supplier->last_name }}</td>
                                                 <td>
-                                                    @if($supplier->image)
-                                                    <img style="width:65px; height:65px;border-radius: 5px;" class="rounded-circle" src="{{ Url::asset('Dashboard/image/suppliers/' . $supplier->image->filename) }}" alt="" />
-                                                    @else
-                                                    <img style="width:65px; height:65px;border-radius: 5px;" class="rounded-circle" src="{{ Url::asset('Dashboard/image/deafult_supplier.png') }}" />
-                                                    @endif
+                                                    <img style="width:65px; height:65px;border-radius: 5px;" class="rounded-circle" src="{{$supplier->image_path}}" alt="" />
                                                 </td>
                                                 <td>{{ $supplier->phone }}</td>
                                                 <td>
@@ -133,6 +129,15 @@
 <script src="{{URL::asset('assets/Dashboard/plugins/select2/js/select2.full.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 <script>
+    var loadFile = function (event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+            URL.revokeObjectURL(output.src)
+        }
+     };
+</script>
+<script>
     tinymce.init({
         selector: '#mytextarea',
         directionality : 'rtl',
@@ -140,6 +145,16 @@
     });
     tinymce.init({
         selector: '#description_textarea',
+        directionality : 'rtl',
+        language: 'ar'
+    });
+    tinymce.init({
+        selector: '#my_textarea_edit',
+        directionality : 'rtl',
+        language: 'ar'
+    });
+    tinymce.init({
+        selector: '#description_textarea_edit',
         directionality : 'rtl',
         language: 'ar'
     });

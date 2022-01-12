@@ -10,17 +10,14 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens, Translatable;
     protected $table = 'users';
-    protected $fillable = [
-        'phone', 'email', 'discount', 'code', 'status', 'created_by', 'updated_by',
-        'group_id', 'subCategory_id', 'category_id', 'country_id', 'provience_id',
-        'city_id', 'area_id', 'currency_id',
-    ];
+    protected $guarded  = [];
     protected $with = ['translations'];
     public $translatedAttributes = ['first_name', 'last_name', 'company_name', 'description', 'address_primary', 'address_secondry'];
+    protected $appends = ['image_path'];
     public $timestamps = true;
 
-    public function image() {
-        return $this->morphOne(Image::class, 'imageable');
+    public function getImagePathAttribute() {
+        return asset('uploads/suppliersImage/' . $this->image);
     }
 
     public function scopeActiveStatus($query) {

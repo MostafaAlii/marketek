@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Traits\Dashboard\Upload;
 use App\Http\Controllers\Api\BaseController as BaseController;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Arr;
 class AuthController extends BaseController {
     use Upload;
     public function store(Request $request) {
@@ -50,16 +51,30 @@ class AuthController extends BaseController {
         return $this->handleResponse($success, 'Supplier successfully registered First Widget!');
     }
 
-    /*public function second_step_register() {
+    public function second_step_register(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'phone' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'confirm_password' => 'required|same:password',
+            'company_name'  =>  'required',
+            'first_name'    =>  'required',
+            'last_name'     =>  'required',
+            'country_id'    =>  'required',
+            'provience_id'  =>  'required',
+            'city_id'       =>  'required',
+            'area_id'       =>  'required',
+            'category_id'   =>  'required',
+            'subCategory_id'    =>  'required',
+            'currency_id'       =>  'required',
         ]);
    
         if($validator->fails()){
             return $this->handleError($validator->errors());       
         }
-    }*/
+
+        $user = User::findOrFail($id);
+        $randomGroupID =  [1, 2, 3];
+        $user->update($request->all() + ['group_id' => Arr::random($randomGroupID)]);
+        $success['id'] =  $user->id;
+        $success['category_id'] =  $user->category_id;
+        $success['group_id'] =  $user->group_id;
+        return $this->handleResponse($success, 'Supplier successfully registered Second Widget!');
+    }
 }

@@ -1,6 +1,5 @@
 <?php
 namespace App\Repository\Suppliers;
-use App\Http\Traits\Dashboard\Upload;
 use App\Interfaces\Suppliers\SuppliersInterface;
 use App\Models\Area;
 use App\Models\Category;
@@ -12,9 +11,9 @@ use App\Models\Provience;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 class SuppliersRepository implements SuppliersInterface {
-    use Upload;
     public function index() {
         $suppliers = User::all();
         $groups = Group::all();
@@ -49,7 +48,15 @@ class SuppliersRepository implements SuppliersInterface {
     public function store($request) {
         DB::beginTransaction();
         try {
+            $request->except(['image']);
             $supplier = new User();
+            // Avatar Upload
+            if($request->image) {
+                Image::make($request->image)->resize(150, 150, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('uploads/suppliersImage/' . $request->image->hashName()));
+                $supplier->image = $request->image->hashName();
+            }
             $supplier->phone = $request->phone;
             $supplier->email = $request->email;
             $supplier->discount = $request->discount;
@@ -72,11 +79,9 @@ class SuppliersRepository implements SuppliersInterface {
             $supplier->address_secondry = $request->address_secondry;
             $supplier->description = $request->description;
             $supplier->save();
-            // Avatar Upload
-            $this->verifyAndStoreImage($request, 'photo', 'suppliers', 'upload_image', $supplier->id, 'App\Models\Users');
             DB::commit();
             session()->flash('add');
-            return redirect()->route('Suppliers.index');
+            return redirect()->route('supplier.index');
         } catch (\Exception $ex) {
             DB::rollback();
             session()->flash('wrong');
@@ -85,23 +90,30 @@ class SuppliersRepository implements SuppliersInterface {
     }
 
     public function update($request) {
-
-            session()->flash('wrong');
-            return redirect()->route('Suppliers.index')->withErrors(['error'=> $ex->getMessage()]);
-        }
-
-    public function destroy($request){
-        if($request->page_id == 1) {
-            if($request->filename){
-                $this->delete_attachment('upload_image', 'suppliers/'. $request->filename, $request->id, $request->filename);
+        $supplier = User::findOrFail($request->id);
+        $dataRequest = $request->except(['image']);
+        if($request->image) {
+            if($supplier->image != 'default_avatar.png') {
+                Storage::disk('public_uploads')->delete('/suppliersImage/' . $supplier->image);
             }
-            User::destroy($request->id);
-            session()->flash('delete');
-            return redirect()->route('Suppliers.index');
+            Image::make($request->image)->resize(150, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('uploads/suppliersImage/' . $request->image->hashName()));
+            $dataRequest['image'] = $request->image->hashName();
+            $dataRequest['updated_by'] = auth()->user()->name;
+        }
+        $supplier->update($dataRequest);
+        session()->flash('edit');
+        return redirect()->route('Suppliers.index');
         }
 
-        else{
-
+    public function destroy($request, $supplier) {
+        $supplier = User::findOrFail($request->id);
+        if($supplier->image != 'default_avatar.png') {
+            Storage::disk('public_uploads')->delete('/suppliersImage/' . $supplier->image);
         }
+        $supplier->delete();
+        session()->flash('delete');
+        return redirect()->route('Suppliers.index');
     }
 }

@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->decimal('discount',8,2)->nullable();
             $table->string('code')->unique()->nullable();
             $table->string('password')->nullable();
+            $table->string('image')->default('default_avatar.png');
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('status')->default(1);
             $table->string('created_by')->nullable();

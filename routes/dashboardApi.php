@@ -28,6 +28,7 @@ Route::middleware(['auth:sanctum'])->group( function () {
 Route::middleware(['guest:sanctum'])->group( function () {
     Route::post('/auth/token', [AuthController::class, 'store']);
     Route::post('register', [AuthController::class, 'register']);
+    Route::post('second_register/{id}', [AuthController::class, 'second_step_register']);
     // Country Code && Country Flag ::
     Route::get('getCountryCode', [CountryCodeApiController::class, 'getCountryCode']);
     // Countries Api ::

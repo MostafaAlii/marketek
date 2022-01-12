@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <input type="hidden" name="page_id" value="1" />
                         @if($supplier->image)
-                            <input type="hidden" name="filename" class="form-control" value="{{ $supplier->image->filename }}" />
+                            <input type="hidden" name="filename" class="form-control" value="{{-- $supplier->image->filename --}}" />
                         @endif
                         <input type="hidden" name="id" class="form-control" value="{{ $supplier->id }}" />
                         <h5>{{ trans('dashboard/general.warning') }}</h5>

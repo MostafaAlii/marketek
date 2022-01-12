@@ -13,7 +13,7 @@ class CountryCodeRepository implements CountryCodeInterface{
     public function store($request) {
         $dataRequest = $request->except(['image']);
         if($request->image) {
-            Image::make($request->image)->resize(150, null, function ($constraint) {
+            Image::make($request->image)->resize(150, 150, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path('uploads/countryFlags/' . $request->image->hashName()));
             $dataRequest['image'] = $request->image->hashName();

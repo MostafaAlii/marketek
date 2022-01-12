@@ -50,7 +50,7 @@
                                         <label>{{ trans('dashboard/supplier.avatar_photo') }}</label>
                                     </div>
                                     <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                        <input type="file" accept="image/*" name="photo" onchange="loadFile(event)" />
+                                        <input type="file" accept="image/*" name="image" onchange="loadFile(event)" />
                                         <img style="" class="rounded-circle"  width="85px" height="85px" id="output" />
                                     </div>
                                 </div>
@@ -228,8 +228,7 @@
                                                 </optgroup>
                                             </select>
                                             @error('city_id')
-                                            <span class="text-danger"> {{$message}}</span>
-                                            @enderror
+                                            <span class="text-danger"> {{$message}}</span>                                        @enderror
                                         </div>
                                     </div>
                                     <!-- End City Select -->
