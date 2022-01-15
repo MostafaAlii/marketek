@@ -248,7 +248,8 @@
                             <i class="angle fe fe-chevron-down"></i>
                         </a>
                         <ul class="slide-menu">
-                            <li><a class="slide-item" href="{{-- route('products') --}}">{{ trans('dashboard/product.show_all_product_in_sidebar') }}</a></li>
+                            <li><a class="slide-item" href="{{ route('product_general_information_create') }}">{{ trans('dashboard/product.add_new_product') }}</a></li>
+							<li><a class="slide-item" href="{{ route('products') }}">{{ trans('dashboard/product.show_all_product_in_sidebar') }}</a></li>
                         </ul>
                     </li>
                     <!-- End Products -->

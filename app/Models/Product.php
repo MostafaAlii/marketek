@@ -27,4 +27,8 @@ class Product extends Model {
     public function users() {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function getActive(){
+        return  $this -> is_active  == 0 ?  'غير مفعل'   : 'مفعل' ;
+    }
 }

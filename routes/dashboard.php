@@ -11,7 +11,7 @@ use App\Http\Controllers\Dashboard\SupplierController;
 use App\Http\Controllers\Dashboard\ProvincesController;
 use App\Http\Controllers\Dashboard\AreaController;
 use App\Http\Controllers\Dashboard\CityController;
-//use App\Http\Controllers\Dashboard\ProductController;
+use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\SectionsController;
 /*
 |--------------------------------------------------------------------------
@@ -88,9 +88,9 @@ Route::group([
             /***********************************End Services ******************************** */
 
             /********************************* Start Products *****************************************/
-            /*Route::get('Products', [ProductController::class, 'index'])->name('products');
-            Route::get('Products/General/Information/Create', [ProductController::class, 'create'])->name('product_general_information_create');
-            Route::post('Products/General/Information/Create', [ProductController::class, 'store'])->name('product_general_information_store');*/
+            Route::get('Products', [ProductController::class, 'index'])->name('products');
+            Route::get('Products_Create', [ProductController::class, 'create'])->name('product_general_information_create');
+            Route::post('Products/General/Information/Create', [ProductController::class, 'store'])->name('product_general_information_store');
             /********************************* End Products *****************************************/
         });
         /******************************** End Other Authentication Route ****************** */

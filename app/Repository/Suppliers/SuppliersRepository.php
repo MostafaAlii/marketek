@@ -81,7 +81,7 @@ class SuppliersRepository implements SuppliersInterface {
             $supplier->save();
             DB::commit();
             session()->flash('add');
-            return redirect()->route('supplier.index');
+            return redirect()->route('suppliers.index');
         } catch (\Exception $ex) {
             DB::rollback();
             session()->flash('wrong');
