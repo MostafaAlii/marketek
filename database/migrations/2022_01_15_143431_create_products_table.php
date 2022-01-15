@@ -1,16 +1,9 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 class CreateProductsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
@@ -25,8 +18,12 @@ class CreateProductsTable extends Migration
             $table->string('sku')->nullable();
             $table->integer('viewed')->unsigned()->default(0);
             $table->boolean('is_active');
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            //$table->integer('supplier_id')->unsigned()->nullable();
+            //$table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('set null');
             $table->integer('section_id')->unsigned()->nullable();
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('set null');
             $table->softDeletes();
@@ -34,11 +31,6 @@ class CreateProductsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('products');

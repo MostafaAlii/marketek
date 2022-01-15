@@ -1,18 +1,15 @@
 <?php
 namespace App\Models;
-use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model {
-    use Translatable, SoftDeletes;
-    protected $table = 'products';
+    use HasFactory, Translatable, SoftDeletes;
+    protected $table = "products";
+    protected $guarded  = [];
     protected $with = ['translations'];
     protected $translatedAttributes = ['name', 'description', 'short_description'];
-    protected $fillable = [
-        'user_id', 'slug', 'sku', 'price', 'special_price',
-        'special_price_type', 'special_price_start', 'special_price_end', 'selling_price', 'is_active'
-    ];
-    public $timestamps = true;
 
     protected $casts = [
         'is_active' => 'boolean',
@@ -23,15 +20,11 @@ class Product extends Model {
         'start_date', 'end_date', 'deleted_at',
     ];
 
-    public function users(){
-        return $this->belongsTo('App\Models\User', 'user_id');
+    public function sections() {
+        return $this->belongsTo(Section::class, 'section_id');
     }
 
-    public function sections(){
-        return $this->belongsTo('App\Models\Section', 'section_id');
-    }
-
-    public function getActive(){
-        return  $this -> is_active  == 0 ?  'غير مفعل'   : 'مفعل' ;
+    public function users() {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
