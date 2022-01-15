@@ -5,15 +5,10 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 class CreateProductTranslationsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('product_translations', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->string('locale')->index();
             $table->string('name');
@@ -26,11 +21,6 @@ class CreateProductTranslationsTable extends Migration
         DB::statement('ALTER TABLE product_translations ADD FULLTEXT(name)');
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('product_translations');

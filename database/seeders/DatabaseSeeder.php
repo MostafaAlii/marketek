@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
             ProvienceTableSeeder::class,
             CityTableSeeder::class,
             AreaTableSeeder::class,
+            SectionTableSeeder::class,
+            ProductTableSeeder::class,
             //CurrencyTableSeeder::class,
             //SupplierTableSeeder::class,
             //ImageTableSeeder::class,
