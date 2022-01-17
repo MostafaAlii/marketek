@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->boolean('status')->default(1);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
+            $table->double('location')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

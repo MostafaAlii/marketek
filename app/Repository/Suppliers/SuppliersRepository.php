@@ -81,12 +81,17 @@ class SuppliersRepository implements SuppliersInterface {
             $supplier->save();
             DB::commit();
             session()->flash('add');
-            return redirect()->route('supplier.index');
+            return redirect()->route('suppliers.index');
         } catch (\Exception $ex) {
             DB::rollback();
             session()->flash('wrong');
             return redirect()->route('Suppliers.index')->withErrors(['error'=> $ex->getMessage()]);
         }
+    }
+
+    public function show($id) {
+        $userProfile = User::find($id);
+        return view('Dashboard.Suppliers.show', compact('userProfile'));
     }
 
     public function update($request) {
@@ -105,7 +110,7 @@ class SuppliersRepository implements SuppliersInterface {
         $supplier->update($dataRequest);
         session()->flash('edit');
         return redirect()->route('Suppliers.index');
-        }
+    }
 
     public function destroy($request, $supplier) {
         $supplier = User::findOrFail($request->id);

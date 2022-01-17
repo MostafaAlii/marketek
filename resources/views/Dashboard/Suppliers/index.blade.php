@@ -76,6 +76,9 @@
                                                 </td>
                                                 <td>{{ $supplier->created_at->diffForHumans() }}</td>
                                                 <td>
+                                                    <a class="btn btn-sm btn-success" data-effect="effect-scale" href="Suppliers/{{$supplier->id}}">
+                                                        <i class="las la-eye"></i>
+                                                    </a>
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale" data-toggle="modal" href="#edit{{$supplier->id}}">
                                                         <i class="las la-pen"></i>
                                                     </a>
