@@ -31,7 +31,7 @@ class CountryCodeRepository implements CountryCodeInterface{
             if($countryCode->image != 'default_flag.jpg') {
                 Storage::disk('public_uploads')->delete('/countryFlags/' . $countryCode->image);
             }
-            Image::make($request->image)->resize(150, null, function ($constraint) {
+            Image::make($request->image)->resize(150, 150, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path('uploads/countryFlags/' . $request->image->hashName()));
             $dataRequest['image'] = $request->image->hashName();
