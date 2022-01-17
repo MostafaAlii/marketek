@@ -80,7 +80,7 @@ Route::group([
             /***********************************End Currency ******************************** */
 
             /***********************************Start Suppliers ******************************** */
-            Route::resource('Suppliers', SupplierController::class)->except(['show']);
+            Route::resource('Suppliers', SupplierController::class);
             /***********************************End Suppliers ******************************** */
 
             /***********************************Start Services ******************************** */

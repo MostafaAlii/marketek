@@ -20,13 +20,22 @@ class User extends Authenticatable
         return asset('uploads/suppliersImage/' . $this->image);
     }
 
-    
+    public function getMakeNameAttribute()
+{
+    return $this->make_rel->make_name;
+}
 
     public function scopeActiveStatus($query) {
         return $query->where('status', 1);
     }
     public function currency(){
         return $this->belongsTo(Currency::class, 'currency_id ');
+    }
+    public function group(){
+        return $this->belongsTo(Group::class, 'group_id');
+    }
+    public function category() {
+        return $this->belongsTo(Category::class, 'category_id', 'name');
     }
     protected $hidden = [
         'password',

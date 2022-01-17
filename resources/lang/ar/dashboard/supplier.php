@@ -64,4 +64,13 @@ return [
     'select_groups'                             =>              'اختار الفئة التابعة',
     'edit_supplier_information'                 =>              'تعديل بيانات المورد',
     'email'                                     =>              'البريد الالكترونى',
+    // Supplier Profile ::
+    'supplier_profile'                          =>              'الصفحة الشخصية',
+    'supplier_special_info'                     =>              'معلومات التواصل',
+    'supplier_primary_address'                  =>              'العنوان الرئيسى',
+    'supplier_more_info'                        =>              'نبذه عنــ',
+    'supplier_gallery'                          =>              'معرض الصــور',
+    'supplier_settings'                         =>              'الاعــدادات',
+    'supplier_currency'                         =>              'العمــلة',
+    'supplier_address_location'                 =>              'عنوان الموقع',
 ];

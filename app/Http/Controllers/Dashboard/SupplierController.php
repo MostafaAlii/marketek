@@ -17,6 +17,10 @@ class SupplierController extends Controller
         return $this->Suppliers->index();
     }
 
+    public function show($id) {
+        return $this->Suppliers->show($id);
+    }
+
     public function create() {
         return $this->Suppliers->create();
     }

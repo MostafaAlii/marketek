@@ -89,6 +89,11 @@ class SuppliersRepository implements SuppliersInterface {
         }
     }
 
+    public function show($id) {
+        $userProfile = User::find($id);
+        return view('Dashboard.Suppliers.show', compact('userProfile'));
+    }
+
     public function update($request) {
         $supplier = User::findOrFail($request->id);
         $dataRequest = $request->except(['image']);
@@ -105,7 +110,7 @@ class SuppliersRepository implements SuppliersInterface {
         $supplier->update($dataRequest);
         session()->flash('edit');
         return redirect()->route('Suppliers.index');
-        }
+    }
 
     public function destroy($request, $supplier) {
         $supplier = User::findOrFail($request->id);

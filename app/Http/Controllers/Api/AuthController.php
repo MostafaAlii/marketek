@@ -53,7 +53,7 @@ class AuthController extends BaseController {
     }
 
     public function second_step_register(Request $request, $id) {
-        $dataRequest = Validator::make($request->all(), [
+        $validation = Validator::make($request->all(), [
             'company_name'  =>  'required',
             'first_name'    =>  'required',
             'last_name'     =>  'required',
@@ -69,12 +69,13 @@ class AuthController extends BaseController {
             'currency_id'       =>  'required',
         ]);
    
-        if($dataRequest->fails()){
-            return $this->handleError($dataRequest->errors());       
+        if($validation->fails()){
+            return $this->handleError($validation->errors());       
         }
-
+        $request->except(['code']);
+        $group_id = DB::table('categories')->select('group_id')->where('id', '=', $request->category_id)->first();
         $user = User::findOrFail($id);
-        $dataRequest = $request->except(['code']);
+
         if($request->code) {
             if($user->code != 'default_barcode.png') {
                 Storage::disk('public_uploads')->delete('/supplierBarCode/' . $user->code);
@@ -82,14 +83,31 @@ class AuthController extends BaseController {
             Image::make($request->code)->resize(150, 150, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path('uploads/supplierBarCode/' . $request->code->hashName()));
-            $dataRequest['code'] = $request->code->hashName();
+            $user->code = $request->code->hashName();
         }
-        $dataRequest['group_id'] = DB::table('categories')->select('group_id')->where('id', '=', $request->category_id)->get(); 
-        //DB::table('categories')->where('id', '=', $request->category_id)->pluck('group_id');
-        $user->update($dataRequest);
+
+        $user->company_name = $request->company_name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->country_id = $request->country_id;
+        $user->provience_id = $request->provience_id;
+        $user->city_id = $request->city_id;
+        $user->address_primary = $request->address_primary;
+        $user->area_id = $request->area_id;
+        $user->category_id = $request->category_id;
+        $user->subCategory_id = $request->subCategory_id;
+        $user->currency_id = $request->currency_id;
+
+        //$group_id = DB::table('categories')->select('group_id')->where('id', '=', $request->category_id)->first(); 
+        $user->group_id = $request->group_id;
+        //$group_id = DB::table('categories')->join('groups', $request->category_id, '=', 'groups.id')->select('group_id')->get();
+        //$dataRequest['group_id'] = DB::table('categories')->where('id', '=', $request->category_id)->pluck('group_id');
+        
+        $user->save();
         $success['id'] =  $user->id;
         $success['category_id'] =  $user->category_id;
-        $success['group_id'] =  $user->group_id;
+        $success['subCategory_id'] =  $user->subCategory_id;
+        $success['group_id'] =  $group_id;
         return $this->handleResponse($success, 'Supplier successfully registered Second Widget!');
     }
 }
