@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AuthController;
+//use App\Http\Controllers\Api\Auth\AuthApiController;
 use App\Http\Controllers\Api\Category\CategoryApiController;
 use App\Http\Controllers\Api\Country\CountriesApiController;
 use App\Http\Controllers\Api\Province\ProvincesApiController;
@@ -28,6 +29,7 @@ Route::middleware(['auth:sanctum'])->group( function () {
 Route::middleware(['guest:sanctum'])->group( function () {
     Route::post('/auth/token', [AuthController::class, 'store']);
     Route::post('register', [AuthController::class, 'register']);
+    //Route::post('register', [AuthApiController::class, 'register']);
     Route::post('second_register/{id}', [AuthController::class, 'second_step_register']);
     // Country Code && Country Flag ::
     Route::get('getCountryCode', [CountryCodeApiController::class, 'getCountryCode']);
