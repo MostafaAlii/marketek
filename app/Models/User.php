@@ -20,6 +20,8 @@ class User extends Authenticatable
         return asset('uploads/suppliersImage/' . $this->image);
     }
 
+    
+
     public function scopeActiveStatus($query) {
         return $query->where('status', 1);
     }
