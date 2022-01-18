@@ -20,11 +20,6 @@ class User extends Authenticatable
         return asset('uploads/suppliersImage/' . $this->image);
     }
 
-    public function getMakeNameAttribute()
-{
-    return $this->make_rel->make_name;
-}
-
     public function scopeActiveStatus($query) {
         return $query->where('status', 1);
     }
@@ -35,7 +30,7 @@ class User extends Authenticatable
         return $this->belongsTo(Group::class, 'group_id');
     }
     public function category() {
-        return $this->belongsTo(Category::class, 'category_id', 'name');
+        return $this->belongsTo(Category::class, 'category_id');
     }
     protected $hidden = [
         'password',
