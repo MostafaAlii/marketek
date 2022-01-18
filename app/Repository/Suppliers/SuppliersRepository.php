@@ -91,7 +91,8 @@ class SuppliersRepository implements SuppliersInterface {
 
     public function show($id) {
         $userProfile = User::find($id);
-        return view('Dashboard.Suppliers.show', compact('userProfile'));
+        $currency = DB::table('currencies')->select('id')->where('id', '=', 'currency_id')->value('id');
+        return view('Dashboard.Suppliers.show', compact('userProfile', 'currency'));
     }
 
     public function update($request) {

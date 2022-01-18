@@ -57,14 +57,14 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqxiPxkv5Gw46jSkwDJ3GfVfl
                                 </div>
                                 <!-- End profile-user-name -->
                                 <!-- Start Description -->
-                                <h6>{{ trans('Dashboard/supplier.supplier_description') }}</h6>
+                                <h6>{{ trans('dashboard/supplier.supplier_description') }}</h6>
                                 <div class="main-profile-bio">
                                     {!! $userProfile->description !!}
                                 </div>
                                 <!-- End Description -->
                                 <hr class="mg-y-30">
                                 <!-- Start Supplier Info -->
-                                <label class="main-content-label tx-13 mg-b-20">{{ trans('Dashboard/supplier.supplier_special_info') }}</label>
+                                <label class="main-content-label tx-13 mg-b-20">{{ trans('dashboard/supplier.supplier_special_info') }}</label>
                                 <!-- Start Contact List -->
                                 <div class="main-profile-social-list">
                                     <!-- Start Phone Number -->
@@ -73,7 +73,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqxiPxkv5Gw46jSkwDJ3GfVfl
                                             <i class="las la-phone"></i>
                                         </div>
                                         <div class="media-body">
-                                            <span>{{ trans('Dashboard/supplier.phone_number') }}</span> <a>{{ $userProfile->phone }}</a>
+                                            <span>{{ trans('dashboard/supplier.phone_number') }}</span> <a>{{ $userProfile->phone }}</a>
                                         </div>
                                     </div>
                                     <!-- End Phone Number -->
@@ -83,7 +83,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqxiPxkv5Gw46jSkwDJ3GfVfl
                                             <i class="las la-at"></i>
                                         </div>
                                         <div class="media-body">
-                                            <span>{{ trans('Dashboard/supplier.supplier_email') }}</span> <a>{{ $userProfile->email }}</a>
+                                            <span>{{ trans('dashboard/supplier.supplier_email') }}</span> <a>{{ $userProfile->email }}</a>
                                         </div>
                                     </div>
                                     <!-- End Email Address -->
@@ -93,7 +93,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqxiPxkv5Gw46jSkwDJ3GfVfl
                                             <i class="las la-map-marked"></i>
                                         </div>
                                         <div class="media-body">
-                                            <span>{{ trans('Dashboard/supplier.supplier_primary_address') }}</span> <a>{!! $userProfile->address_primary !!}</a>
+                                            <span>{{ trans('dashboard/supplier.supplier_primary_address') }}</span> <a>{!! $userProfile->address_primary !!}</a>
                                         </div>
                                     </div>
                                     <!-- End Primary Address -->
@@ -122,13 +122,13 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqxiPxkv5Gw46jSkwDJ3GfVfl
                             <!-- Start Tabs Head -->
                             <ul class="nav nav-tabs profile navtab-custom panel-tabs">
                                 <li class="">
-                                    <a href="#home" data-toggle="tab" aria-expanded="true"> <span class="visible-xs"><i class="las la-user-circle tx-16 mr-1"></i></span> <span class="hidden-xs">{{ trans('Dashboard/supplier.supplier_more_info') }}</span> </a>
+                                    <a href="#home" data-toggle="tab" aria-expanded="true"> <span class="visible-xs"><i class="las la-user-circle tx-16 mr-1"></i></span> <span class="hidden-xs">{{ trans('dashboard/supplier.supplier_more_info') }}</span> </a>
                                 </li>
                                 <li class="">
-                                    <a href="#profile" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="las la-images tx-15 mr-1"></i></span> <span class="hidden-xs">{{ trans('Dashboard/supplier.supplier_gallery') }}</span> </a>
+                                    <a href="#profile" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="las la-images tx-15 mr-1"></i></span> <span class="hidden-xs">{{ trans('dashboard/supplier.supplier_gallery') }}</span> </a>
                                 </li>
                                 <li class="">
-                                    <a href="#settings" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="las la-cog tx-16 mr-1"></i></span> <span class="hidden-xs">{{ trans('Dashboard/supplier.supplier_settings') }}</span> </a>
+                                    <a href="#settings" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="las la-cog tx-16 mr-1"></i></span> <span class="hidden-xs">{{ trans('dashboard/supplier.supplier_settings') }}</span> </a>
                                 </li>
                             </ul>
                             <!-- End Tabs Head -->
@@ -137,16 +137,16 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqxiPxkv5Gw46jSkwDJ3GfVfl
                         <!-- Start Tabs Body -->
                         <div class="tab-content border-left border-bottom border-right border-top-0 p-4">
                             <div class="tab-pane active" id="home">
-                                <h4 class="tx-15 text-primary text-uppercase mb-3">{{ trans('Dashboard/supplier.supplier_primary_address') }}</h4>
+                                <h4 class="tx-15 text-primary text-uppercase mb-3">{{ trans('dashboard/supplier.supplier_primary_address') }}</h4>
                                 <p class="m-b-5">{!! $userProfile->address_primary !!}</p>
                                 <div class="m-t-30">
-                                    <h4 class="tx-15 text-uppercase text-primary mt-3">{{-- trans('Dashboard/supplier.supplier_currency') --}}</h4>
+                                    <h4 class="tx-15 text-uppercase text-primary mt-3">{{-- trans('dashboard/supplier.supplier_currency') --}}</h4>
                                     <div class=" p-t-10">
-                                        <h5 class="text-primary m-b-5 tx-14">{{-- $userProfile->category->name --}}</h5>
+                                        <h5 class="text-primary m-b-5 tx-14">{{-- $userProfile->currency->id --}}</h5>
                                     </div>
                                     <hr>
                                     <div class="">
-                                        <h5 class="text-primary m-b-5 tx-14">{{ trans('Dashboard/supplier.supplier_address_location') }}</h5>
+                                        <h5 class="text-primary m-b-5 tx-14">{{ trans('dashboard/supplier.supplier_address_location') }}</h5>
                                         <div id="map" style="width:100%;height:400px;"></div>    
                                     </div>
                                     
