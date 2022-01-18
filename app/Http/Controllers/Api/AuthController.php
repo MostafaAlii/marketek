@@ -86,9 +86,17 @@ class AuthController extends BaseController {
         }
         $user->update($userRequest);
         $success['id'] =  $user->id;
+        $success['company_name'] =  $user->company_name;
+        $success['first_name'] =  $user->first_name;
+        $success['last_name'] =  $user->last_name;
+        $success['group_id'] =  $user->group_id;
         $success['category_id'] =  $user->category_id;
         $success['subCategory_id'] =  $user->subCategory_id;
-        $success['group_id'] =  $user->group_id;
+        $success['country_id'] =  $user->country_id;
+        $success['provience_id'] =  $user->provience_id;
+        $success['city_id'] =  $user->city_id;
+        $success['area_id'] =  $user->area_id;
+        $success['address_primary'] =  $user->address_primary;
         return $this->handleResponse($success, 'Supplier successfully registered Second Widget!');
     }
 }
