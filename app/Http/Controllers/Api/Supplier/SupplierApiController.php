@@ -29,7 +29,7 @@ class SupplierApiController extends BaseController {
         }
         $group_id = DB::table('categories')->select('group_id')->where('id', '=', $request->category_id)->value('group_id');
         $request->merge(['group_id' => $group_id]);
-        $dataRequest = $request->except(['image']);
+        $dataRequest = $request->except(['image', 'code']);
         $supplier = User::findOrFail($id);
         if($request->image) {
             if($supplier->image != 'default_avatar.png') {
