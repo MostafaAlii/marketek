@@ -13,11 +13,15 @@ class User extends Authenticatable
     protected $guarded  = [];
     protected $with = ['translations'];
     public $translatedAttributes = ['first_name', 'last_name', 'company_name', 'description', 'address_primary', 'address_secondry'];
-    protected $appends = ['image_path'];
+    protected $appends = ['image_path', 'barcode_path'];
     public $timestamps = true;
 
     public function getImagePathAttribute() {
         return asset('uploads/suppliersImage/' . $this->image);
+    }
+
+    public function getBarcodePathAttribute() {
+        return asset('uploads/supplierBarCode/' . $this->code);
     }
 
     public function scopeActiveStatus($query) {

@@ -55,4 +55,5 @@ Route::middleware(['guest:sanctum'])->group( function () {
     Route::get('getSubCategories', [CategoryApiController::class, 'getSubCategory']);
     // Supplier ::
     Route::get('Supplier/{id}/show', [SupplierApiController::class, 'getSupplierById']);
+    Route::post('Supplier/edit/{id}', [SupplierApiController::class, 'updateSupplierInfo']);
 });
