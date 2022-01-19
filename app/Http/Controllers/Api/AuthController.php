@@ -13,7 +13,11 @@ use Illuminate\Support\Arr;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 class AuthController extends BaseController {
-    public function store(Request $request) {
+    public function getUserInfo(Request $request) {
+        return $request->user();
+    }
+
+    public function signin(Request $request) {
         $this->validate($request,[
             'email'     =>      'required|email',
             'password'  =>      'required',
@@ -22,12 +26,10 @@ class AuthController extends BaseController {
             throw new AuthenticationException();
         }
         return [
-            'token' => auth()->user()->createToken('web')->plainTextToken
-        ];
-    }
-
-    public function getUserInfo(Request $request) {
-        return $request->user();
+            'token' => auth()->user()->createToken('login')->plainTextToken,
+            'id'    => auth()->user()->id,
+            'group_id'    => auth()->user()->group_id,
+        ]; 
     }
 
     public function register(Request $request) {
@@ -98,5 +100,12 @@ class AuthController extends BaseController {
         $success['area_id'] =  $user->area_id;
         $success['address_primary'] =  $user->address_primary;
         return $this->handleResponse($success, 'Supplier successfully registered Second Widget!');
+    }
+
+    public function signOut() {
+        auth()->user()->tokens()->delete();
+        return [
+            'message' => 'Tokens Was Revoked & Supplier Was Signout Successfully'
+        ];
     }
 }

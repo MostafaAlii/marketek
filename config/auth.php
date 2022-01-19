@@ -49,6 +49,11 @@ return [
             'driver'    => 'sanctum',
             'provider'  => 'suppliers',
         ],
+
+        'member' => [
+            'driver'    => 'sanctum',
+            'provider'  => 'members',
+        ],
     ],
 
     /*
@@ -77,11 +82,14 @@ return [
             'driver' => 'eloquent',
             'model' => \App\Models\Admin::class,
         ],
-
          'suppliers' => [
              'driver' => 'eloquent',
              'table' => \App\Models\Supplier::class,
          ],
+         'members' => [
+            'driver' => 'eloquent',
+            'table' => \App\Models\Members::class,
+        ],
     ],
 
     /*

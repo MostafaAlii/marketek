@@ -24,13 +24,13 @@ use App\Http\Controllers\Api\Supplier\SupplierApiController;
 // All Api Here Must Be Authenticated
 Route::middleware(['auth:sanctum'])->group( function () {
     Route::get('/user', [AuthController::class, 'getUserInfo']);
+    Route::post('/sign-out', [AuthController::class, 'signOut']);
 });
 
 // Non Authenticated Api Route
 Route::middleware(['guest:sanctum'])->group( function () {
-    Route::post('/auth/token', [AuthController::class, 'store']);
+    Route::post('/signin', [AuthController::class, 'signin']);
     Route::post('register', [AuthController::class, 'register']);
-    //Route::post('register', [AuthApiController::class, 'register']);
     Route::post('second_register/{id}', [AuthController::class, 'second_step_register']);
     // Country Code && Country Flag ::
     Route::get('getCountryCode', [CountryCodeApiController::class, 'getCountryCode']);
