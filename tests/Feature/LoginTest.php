@@ -4,10 +4,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 class LoginTest extends TestCase
 {
-    public function test_example()
+    use RefreshDatabase;
+    public function supplier_login_testing()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $user = User::create()
     }
 }

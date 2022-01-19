@@ -25,7 +25,8 @@ class CreateUsersTable extends Migration
             $table->boolean('status')->default(1);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->double('location')->nullable();
+            $table->double('latitude')->default('30.033333');
+            $table->double('longitude')->default('31.233334');
             $table->rememberToken();
             $table->timestamps();
 

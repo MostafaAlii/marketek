@@ -9,6 +9,7 @@ class SupplierApiController extends Controller {
     public function getSupplierById($id) {
         $supplier = User::find($id);
         return response()->json(['supplier'=>$supplier], 200);
-        //return SupplierProfileResource::collection($supplier);
     }
+
+    
 }
