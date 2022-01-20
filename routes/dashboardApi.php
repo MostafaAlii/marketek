@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AuthController;
-//use App\Http\Controllers\Api\Auth\AuthApiController;
+use App\Http\Controllers\Api\Auth\NewPasswordController;
 use App\Http\Controllers\Api\Category\CategoryApiController;
 use App\Http\Controllers\Api\Country\CountriesApiController;
 use App\Http\Controllers\Api\Province\ProvincesApiController;
@@ -32,6 +32,9 @@ Route::middleware(['guest:sanctum'])->group( function () {
     Route::post('/signin', [AuthController::class, 'signin']);
     Route::post('register', [AuthController::class, 'register']);
     Route::post('second_register/{id}', [AuthController::class, 'second_step_register']);
+    // Password Resetting Api ::
+    Route::post('forgot-password', [NewPasswordController::class, 'forgotPassword']);
+    Route::post('reset-password', [NewPasswordController::class, 'reset']);
     // Country Code && Country Flag ::
     Route::get('getCountryCode', [CountryCodeApiController::class, 'getCountryCode']);
     // Countries Api ::

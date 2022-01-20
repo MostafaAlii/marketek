@@ -5,12 +5,12 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\Group;
 use App\Models\Provience;
-use App\Models\Supplier;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SupplierFactory extends Factory
 {
-    protected $model = Supplier::class;
+    protected $model = User::class;
     public function definition()
     {
         return [
@@ -21,7 +21,7 @@ class SupplierFactory extends Factory
             'discount'                  =>      $this->faker->randomElement([10,20,30]),
             'first_name'                =>      $this->faker->name,
             'last_name'                 =>      $this->faker->name,
-            'company_name'              =>      $this->faker->name,
+            'company_name'              =>      $this->faker->unique()->name,
             'description'               =>      $this->faker->paragraph,
             'address_primary'           =>      $this->faker->address(),
             'address_secondry'          =>      $this->faker->address(),

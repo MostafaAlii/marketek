@@ -3,9 +3,9 @@ namespace App\Models;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\Auth\ResetPasswordNotification;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens, Translatable;
@@ -40,8 +40,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function sendPasswordResetNotification($token) {
+        $url = 'https://travelvego.test/reset-password?token=' . $token;
+        $this->notify(new ResetPasswordNotification($url));
+    }
 }
