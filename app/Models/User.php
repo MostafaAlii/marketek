@@ -4,9 +4,10 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\Auth\ResetPasswordNotification;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens, Translatable;
     protected $table = 'users';
@@ -44,7 +45,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public function sendPasswordResetNotification($token) {
-        $url = 'https://travelvego.test/reset-password?token=' . $token;
+        $url = 'http://trav.test/reset-password?token=' . $token;
         $this->notify(new ResetPasswordNotification($url));
     }
 }

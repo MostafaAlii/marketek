@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\Auth\NewPasswordController;
+use App\Http\Controllers\Api\Auth\EmailVerificationController;
 use App\Http\Controllers\Api\Category\CategoryApiController;
 use App\Http\Controllers\Api\Country\CountriesApiController;
 use App\Http\Controllers\Api\Province\ProvincesApiController;
@@ -25,6 +26,9 @@ use App\Http\Controllers\Api\Supplier\SupplierApiController;
 Route::middleware(['auth:sanctum'])->group( function () {
     Route::get('/user', [AuthController::class, 'getUserInfo']);
     Route::post('/sign-out', [AuthController::class, 'signOut']);
+    // Email Verification ::
+    Route::post('/email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail']);
+    Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
 });
 
 // Non Authenticated Api Route
@@ -58,5 +62,5 @@ Route::middleware(['guest:sanctum'])->group( function () {
     Route::get('getSubCategories', [CategoryApiController::class, 'getSubCategory']);
     // Supplier ::
     Route::get('Supplier/{id}/show', [SupplierApiController::class, 'getSupplierById']);
-    Route::post('Supplier/edit/{id}', [SupplierApiController::class, 'updateSupplierInfo']);
+    Route::post('Supplier/{id}/edit', [SupplierApiController::class, 'updateSupplierInfo']);
 });
